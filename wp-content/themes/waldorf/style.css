@@ -1,0 +1,2698 @@
+/*
+Theme Name: Waldorf
+Author: Anna Poleshchuk
+Author URI: https://poleschuk.ks.ua/
+Description: 
+Version: 2023
+
+Waldorf WordPress Theme © 2023 Poleshchuk
+*/
+
+/* ----------------------------------- MAIN */ 
+
+* { 
+    margin: 0; 
+    padding: 0; 
+}
+
+@font-face {
+	font-family: Antropos;
+	src: url(./fonts/Antropos.ttf);
+}
+
+@font-face {
+	font-family: BaarLemuria;
+	src: url(./fonts/BaarLemuria.ttf);
+}
+
+.flex { 
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.rel {
+    position: relative;
+}
+
+a { 
+    text-decoration: none;
+    outline: none; 
+    transition: all .3s; 
+    color: #343537;
+}
+
+ul, ol { 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    background-color: #fff;
+    color: #343537;
+    font-family: Antropos;
+    text-transform: uppercase;
+}
+
+.btn, input[type="submit"] {
+    display: block;
+    padding: 1.302vw 2.083vw;
+    border-radius: 2.083vw;
+    background: #fff;
+    font-size: 1.042vw;
+    line-height: 100%;
+    transition: all .3s;
+}
+
+.btn:hover, , input[type="submit"]:hover {
+    color: #f08b3b;
+}
+
+.btn .icon-heart {
+	transition: all .3s;
+}
+
+.btn:hover .icon-heart {
+	color: #f08b3b;
+}
+
+.btn.orange {
+    background: #f08b3b;
+    color: #fff;
+    transition: all .3s;
+}
+
+.btn.orange:hover {
+    background: #e77632;
+}
+
+.btn i {
+	transition: all .3s;
+}
+
+.btn:hover i {
+	color: #b80201;
+}
+
+#btn-top { 
+    display: inline-block;
+    background-color: #f08b3b;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 85px;
+    right: 7px;
+    transition: background-color .3s, opacity .5s, visibility .5s; 
+    opacity: 0; 
+    visibility: hidden; 
+    z-index: 9999999; 
+}
+
+#btn-top::after { 
+    content: "🠉"; 
+    font-weight: normal; 
+    font-style: normal; 
+    font-size: 40px; 
+    line-height: 60px; 
+    color: #fff; 
+}
+
+#btn-top:hover { 
+    cursor: pointer; 
+    background-color: #e77632; 
+}
+
+#btn-top.show { 
+    opacity: 1; 
+    visibility: visible; 
+}
+
+.blur {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(5px);
+    z-index: -1;
+    transition: all .5s;
+}
+
+.blur.show {
+    display: block;
+    z-index: 99999999;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.grecaptcha-badge {
+	opacity: 0.6;
+}
+
+/* ----------------------------------- HEADER */
+
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 99999999;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2.604vw;
+    width: 100%;
+    height: 2.604vw;
+    background: url(./images/torn-edge-bottom-shadow.png) top center no-repeat;
+    background-size: 100%;
+    z-index: 999;
+}
+
+header .top-menu {
+    padding: 0.521vw 1.042vw 2.083vw;
+    background-color: #fff;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.042vw;
+    line-height: 100%;
+}
+
+header .top-menu ul {
+    list-style: none;
+}
+
+header .top-menu ul li {
+    position: relative;
+}
+
+header .top-menu .mob, 
+header .top-menu .open-menu,
+header .top-menu .close-menu,
+header .top-menu .nav-panel {
+	display: none;
+}
+
+header .top-menu .left {
+    width: calc(50% - 8.039vw);
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+header .top-menu .left a {
+    display: block;
+    margin-right: 1.563vw;
+    line-height: 150%;
+}
+
+header .top-menu .right {
+    width: calc(50% - 8.039vw);
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+header .top-menu .right a {
+    display: block;
+    margin-left: 1.563vw;
+    line-height: 150%;
+}
+
+/* Іконки соцмереж у шапці — трохи помітніші */
+header .top-menu .right a:has(.fa-brands) {
+    margin-left: 1.2vw;
+}
+
+header .top-menu .right .fa-brands {
+    font-size: 1.35vw;
+    line-height: 1;
+    display: inline-block;
+    transition: color .3s, transform .3s;
+}
+
+header .top-menu .right a:hover .fa-brands {
+    color: #f08b3b;
+    transform: scale(1.12);
+}
+
+header .top-menu a:hover {
+    color: #f08b3b;
+}
+
+header .top-menu .center {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 0 0 auto;
+    width: 16.078vw;
+}
+
+header .top-menu .logo {
+    color: #5b5056;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+header .top-menu .logo:hover {
+    color: #5b5056;
+}
+
+header .top-menu .logo .top {
+    font-size: 2.604vw;
+    line-height: 100%;
+	transition: all .3s;
+}
+
+header .top-menu .logo .bottom {
+    font-size: 0.833vw;
+    line-height: 100%;
+	transition: all .3s;
+}
+
+header .top-menu .logo img {
+    display: block;
+    width: 75%;
+    position: absolute;
+    bottom: -12.078vw;
+    z-index: 999;
+	transition: all .3s;
+}
+
+header .top-menu .sub-menu {
+    position: absolute;
+    left: -1.042vw;
+    top: 1.563vw;
+    background: #fff;
+    z-index: 99999;
+    padding: 1.042vw;
+    width: 15.021vw;
+    display: none;
+	box-shadow: 0 8px 15px 0 rgba(0, 0, 0, .3);
+}
+
+header .top-menu .sub-menu li {
+    margin-bottom: 1.042vw;
+}
+
+header .top-menu .sub-menu li a {
+    line-height: 110%;
+}
+
+header .top-menu .sub-menu::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2.604vw;
+    width: 100%;
+    height: 2.604vw;
+    background: url(./images/torn-edge-bottom-shadow.png) center no-repeat;
+    background-size: cover;
+    z-index: 99999;
+}
+
+header .top-menu li:hover .sub-menu {
+    display: block;
+    -webkit-animation: slide-down .3s ease-out;
+    -moz-animation: slide-down .3s ease-out;
+}
+
+@-webkit-keyframes slide-down { 
+    0% { 
+        opacity: 0; 
+        -webkit-transform: translateY(-5%); 
+    } 
+    100% { 
+        opacity: 1; 
+        -webkit-transform: translateY(0); 
+    } 
+}
+@-moz-keyframes slide-down { 
+    0% { 
+        opacity: 0; 
+        -moz-transform: translateY(-5%); 
+    } 
+    100% { 
+        opacity: 1; 
+        -moz-transform: translateY(0); 
+    } 
+}
+
+header.small-header .top-menu {
+	padding-bottom: 0.521vw;
+	transition: all .3s;
+	font-size: 0.938vw;
+}
+
+header.small-header .top-menu > ul > li > a {
+	line-height: 170%;
+}
+
+header.small-header .top-menu .logo .bottom {
+	font-size: 0.000001vw;
+	color: #fff;
+	transition: all .3s;
+}
+
+/* Десктоп лише: компактний знак ліворуч під назвою (не чіпає мобільну шапку) */
+@media only screen and (min-width: 1025px) {
+	header.small-header .top-menu .logo,
+	body:has(main.page) header .top-menu .logo {
+		position: relative;
+		overflow: visible;
+	}
+	header.small-header .top-menu .logo .top,
+	body:has(main.page) header .top-menu .logo .top {
+		font-size: 1.563vw;
+		position: relative;
+		z-index: 2;
+		transition: all .3s;
+	}
+	body:has(main.page) header .top-menu .logo .bottom {
+		font-size: 0.000001vw;
+		color: transparent;
+	}
+	header.small-header .top-menu .logo img,
+	body:has(main.page) header .top-menu .logo img {
+		position: absolute;
+		width: 42%;
+		max-width: 108px;
+		/* вище: майже повністю в білій шапці, ледь заходить на банер */
+		top: calc(100% - 2.2vw);
+		bottom: auto !important;
+		left: -3.5vw;
+		right: auto;
+		margin-left: 0;
+		transform: none;
+		transition: all .3s;
+	}
+}
+
+/* ----------------------------------- MAIN.BANNER */
+
+main .banner {
+    width: 100%;
+    height: calc(55vw - 6.875vw);
+    background: url(./images/banner.jpg) center no-repeat;
+    background-size: 100%;
+	padding-top: 6.875vw;
+}
+
+main .banner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2.396vw;
+    background: url(./images/torn-edge-top.png) bottom center no-repeat;
+    background-size: 100%;
+    z-index: 90;
+}
+
+main .banner .info-bg {
+    width: 40%;
+    height: 100%;
+    background: url(./images/bg-info-banner.png) left center no-repeat;
+    background-size: contain;
+}
+
+main .banner .info {
+    padding: 0 30% 0 1.042vw;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+main .banner .info p {
+    color: #fff;
+    font-size: 1.875vw;
+    line-height: 160%;
+    margin-bottom: 5.208vw;
+    
+}
+
+main .banner .info p span {
+    font-size: 1.250vw;
+}
+
+main .banner .info .btn.orange {
+    margin-bottom: 1.042vw;
+}
+
+main.page .banner {
+    width: 100%;
+    height: auto;
+	min-height: 28vw;
+	display: grid;
+	/* фото заповнює банер без «рандомного» розтягування */
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	/* дефолт: трохи правіше — ліворуч синя плашка з заголовком */
+	background-position: 62% 32% !important;
+}
+
+/* Точки фокусу: обличчя / головний сюжет у видимій зоні */
+main.page .banner.focus-kindergarten {
+	background-position: 70% 28% !important;
+}
+main.page .banner.focus-elementary {
+	background-position: 58% 46% !important;
+}
+main.page .banner.focus-secondary {
+	background-position: 45% 20% !important;
+}
+/* Старша школа: плашка справа лише від планшета/десктопа; мобільна — як інші сторінки */
+@media only screen and (min-width: 501px) {
+	main.page .banner.focus-high {
+		background-size: cover !important;
+		background-position: left 18% top 10% !important;
+		justify-items: end;
+	}
+	main.page .banner.focus-high .info-bg {
+		width: 28%;
+		min-width: 0;
+		justify-self: end;
+		margin-left: auto;
+		background-position: right center;
+		transform: scaleX(-1);
+	}
+	main.page .banner.focus-high .info {
+		padding: 4vw 1.042vw 4vw 12%;
+		transform: scaleX(-1);
+		justify-content: flex-end;
+		text-align: right;
+	}
+	main.page .banner.focus-high .info h1 {
+		font-size: 1.875vw;
+		line-height: 140%;
+		text-align: right;
+	}
+}
+main.page .banner.focus-correctional {
+	background-position: 18% 48% !important;
+}
+main.page .banner.focus-seminar {
+	background-position: 50% 20% !important;
+}
+
+main.page .banner .info {
+    padding: 4vw 12% 4vw 1.042vw; 
+	box-sizing: border-box;
+}
+
+main.page .banner .info-bg {
+    width: 28%;
+    height: 100%;
+    background: url(./images/bg-info-banner-page.png) left center no-repeat;
+    background-size: 100% 100%;
+}
+
+main.page .banner .info h1 {
+    color: #fff;
+    font-size: 1.875vw;
+    line-height: 140%;
+}
+
+/* ----------------------------------- MAIN.CONTENT */
+
+main .content p a {
+	color: #719be3;
+}
+
+main .content p a:hover {
+	text-decoration: underline;
+}
+
+main .breadcrumbs {
+	margin-bottom: 3.646vw;
+	font-size: 0.9vw;
+}
+
+main .breadcrumbs a {
+	color: #f08b3b;
+}
+
+.structure .breadcrumbs {
+	width: 62.500vw;
+    max-width: 100%;
+    padding-top: 1vw;
+	margin: 0 auto 0.8vw;
+}
+
+main.structure .breadcrumbs {
+	margin-bottom: 0.8vw;
+}
+
+main.page .content {
+    width: 62.500vw;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2.604vw 5.208vw 5.208vw;
+	min-height: 10vw;
+}
+
+main.page .content p {
+    font-size: 1.042vw;
+    line-height: 120%;
+    margin-bottom: 1.042vw;
+}
+
+main.page .content h2 {
+    font-size: 1.250vw;
+    line-height: 120%;
+    margin-bottom: 1.042vw;
+    font-family: BaarLemuria;
+    letter-spacing: 0.104vw;
+    color: #f08b3b;
+}
+
+main.page .content li {
+    font-size: 1.042vw;
+    line-height: 120%;
+    margin-bottom: 1.042vw;
+}
+
+main.page .content ol, main.page .content ul {
+    margin: 1.042vw;
+}
+
+main.page .content img {
+    max-width: 100%;
+    max-height: 26.042vw;
+    margin: 0 auto 1.042vw;
+    display: block;
+}
+
+main.page .content iframe {
+	width: 70%;
+	height: 24.833vw;
+	margin: 2.604vw auto 0;
+	border-radius: 1.042vw;
+	display: block;
+}
+
+main.page .content .map {
+  width: 70%;
+  height: 24.833vw;
+  margin: 2.604vw auto 0;
+  border-radius: 1.042vw;
+  display: block;
+}
+
+/* ----------------------------------- MAIN.STRUCTURE */
+
+main.structure .content {
+	width: 100%;
+	padding: 0;
+	min-height: 0;
+}
+
+main.structure .levels .level:before {
+	display: none;
+}
+
+/* Рвані краї персикового блоку зверху/знизу (на головній хвиля йде від відео) */
+main.structure .levels::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: auto;
+	width: 100%;
+	height: 2.396vw;
+	background: url(./images/torn-edge-bottom.png) center no-repeat;
+	background-size: 100%;
+	z-index: 90;
+	pointer-events: none;
+}
+
+main.structure .levels::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2.396vw;
+	background: url(./images/torn-edge-top.png) center no-repeat;
+	background-size: 100%;
+	z-index: 90;
+	pointer-events: none;
+}
+
+
+/* ----------------------------------- MAIN.INFO-SCHOOL */
+
+main .info-school {
+    flex-direction: row;
+    align-items: center;
+    padding: 3.906vw 1.042vw;
+}
+
+main .info-school img {
+    width: 50%;
+}
+
+main .info-school .info {
+    width: 50%;
+    padding: 0 1.042vw;
+	box-sizing: border-box;
+}
+
+main .info-school .info h1 {
+    font-size: 2.604vw;
+    line-height: 100%;
+    color: #f08b3b;
+    margin-bottom: 2.604vw;
+}
+
+main .info-school .info p {
+    font-size: 1.042vw;
+    line-height: 120%;
+    margin-bottom: 1.042vw;
+}
+
+/* ----------------------------------- MAIN.VIDEO */
+
+main .video {
+    text-align: center;
+    background: #e1e7f4 url(./images/sea.jpg) bottom no-repeat;
+    background-size: 100%;
+    padding: 8.906vw 1.042vw 10.417vw;
+}
+
+main .video iframe {
+    width: 62.500vw;
+    height: 35.156vw;
+    margin: 0;
+    border-radius: 0.521vw;
+}
+
+main .video::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 5.052vw;
+    background: url(./images/sea-2.jpg) bottom center no-repeat;
+    background-size: 100%;
+    z-index: 90;
+}
+
+/* ----------------------------------- MAIN.LEVELS */
+
+main .levels {
+    padding: 3.906vw 2.083vw;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    background: #f1bd98;
+}
+
+main .levels h2 {
+    width: 100%;
+    font-size: 2.604vw;
+    line-height: 100%;
+    margin-bottom: 2.604vw;
+    text-align: center;
+}
+
+main .levels .level {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: stretch;
+    position: relative;
+    margin-bottom: 2.604vw;
+}
+
+main .levels .level:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Шаховий порядок: парні блоки — текст ліворуч, фото праворуч */
+main .levels .level:nth-of-type(even) {
+    flex-direction: row-reverse;
+}
+
+main .levels .level:before {
+	display: none;
+}
+
+main .levels .level .level-photo {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    aspect-ratio: 3 / 2;
+}
+
+main .levels .level .level-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Рвані краї — рамка трохи більша за фото, щоб сховати рівні краї */
+main .levels .level .level-photo::after {
+    content: "";
+    position: absolute;
+    top: -2%;
+    left: -2%;
+    width: 104%;
+    height: 104%;
+    background: url(./images/border-levels-home.png) center no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+main .levels .level .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: inherit;
+    width: 50%;
+    padding: 0.521vw 2.083vw;
+    box-sizing: border-box;
+    margin: 0;
+	z-index: 90;
+}
+
+main .levels .level .info h3 {
+    font-size: 2.083vw;
+    line-height: 120%;
+    margin-bottom: 1.042vw;
+    text-align: left;
+    font-family: BaarLemuria;
+    width: 100%;
+    letter-spacing: 0.104vw;
+    color: #f08b3b;
+    flex: 0 0 auto;
+}
+
+main .levels .level .info .desc {
+	font-size: 1.042vw;
+    line-height: 140%;
+	margin-bottom: 1.042vw;
+    flex: 1 1 auto;
+}
+
+main .levels .level .info .desc p {
+    margin-bottom: 0.781vw;
+}
+
+main .levels .level .info .desc p:last-child {
+    margin-bottom: 0;
+}
+
+main .levels .level .info .btn {
+    flex: 0 0 auto;
+    margin-top: auto;
+}
+
+main .levels::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5.052vw;
+    width: 100%;
+    height: 5.052vw;
+    background: url(./images/sea-3.png) center no-repeat;
+    background-size: 100%;
+    z-index: 90;
+}
+
+/* ----------------------------------- MAIN.RHYTHM-YEAR */
+
+main .rhythm-year {
+    padding: 7.813vw 1.042vw 10.417vw;
+}
+
+main .rhythm-year h2 {
+    font-size: 2.604vw;
+    line-height: 100%;
+    color: #f08b3b;
+    margin-bottom: 2.604vw;
+    text-align: center;
+}
+
+/* ----------------------------------- MAIN.RHYTHM-YEAR.SLIDER */
+
+main .rhythm-year .carousel {
+    margin: 0 5.208vw;
+}
+  
+main .rhythm-year .carousel-cell {
+    width: calc(100% / 3);
+    background: #fff;
+    counter-increment: gallery-cell;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+main .rhythm-year .carousel-cell img {
+    width: 100%;
+	height: 29.063vw;
+    display: block;
+    margin-bottom: 1.042vw;
+	object-fit: cover;
+	object-position: center;
+}
+
+/* Рамка чуть больше фото — закрывает ровные края снимка */
+main .rhythm-year .carousel-cell:before {
+	content: '';
+	width: 104%;
+	height: calc(29.063vw + 1.2vw);
+	position: absolute;
+	top: -0.6vw;
+	left: -2%;
+	background: url(./images/border-rhythm-year.png) center no-repeat;
+	background-size: 100% 100%;
+	transition: all .3s;
+	pointer-events: none;
+	z-index: 2;
+}
+
+main .rhythm-year .carousel-cell h3 {
+    font-size: 1.250vw;
+    text-align: center;
+    font-family: BaarLemuria;
+    letter-spacing: 0.104vw;
+}
+  
+main .rhythm-year .flickity-prev-next-button {
+    width: 2.604vw;
+    height: 2.604vw;
+    border-radius: 50%;
+    background: #343537;
+    transition: all .3s;
+}
+
+main .rhythm-year .flickity-prev-next-button:hover {
+    background: #f08b3b;
+}
+
+main .rhythm-year .flickity-prev-next-button .arrow {
+    fill: white;
+}
+
+main .rhythm-year .flickity-prev-next-button.no-svg {
+    color: white;
+}
+
+main .rhythm-year .flickity-prev-next-button.previous {
+    left: -2.604vw;
+}
+
+main .rhythm-year .flickity-prev-next-button.next {
+    right: -2.604vw;
+}
+
+/* ----------------------------------- MAIN.TEACHERS */
+
+main .teachers {
+    padding: 10.417vw 1.042vw;
+    background: #e1e7f4;
+}
+
+main .teachers h2 {
+    font-size: 2.604vw;
+    line-height: 100%;
+    color: #f08b3b;
+    margin-bottom: 2.604vw;
+    text-align: center;
+}
+
+main .teachers::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5.677vw;
+    background: url(./images/sea-2-3.png) bottom center no-repeat;
+    background-size: 100%;
+    z-index: 90;
+}
+
+main .teachers::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 6.875vw;
+    background: url(./images/sea-2-2.jpg) center no-repeat;
+    background-size: 100%;
+    z-index: 90;
+}
+
+/* ----------------------------------- MAIN.TEACHERS.SLIDER */
+
+main .teachers .carousel {
+    margin: 0 5.208vw;
+}
+  
+main .teachers .carousel-cell {
+    width: calc(100% / 5);
+    background: #e1e7f4;
+    counter-increment: gallery-cell;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2.604vw;
+}
+
+main .teachers .carousel-cell img {
+    width: calc(100% - 3.646vw);
+	height: 13.854vw;
+    display: block;
+    margin-bottom: 1.042vw;
+    transition: all .3s;
+    padding-top: 1.302vw;
+	object-fit: cover;
+	object-position: center;
+}
+
+main .teachers .carousel-cell:before {
+	content: '';
+	width: 104%;
+	height: calc(13.854vw + 0.8vw);
+	position: absolute;
+	top: calc(1.302vw - 0.4vw);
+	left: -2%;
+	background: url(./images/border-teacher.png) center no-repeat;
+	background-size: 100% 100%;
+	transition: all .3s;
+	pointer-events: none;
+	z-index: 2;
+}
+
+main .teachers .carousel-cell h3 {
+    font-size: 1.250vw;
+    line-height: 120%;
+    text-align: center;
+    margin-bottom: 1.042vw;
+    padding: 0 0.521vw;
+    font-family: BaarLemuria;
+    letter-spacing: 0.104vw;
+}
+
+main .teachers .carousel-cell h4 {
+    font-size: 0.833vw;
+    line-height: 140%;
+    text-align: center;
+    padding: 0 0.521vw;
+}
+
+main .teachers .carousel-cell.is-selected {
+    color: #f08b3b;
+}
+
+main .teachers .carousel-cell.is-selected img {
+    width: calc(100% - 0.521vw);
+	height: 16.979vw;
+    padding-top: 0;
+}
+
+main .teachers .carousel-cell.is-selected:before {
+	height: 16.979vw;
+	top: 0;
+}
+  
+main .teachers .flickity-prev-next-button {
+    width: 2.604vw;
+    height: 2.604vw;
+    border-radius: 50%;
+    background: #343537;
+    transition: all .3s;
+}
+
+main .teachers .flickity-prev-next-button:hover {
+    background: #f08b3b;
+}
+
+main .teachers .flickity-prev-next-button .arrow {
+    fill: white;
+}
+
+main .teachers .flickity-prev-next-button.no-svg {
+    color: white;
+}
+
+main .teachers .flickity-prev-next-button.previous {
+    left: -2.604vw;
+}
+
+main .teachers .flickity-prev-next-button.next {
+    right: -2.604vw;
+}
+
+/* ----------------------------------- MAIN.NEWS */
+
+main .news {
+    padding: 5.208vw 2.083vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+	justify-content: center;
+	box-sizing: border-box;
+}
+
+main .news h2 {
+    width: 100%;
+    font-size: 2.604vw;
+    line-height: 100%;
+    color: #343537;
+    margin-bottom: 2.604vw;
+    text-align: center;
+}
+
+main .news .new {
+    width: calc((100% / 3) - 5.208vw);
+    margin: 0.521vw;
+    padding: 2.083vw;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 0.521vw 5.208vw;
+    transition: all .3s;
+}
+
+main .news .new:nth-child(2), main .news .new:nth-child(5) {
+    background: rgba(240, 139, 59, .6);
+}
+
+main .news .new:nth-child(3), main .news .new:nth-child(6) {
+    background: rgba(240, 139, 59, .4);
+}
+
+main .news .new:nth-child(4), main .news .new:nth-child(7) {
+    background: rgba(240, 139, 59, .2);
+}
+
+main .news .new img {
+    width: 100%;
+    height: 21.833vw;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.521vw 5.208vw;
+    margin-bottom: 1.563vw;
+}
+
+main .news .new .title {
+    width: 100%;
+    font-size: 1.563vw;
+    line-height: 120%;
+    text-align: center;
+    margin-bottom: 1.042vw;
+    font-family: BaarLemuria;
+    letter-spacing: 0.104vw;
+    display: block;
+}
+
+main .news .new .date {
+    font-size: 0.833vw;
+    line-height: 120%;
+    margin-bottom: 0.521vw;
+    text-align: left;
+}
+
+main .news .new .info {
+    font-size: 1.042vw;
+    line-height: 140%;
+    margin-bottom: 1.563vw;
+}
+
+main .news .new .btn {
+    margin: auto 0 0 auto;
+}
+
+main .news .all-news {
+	width: 100%;
+}
+
+main .news .btn.orange {
+    margin: 2.604vw auto 0;
+	width: fit-content;
+}
+
+/* ----------------------------------- MAIN.NEWS-LIST */
+
+main.page .content p + .news-list {
+	margin-top: 3.646vw;
+}
+
+main .news-list .new {
+    flex-direction: row;
+    align-items: flex-start;
+    border-radius: 0.521vw 5.208vw;
+    margin-bottom: 1.563vw;
+    background: rgba(240, 139, 59, .4);
+    padding: 1.563vw 2.604vw;
+}
+
+main .news-list .new:last-child {
+    margin-bottom: 3.906vw;
+}
+
+main .news-list .new img {
+    display: block;
+    width: calc(30% - 1.563vw);
+	height: 11.719vw;
+    object-fit: cover;
+    object-position: center;
+    margin-right: 1.563vw;
+    border-radius: 0.260vw 0.260vw 0.260vw 1.563vw;
+}
+
+main .news-list .new .right {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+main .news-list .new .title {
+    font-size: 1.354vw;
+    line-height: 110%;
+    margin-bottom: 1.042vw;
+    font-family: BaarLemuria;
+    letter-spacing: 0.104vw;
+    display: block;
+}
+
+main .news-list .new .date {
+    font-size: 0.833vw;
+    line-height: 120%;
+    margin-bottom: 0.521vw;
+}
+
+main .news-list .new .info {
+    font-size: 1.042vw;
+    line-height: 140%;
+    margin-bottom: 1.563vw;
+}
+
+main .news-list .new .btn {
+    margin: auto 0 0 auto;
+}
+
+/* ----------------------------------- MAIN.PAGINATION */
+
+main .page-numbers {
+    list-style: none;
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+main .page-numbers li > span, 
+main .page-numbers li > a {
+    display: block;
+    font-size: 1.042vw;
+    border-radius: 50%;
+    min-width: 2.604vw;
+    line-height: 2.604vw;
+    height: 2.604vw;
+    text-align: center;
+    margin: 0 0.521vw;
+}
+
+main .page-numbers li .current {
+    background: #f08b3b;
+    color: #fff;
+    pointer-events: none;
+}
+
+main .page-numbers li a:hover {
+    background: #f08b3b;
+    color: #fff;
+}
+
+main .page-numbers li a.prev:hover,
+main .page-numbers li a.next:hover {
+	background: none;
+	color: #f08b3b;
+}
+
+/* ----------------------------------- MAIN.GALLERY */
+
+main .gallery {
+    padding: 7vw 1.042vw 5.208vw;
+    background: #e0d2a5 url(./images/school-bg.png) top center no-repeat;
+    background-size: 100%;
+    min-height: 41.667vw;
+}
+
+main .gallery h2 {
+    font-size: 2.604vw;
+    line-height: 100%;
+    color: #fff;
+    margin-bottom: 2.604vw;
+    text-align: center;
+}
+
+main .gallery::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2.396vw;
+    background: url(./images/torn-edge-bottom.png) center no-repeat;
+    background-size: 100%;
+    z-index: 90;
+}
+
+main .gallery::after1 {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2.396vw;
+    background: url(./images/torn-edge-top.png) center no-repeat;
+    background-size: 100%;
+    z-index: 90;
+}
+
+/* ----------------------------------- MAIN.PAGE.GALLERY */
+
+main.page .gallery {
+    padding: 5.208vw 1.042vw;
+    background: #e0d2a5;
+    min-height: 41.667vw;
+}
+
+main.page .gallery h2 {
+    font-size: 2.604vw;
+    line-height: 100%;
+    color: #5b5056;
+    margin-bottom: 2.604vw;
+    text-align: center;
+}
+
+/* ----------------------------------- MAIN.GALLERY.SLIDER */
+
+main .gallery .carousel {
+    margin: 0 5.208vw;
+}
+
+main .gallery .carousel.is-fullscreen {
+    margin: 0;
+    z-index: 99999999;
+}
+
+main .gallery .carousel-cell {
+    width: 100%;
+    height: 36.458vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+main .gallery .carousel.is-fullscreen .carousel-cell {
+    height: 100%;
+}
+  
+main .gallery .carousel-cell-image {
+    display: block;
+    max-height: 100%;
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	object-position: center;
+	-webkit-mask-image: url(./images/mask-torn-photo.png);
+	mask-image: url(./images/mask-torn-photo.png);
+	-webkit-mask-size: 108% 108%;
+	mask-size: 108% 108%;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-position: center;
+}
+
+main .gallery video {
+    display: block;
+	width: auto;
+	max-width: 90%;
+    max-height: 100%;
+	height: auto;
+	-webkit-mask-image: url(./images/mask-torn-photo.png);
+	mask-image: url(./images/mask-torn-photo.png);
+	-webkit-mask-size: 108% 108%;
+	mask-size: 108% 108%;
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+	mask-position: center;
+}
+  
+main .gallery .carousel.is-fullscreen .carousel-cell-image {
+    max-width: 100%;
+	max-height: 100%;
+	-webkit-mask-image: none;
+	mask-image: none;
+}
+
+main .gallery .flickity-prev-next-button {
+    width: 2.604vw;
+    height: 2.604vw;
+    border-radius: 50%;
+    background: #fff;
+    transition: all .3s;
+}
+
+main .gallery .flickity-prev-next-button:hover {
+    background: #f08b3b;
+}
+
+main .gallery .flickity-prev-next-button .arrow {
+    fill: #343537;
+}
+
+main .gallery .flickity-prev-next-button.no-svg {
+    color: #343537;
+}
+
+main .gallery .flickity-prev-next-button.previous {
+    left: -2.604vw;
+}
+
+main .gallery .is-fullscreen .flickity-prev-next-button.previous {
+    left: 2.604vw;
+}
+
+main .gallery .flickity-prev-next-button.next,
+main .gallery .flickity-fullscreen-button {
+    right: -2.604vw;
+}
+
+main .gallery .flickity-fullscreen-button {
+    background: #fff;
+    transition: all .3s;
+}
+
+main .gallery .flickity-fullscreen-button:hover {
+    transform: scale(1.2);
+}
+
+main .gallery .is-fullscreen .flickity-prev-next-button.next,
+main .gallery .is-fullscreen .flickity-fullscreen-button {
+    right: 2.604vw;
+}
+
+main .gallery::before .is-fullscreen {
+    display: none;
+}
+
+main .gallery .flickity-page-dots .dot {
+    background: #343537;
+}
+
+/* ----------------------------------- FOOTER */
+
+footer {
+    background: #5a4f57;
+    color: #fff;
+}
+
+/* ----------------------------------- FOOTER.CONTACT-FORM */
+
+footer .contact-form {
+    min-height: 52vw;
+    background: #e0d2a5 url(./images/contacts-bg.png) bottom center no-repeat;
+    background-size: cover;
+}
+
+main.page + footer .contact-form {
+    background-color: #fff;
+}
+
+main.page.gallery + footer .contact-form {
+    background-color: #e0d2a5;
+}
+
+footer .contact-form .form-container {
+    padding: 5.208vw 1.042vw;
+}
+
+footer .contact-form h2 {
+    width: 100%;
+    font-size: 2.604vw;
+    line-height: 100%;
+    color: #fff;
+    margin-bottom: 2.604vw;
+    text-align: center;
+}
+
+footer .contact-form form {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: calc(40% - 5.208vw);
+    background: rgba(255, 255, 255, .7);
+    margin: 0 auto;
+    border-radius: 2.604vw;
+    padding: 2.604vw;
+}
+
+footer .contact-form form input[type="text"],
+footer .contact-form form input[type="tel"],
+footer .contact-form form input[type="email"] {
+    border: none;
+    width: calc(100% - 4.167vw);
+    border-radius: 0.521vw;
+    padding: 1.042vw 2.083vw;
+    font-size: 1.042vw;
+    line-height: 120%;
+    font-family: Antropos;
+    text-transform: uppercase;
+    color: #343537;
+	order: 2;
+}
+
+footer .contact-form form input:focus-visible,
+footer .contact-form form textarea:focus-visible {
+    border: none;
+    outline: none;
+}
+
+footer .contact-form form textarea {
+    border: none;
+    width: calc(100% - 4.167vw);
+    border-radius: 0.521vw;
+    padding: 1.042vw 2.083vw;
+    font-size: 1.042vw;
+    line-height: 120%;
+    font-family: Antropos;
+    text-transform: uppercase;
+    min-height: 7.813vw;
+    resize: none;
+	order: 2;
+}
+
+footer .contact-form form input[type="submit"] {
+    border: none;
+    font-family: Antropos;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: #f08b3b;
+    color: #fff;
+    transition: all .3s;
+	margin: 0 auto;
+}
+
+footer .contact-form form input[type="submit"]:hover {
+    background: #e77632;
+}
+
+footer .contact-form form p {
+	margin-bottom: 1.042vw;
+	order: 2;
+	width: 100%;
+}
+
+.wpcf7-spinner {
+	display: none;
+}
+
+.wpcf7-not-valid-tip {
+	font-size: 0.625vw;
+	padding: 0 2.083vw 0.260vw;
+	order: 1;
+}
+.wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output, .wpcf7 form.payment-required .wpcf7-response-output {
+  	border: none;
+	margin: 0;
+	padding: 1.042vw 2.083vw;
+	font-size: 0.833vw;
+	color: #fff;
+	background: rgba(255, 0, 0, .3);
+	border-radius: 0.521vw;
+	order: 1;
+	width: calc(100% - 4.167vw);
+	margin-bottom: 1.042vw;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+	border: none;
+	margin: 0;
+	padding: 1.042vw 2.083vw;
+	font-size: 0.833vw;
+	color: #fff;
+	background: rgba(0, 155, 0, .3);
+	border-radius: 0.521vw;
+	order: 1;
+	width: calc(100% - 4.167vw);
+	margin-bottom: 1.042vw;
+}
+
+.wpcf7-form-control-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.wpcf7 form .wpcf7-response-output {
+	padding: 0;
+	margin: 0;
+}
+
+/* ----------------------------------- FOOTER.BOTTOM */
+
+footer .bottom {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2.604vw 1.042vw 0;
+}
+
+footer .contacts {
+    width: 40%;
+}
+
+footer .contacts h2 {
+    font-size: 1.354vw;
+    line-height: 120%;
+    margin-bottom: 0.521vw;
+    font-family: BaarLemuria;
+    letter-spacing: 0.104vw;
+}
+
+footer .contacts p {
+    font-size: 1.042vw;
+    line-height: 140%;
+    margin-bottom: 2.604vw;
+}
+
+footer .contacts a {
+    color: #f08b3b;
+}
+
+footer .contacts a:hover {
+	text-decoration: underline;
+}
+
+footer .logo {
+    width: 20%;
+	color: #fff;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+	justify-content: flex-start;
+}
+
+footer .logo a {
+	display: block;
+    width: 60%;
+}
+
+footer .logo img {
+    display: block;
+    width: 100%;
+}
+
+footer .logo a.top {
+    font-size: 2.604vw;
+    line-height: 120%;
+	padding-top: 0.521vw;
+	width: auto;
+	display: block;
+	color: #fff;
+}
+
+footer .logo a.bottom {
+    font-size: 0.833vw;
+    line-height: 120%;
+	padding: 0;
+	width: auto;
+	display: block;
+	color: #fff;
+}
+
+footer .bottom-menu {
+    width: 40%;
+	padding-left: 20%;
+}
+
+footer .bottom-menu li {
+    list-style: none;
+    margin-bottom: 0.521vw;
+}
+
+footer .bottom-menu li a {
+    color: #fff;
+    font-size: 1.042vw;
+    line-height: 120%;
+    font-family: BaarLemuria;
+    letter-spacing: 0.104vw;
+}
+
+footer .bottom-menu .sub-menu {
+    padding: 0.521vw 0 0 1.042vw;
+}
+
+footer .bottom-menu .sub-menu li {
+    margin-bottom: 0.260vw;
+}
+
+footer .bottom-menu .sub-menu li a {
+    font-size: 0.833vw;
+    line-height: 120%;
+    font-family: Antropos;
+    letter-spacing: normal;
+}
+
+footer .bottom-menu li a:hover {
+    color: #f08b3b;
+}
+
+footer .copyright {
+    min-height: 5.052vw;
+    background: url(./images/sea-2.png) bottom center no-repeat;
+    background-size: 100%;
+    padding: 1.042vw;
+}
+
+footer .copyright p {
+    font-size: 0.833vw;
+    line-height: 100%;
+    color: rgba(52,53,55,.8);
+    margin-top: auto;
+    position: absolute;
+    left: 1.042vw;
+    bottom: 1.042vw;
+}
+
+footer .copyright a:hover {
+	text-decoration: underline;
+}
+
+/* ----------------------------------- RESPONSIVE */
+
+@media only screen and (max-width: 1024px) {
+	header .top-menu .right .fa-brands {
+		font-size: 18px;
+	}
+	main.page .banner .info-bg {
+		width: 34%; 
+	}
+	/* ≥501: плашка справа на старшій школі (див. min-width: 501px вище) */
+	main .breadcrumbs {
+		font-size: 1.2vw;
+	}
+	.btn, input[type="submit"] {
+		font-size: 1.563vw;
+		padding: 1.953vw 2.441vw;
+		border-radius: 2.930vw;
+	}
+	header.small-header .top-menu {
+		font-size: 1.367vw; 
+	}
+	header .top-menu .left {
+		display: none;
+	}
+	header .top-menu .mob {
+        display: block;
+        position: fixed;
+        top: 0;
+        /* Полностью за экраном: padding/scrollbar больше не «выглядывают» слева */
+        left: -100vw !important;
+        height: 100%;
+        background: #e77632;
+        color: #fff;
+        width: min(86vw, 360px);
+        padding: 20px 20px 40px;
+        box-sizing: border-box;
+        z-index: 9999999999;
+        /* не впливає на flex-рядок шапки */
+        order: 0;
+        margin: 0;
+        transition: left .5s ease-in-out;
+        overflow-y: auto;
+        overflow-x: hidden;
+		font-size: 17px;
+		line-height: 1.35;
+		-webkit-overflow-scrolling: touch;
+    }
+	/* Открытое меню (jQuery ставит inline left: 0 / 0px) */
+	header .top-menu .mob[style*="left: 0"],
+	header .top-menu .mob[style*="left:0"] {
+		left: 0 !important;
+	}
+	header .top-menu .mob > li {
+		margin-bottom: 2px;
+	}
+	header .top-menu .mob > li > a {
+		display: block;
+		padding: 11px 6px;
+		color: #fff;
+		font-size: 17px;
+		line-height: 1.3;
+		font-weight: 600;
+	}
+	header .top-menu .mob a {
+		color: #fff;
+	}
+	header .top-menu .mob a:hover {
+		color: #fff;
+		text-decoration: underline;
+	}
+	header .top-menu .nav-panel {
+		display: block;
+  		width: auto;
+		flex: 0 0 auto;
+		order: 1;
+	}
+    header .top-menu .close-menu {
+        cursor: pointer;
+        display: block;
+		width: auto;
+		font-size: 28px;
+		line-height: 1;
+		margin-bottom: 14px;
+		padding: 6px 4px;
+		color: #fff;
+    }
+    header .top-menu .open-menu {
+        cursor: pointer;
+        display: block;
+		width: auto;
+		font-size: 28px;
+		line-height: 1;
+		padding: 4px 6px 4px 2px;
+    }
+	/* ≤1024: [бургер] [Ступені + знак] [соцмережі] */
+	header .top-menu {
+		gap: 8px;
+		align-items: center;
+		padding: 10px 12px;
+		box-sizing: border-box;
+	}
+	header .top-menu .center {
+		order: 2;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 1 1 auto;
+		width: auto;
+		min-width: 0;
+	}
+	header .top-menu .logo,
+	header.small-header .top-menu .logo,
+	body:has(main.page) header .top-menu .logo {
+		width: auto;
+		max-width: 100%;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+	}
+	header .top-menu .logo .top,
+	header.small-header .top-menu .logo .top,
+	body:has(main.page) header .top-menu .logo .top {
+		display: block !important;
+		font-size: clamp(20px, 3.2vw, 28px) !important;
+		line-height: 1.1;
+		color: #5b5056 !important;
+		opacity: 1 !important;
+		white-space: nowrap;
+		order: 1;
+		position: relative;
+		z-index: 2;
+		width: auto;
+		max-width: none;
+	}
+	header .top-menu .logo .bottom,
+	header.small-header .top-menu .logo .bottom,
+	body:has(main.page) header .top-menu .logo .bottom {
+		display: none;
+	}
+	header .top-menu .logo img,
+	header.small-header .top-menu .logo img,
+	body:has(main.page) header .top-menu .logo img {
+		position: static !important;
+		display: block;
+		width: 40px;
+		height: 40px;
+		top: auto !important;
+		bottom: auto !important;
+		left: auto !important;
+		right: auto !important;
+		margin: 0 !important;
+		transform: none !important;
+		order: 2;
+		flex-shrink: 0;
+		object-fit: contain;
+		z-index: 1;
+	}
+	header .top-menu .right {
+		order: 3;
+		display: flex !important;
+		width: auto;
+		flex: 0 0 auto;
+		justify-content: flex-end;
+		align-items: center;
+		margin-left: auto;
+		gap: 0;
+	}
+	header .top-menu .right > li {
+		display: none !important;
+		margin: 0 !important;
+	}
+	header .top-menu .right > li:has(.fa-brands) {
+		display: flex !important;
+		align-items: center;
+	}
+	header .top-menu .right a,
+	header .top-menu .right a:has(.fa-brands) {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		padding: 0;
+		width: 30px;
+		height: 30px;
+		line-height: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	header .top-menu .right .fa-brands {
+		font-size: 18px;
+		color: #343537;
+	}
+	header.small-header .top-menu {
+		padding-bottom: 10px;
+		font-size: inherit;
+	}
+	header .top-menu .mob .sub-menu {
+		display: block;
+		position: relative;
+		top: auto;
+		left: auto;
+		background: none;
+		box-shadow: none;
+		width: auto;
+		padding: 2px 0 10px 14px;
+		margin: 0;
+	}
+	header .top-menu .mob .sub-menu li {
+		margin-bottom: 0;
+	}
+	header .top-menu .mob .sub-menu a {
+		display: block;
+		padding: 9px 6px;
+		font-size: 15px;
+		line-height: 1.35;
+		font-weight: 400;
+		opacity: 0.95;
+	}
+	header .top-menu .mob .sub-menu::before {
+		display: none;
+	}
+	header .top-menu .mob > li:hover .sub-menu { 
+        -webkit-animation: none; 
+        -moz-animation: none; 
+        animation: none; 
+    }
+	main .banner {
+		height: calc(55vw - 1.953vw);
+		padding-top: 1.953vw;
+	}
+	main .banner .info p {
+		font-size: 2.148vw;
+		line-height: 150%;
+		margin-bottom: 1.953vw;
+	}
+	main .banner .info p span {
+		font-size: 1.367vw;
+	}
+	main .info-school {
+		display: block;
+	}
+	main .info-school img {
+	  	width: 40%;
+		float: left;
+		margin: 0 1.953vw 1.953vw 0;
+	}
+	main .info-school .info {
+		width: 100%;
+	}
+	main .info-school .info h1,
+	main .levels h2,
+	main .rhythm-year h2,
+	main .teachers h2,
+	main .news h2,
+	main .gallery h2,
+	footer .contact-form h2,
+	footer .logo a.top,
+	main.page .content h2 {
+		font-size: 2.930vw;
+	}
+    main .info-school .info p,
+	main .levels .level .info .desc,
+	main .rhythm-year .carousel-cell h3,
+	main .teachers .carousel-cell h3,
+	main .news .new .info,
+	footer .contact-form form input[type="text"], 
+	footer .contact-form form input[type="tel"], 
+	footer .contact-form form input[type="email"],
+	footer .contact-form form textarea,
+	footer .contacts h2,
+	footer .bottom-menu li a,
+	main.page .content p,
+	main.page .content li,
+	main .news-list .new .info {
+  		font-size: 1.563vw;
+	}
+	main .video {
+		clear: both;
+	}
+	main .video iframe {
+		width: 78.125vw;
+		height: 43.945vw;
+	}
+	main.structure .levels .level {
+		height: auto;
+	}
+	main .levels .level .info {
+		width: 50%;
+		margin-top: 0;
+	}
+	main.structure .levels .level .info {
+		margin-bottom: 0;
+	}
+	main .levels .level .info h3,
+	main.page .banner .info h1 {
+		font-size: 2.239vw;
+	}
+	main .teachers .carousel-cell h4,
+	main .news .new .date,
+	footer .contacts p,
+	footer .bottom-menu .sub-menu li a,
+	footer .logo a.bottom,
+	footer .copyright p,
+	main .news-list .new .date {
+		font-size: 1.172vw;
+	}
+	main .news .new {
+  		width: calc((100% / 2) - 5.208vw); 
+	}
+	main .news .new .title {
+		font-size: 2.148vw;
+		margin-bottom: 2.930vw;
+	}
+	main .news .new .date,
+	main .news-list .new .date {
+		margin-bottom: 1.465vw;
+	}
+	main .news .new .info,
+	main .news-list .new .info {
+		margin-bottom: 2.930vw;
+	}
+	main .gallery .carousel-cell {
+		height: 43.945vw;
+	}
+	main .rhythm-year .flickity-prev-next-button,
+	main .teachers .flickity-prev-next-button,
+	main .gallery .flickity-prev-next-button {
+		width: 3.418vw;
+		height: 3.418vw; 
+	}
+	footer .contact-form form {
+  		width: calc(45% - 5.208vw); 
+	}
+	footer .bottom-menu {
+		width: 42%;
+		padding-left: 18%;
+	}
+	footer .bottom-menu li {
+		margin-bottom: 0.977vw;
+	}
+	footer .copyright {
+  		background-size: cover; 
+		background-position: bottom left;
+		padding: 1.042vw 1.042vw 1.465vw;
+		min-height: 3.906vw;
+	}
+	main.page .content iframe,
+	main.page .content .map {
+		width: 100%;
+		height: 44.336vw;
+	}
+	main.page .content {
+		width: 78.125vw;
+		min-height: 20vw;
+	}
+	main.structure .content {
+		width: 100%;
+		min-height: 0;
+		padding: 0;
+	}
+	main .news-list .new .title {
+		font-size: 2.148vw;
+		margin-bottom: 1.953vw;
+	}
+	main .news-list .new img {
+		height: 16.602vw;
+	}
+	main.page .content h2 {
+		font-size: 1.953vw;
+	}
+	main .rhythm-year .flickity-prev-next-button.previous,
+	main .teachers .flickity-prev-next-button.previous,
+	main .gallery .flickity-prev-next-button.previous {
+		left: -3.906vw;
+	}
+	main .rhythm-year .flickity-prev-next-button.next,
+	main .teachers .flickity-prev-next-button.next,
+	main .gallery .flickity-prev-next-button.next,
+	main .gallery .flickity-fullscreen-button {
+		right: -3.906vw;
+	}
+	main .gallery .is-fullscreen .flickity-prev-next-button.next, 
+	main .gallery .is-fullscreen .flickity-fullscreen-button {
+		right: 3.906vw;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	/* Старша школа: не ріжемо обличчя викладача на планшеті/мобільному */
+	main.page .banner.focus-high {
+		background-position: left top !important;
+		background-size: cover !important;
+		min-height: 42vw;
+	}
+	header .top-menu {
+		gap: 6px;
+		padding: 8px 10px;
+	}
+	header .top-menu .logo,
+	header.small-header .top-menu .logo {
+		gap: 8px;
+	}
+	header .top-menu .logo .top,
+	header.small-header .top-menu .logo .top {
+		font-size: clamp(18px, 5.5vw, 26px);
+	}
+	header .top-menu .logo img,
+	header.small-header .top-menu .logo img {
+		width: 40px;
+		height: 40px;
+	}
+	header .top-menu .right a {
+		padding: 6px 6px;
+	}
+	header .top-menu .right .fa-brands {
+		font-size: 20px;
+	}
+	header.small-header .top-menu {
+		font-size: 2vw;
+		padding-bottom: 8px;
+	}
+	header .top-menu .open-menu {
+		font-size: 28px;
+		width: auto;
+		line-height: 1;
+	}
+	header .top-menu .close-menu {
+		font-size: 28px;
+		width: auto;
+		margin-bottom: 14px;
+		line-height: 1;
+	}
+	header .top-menu ul li,
+	header .top-menu .sub-menu li {
+		margin-bottom: 1.5vw;
+	}
+	/* Мобільне меню — читабельний розмір, не vw */
+	header .top-menu .mob,
+	header .top-menu .mob > li,
+	header .top-menu .mob .sub-menu li {
+		margin-bottom: 0;
+		font-size: 17px;
+	}
+	header .top-menu .mob > li > a {
+		font-size: 17px;
+		padding: 12px 8px;
+	}
+	header .top-menu .mob .sub-menu a {
+		font-size: 15px;
+		padding: 10px 8px;
+	}
+	main .breadcrumbs {
+		font-size: 1.8vw;
+	}
+    main .rhythm-year .carousel-cell {
+  		width: calc(100% / 2);
+	}
+	main .rhythm-year .carousel-cell img {
+  		height: 43.620vw; 
+	}
+	main .rhythm-year .carousel-cell::before {
+		height: calc(43.620vw + 1.6vw);
+		top: -0.8vw;
+	}
+	main .rhythm-year .flickity-prev-next-button.previous,
+	main .teachers .flickity-prev-next-button.previous,
+	main .gallery .flickity-prev-next-button.previous {
+		left: -5.208vw;
+	}
+	main .rhythm-year .flickity-prev-next-button.next,
+	main .teachers .flickity-prev-next-button.next,
+	main .gallery .flickity-prev-next-button.next,
+	main .gallery .flickity-fullscreen-button {
+		right: -5.208vw;
+	}
+	main .gallery .is-fullscreen .flickity-prev-next-button.next, 
+	main .gallery .is-fullscreen .flickity-fullscreen-button {
+		right: 3.208vw;
+	}
+	main .info-school .info p,
+	main .rhythm-year .carousel-cell h3,
+	main .teachers .carousel-cell h3,
+	main .news .new .info,
+	footer .contact-form form input[type="text"], 
+	footer .contact-form form input[type="tel"], 
+	footer .contact-form form input[type="email"],
+	footer .contact-form form textarea,
+	footer .contacts h2,
+	footer .bottom-menu li a,
+	main.page .content p,
+	main.page .content li,
+	main .news-list .new .info,
+	main .news .new .title,
+	main.page .content h2,
+	main .news-list .new .title {
+  		font-size: 2.2vw;
+	}
+	main .teachers .carousel-cell h4,
+	main .news .new .date,
+	footer .contacts p,
+	footer .bottom-menu .sub-menu li a,
+	footer .logo a.bottom,
+	footer .copyright p,
+	main .news-list .new .date,
+	main .levels .level .info .desc {
+		font-size: 1.8vw;
+	}
+	footer .contact-form .form-container {
+	  	padding: 8.208vw 1.042vw;
+	}
+	footer .bottom-menu .sub-menu li a {
+		line-height: 100%;
+	}
+	footer .bottom {
+		flex-wrap: wrap;
+	}
+	footer .logo {
+		order: 1;
+		width: 100%;
+		margin-bottom: 5vw;
+	}
+	footer .logo a {
+		width: 15%;
+	}
+	footer .contacts {
+		order: 2;
+	}
+	footer .bottom-menu {
+		order: 3;
+		width: 60%;
+		padding-left: 10%;
+	}
+	footer .bottom-menu .sub-menu li {
+		margin-bottom: 0;
+		line-height: 100%;
+	}
+	footer .copyright {
+		padding: 2vw 1.042vw;
+		min-height: 5vw;
+	}
+	main .levels .level {
+		height: auto;
+		margin-bottom: 5vw;
+	}
+	main .levels .level .info {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	main .teachers .carousel-cell {
+		width: calc(100% / 3); 
+	}
+	main .teachers .carousel-cell.is-selected img,
+	main .teachers .carousel-cell.is-selected::before {
+		height: 28.646vw;
+	}
+	main .teachers .carousel-cell img,
+	main .teachers .carousel-cell::before {
+		height: 25.521vw;
+	}
+	.flickity-page-dots .dot {
+		width: 8px;
+		height: 8px;
+		margin: 0 4px;
+	}
+	main .rhythm-year .flickity-prev-next-button, 
+	main .teachers .flickity-prev-next-button, 
+	main .gallery .flickity-prev-next-button {
+		width: 4.418vw;
+		height: 4.418vw;
+  	}
+	footer .contact-form form {
+		width: calc(55% - 5.208vw);
+  	}
+	header .top-menu .mob {
+		width: min(88vw, 340px);
+		left: -100vw !important;
+		padding: 18px 16px 36px;
+	}
+	header .top-menu .mob[style*="left: 0"],
+	header .top-menu .mob[style*="left:0"] {
+		left: 0 !important;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#wpadminbar {
+		position: fixed;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	header .top-menu {
+		gap: 4px;
+		padding: 8px 6px !important;
+		justify-content: flex-start;
+	}
+	header.small-header .top-menu {
+    	font-size: 3.2vw;
+		padding: 8px 6px !important;
+  	}
+	header .top-menu .logo,
+	header.small-header .top-menu .logo {
+		gap: 5px;
+	}
+	header .top-menu .logo .top,
+	header.small-header .top-menu .logo .top,
+	body:has(main.page) header .top-menu .logo .top {
+		font-size: 17px !important;
+	}
+	header .top-menu .logo,
+	header.small-header .top-menu .logo,
+	body:has(main.page) header .top-menu .logo {
+		gap: 10px;
+	}
+	header .top-menu .logo img,
+	header.small-header .top-menu .logo img,
+	body:has(main.page) header .top-menu .logo img {
+		width: 32px;
+		height: 32px;
+		position: static !important;
+		top: auto !important;
+		bottom: auto !important;
+		left: auto !important;
+		right: auto !important;
+		margin: 0 !important;
+		transform: none !important;
+	}
+	header .top-menu .open-menu,
+	header .top-menu .close-menu {
+		font-size: 24px;
+		width: auto;
+		line-height: 1;
+		padding: 2px 2px 2px 0;
+	}
+	header .top-menu .right a,
+	header .top-menu .right a:has(.fa-brands) {
+		width: 22px;
+		height: 22px;
+		padding: 0;
+		margin-left: 0 !important;
+	}
+	header .top-menu .right .fa-brands {
+		font-size: 14px;
+	}
+	header .top-menu .mob > li > a {
+		font-size: 16px;
+		padding: 12px 8px;
+	}
+	header .top-menu .mob .sub-menu a {
+		font-size: 15px;
+		padding: 10px 8px;
+	}
+	.btn, input[type="submit"] {
+		font-size: 2.800vw;
+		padding: 3vw 4vw;
+		border-radius: 6vw;
+	}
+	main .banner {
+		position: relative;
+		margin-bottom: 38.800vw;
+	}
+	main.page .banner {
+		position: relative;
+		margin-bottom: 30.800vw;
+		/* повна ширина фото (плашка з назвою йде під банер) — тримаємо обличчя */
+		background-position: center 28% !important;
+		height: 58vw;
+		min-height: 240px;
+		max-height: 380px;
+		padding-top: 0;
+	}
+	main.page .banner.focus-kindergarten {
+		background-position: center 22% !important;
+	}
+	main.page .banner.focus-elementary {
+		background-position: 38% 48% !important;
+	}
+	main.page .banner.focus-secondary {
+		background-position: center 18% !important;
+	}
+	main.page .banner.focus-high {
+		/* квадратне фото: майже квадратний банер, обличчя викладача зверху зліва */
+		background-position: left top !important;
+		background-size: cover !important;
+		height: 100vw;
+		max-height: 480px;
+		min-height: 300px;
+	}
+	main.page .banner.focus-correctional {
+		background-position: 12% 50% !important;
+	}
+	main.page .banner.focus-seminar {
+		background-position: center 16% !important;
+	}
+	main .banner {
+		height: calc(55vw - 1.953vw);
+		padding-top: 1.953vw;
+	}
+	main .banner::after,
+	main.page .banner::after {
+		background: url(./images/torn-edge-top-blue-2.png) bottom center no-repeat;
+  		background-size: 100%;
+	}
+	main .banner .info-bg {
+		width: 100%;
+		height: 38.800vw;
+		background: url(./images/bg-info-banner-m.png) center no-repeat;
+		background-size: 100% 100%;
+		position: absolute;
+		left: 0;
+		bottom: -38.800vw;
+		z-index: 80;
+	}
+	main.page .banner .info-bg {
+		width: 100%;
+		height: 25.800vw;
+		background: url(./images/bg-info-banner-m.png) center no-repeat;
+		background-size: 100% 100%;
+		position: absolute;
+		left: 0;
+		bottom: -25.800vw;
+		z-index: 80;
+	}
+	/* Старша школа на мобільному — точно як інші внутрішні сторінки */
+	main.page .banner.focus-high {
+		justify-items: stretch !important;
+		background-position: left top !important;
+		background-size: cover !important;
+	}
+	main.page .banner.focus-high .info-bg {
+		width: 100% !important;
+		height: 25.800vw !important;
+		min-width: 0 !important;
+		margin-left: 0 !important;
+		justify-self: stretch !important;
+		transform: none !important;
+		background: url(./images/bg-info-banner-m.png) center no-repeat !important;
+		background-size: 100% 100% !important;
+		position: absolute !important;
+		left: 0 !important;
+		right: 0 !important;
+		bottom: -25.800vw !important;
+	}
+	main.page .banner.focus-high .info {
+		transform: none !important;
+		text-align: center !important;
+		justify-content: center !important;
+		padding: 2vw 3vw !important;
+	}
+	main.page .banner.focus-high .info h1 {
+		text-align: center !important;
+		font-size: inherit !important;
+		line-height: inherit !important;
+	}
+	main .banner .info,
+	main.page .banner .info {
+		padding: 2vw 3vw;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		height: calc(100% - 4vw);
+	}
+	main .banner .info p {
+		text-align: center;
+		width: 100%;
+		font-size: 3.600vw;
+		line-height: 120%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+	main .banner .info p span {
+		font-size: 2vw;
+	}
+	main .banner .info .btn.orange {
+		margin: 0 3vw 0 0;
+	}
+	main .breadcrumbs {
+		margin-bottom: 5vw;
+		font-size: 2.6vw;
+	}
+	main .info-school .info h1,
+	main .levels h2,
+	main .rhythm-year h2,
+	main .teachers h2,
+	main .news h2,
+	main .gallery h2,
+	footer .contact-form h2,
+	footer .logo a.top {
+		font-size: 4.400vw;
+		line-height: 120%;
+	}
+	main .info-school {
+		padding: 3.906vw 6vw;
+	}
+	main .info-school img {
+		width: 50%;
+		height: 32.800vw;
+		object-fit: contain;
+		object-position: top left;
+	}
+	main .info-school .info h1 {
+		height: 32.800vw;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	main .info-school .info p,
+	main .levels .level .info .desc,
+	main .rhythm-year .carousel-cell h3,
+	main .teachers .carousel-cell h3,
+	main .news .new .info,
+	footer .contact-form form input[type="text"], 
+	footer .contact-form form input[type="tel"], 
+	footer .contact-form form input[type="email"],
+	footer .contact-form form textarea,
+	footer .contacts h2,
+	footer .bottom-menu li a,
+	main.page .content p,
+	main.page .content li,
+	main .news-list .new .info,
+	main .news .new .title,
+	main.page .content h2,
+	main .news-list .new .title {
+  		font-size: 3.2vw;
+		line-height: 120%;
+	}
+	main .info-school .info p {
+		margin-bottom: 3vw;
+	}
+	main .video,
+	main .levels,
+	main .rhythm-year,
+	main .teachers {
+		padding: 15vw 6vw;
+	}
+	main .levels {
+		padding: 10vw 6vw;
+	}
+	main .video iframe {
+		width: 100%;
+		height: 52.200vw;
+	}
+	main .levels .level .info h3, 
+	main.page .banner .info h1 {
+		font-size: 3.600vw;
+	}
+	main .levels h2 {
+		margin-bottom: 4vw;
+	}
+	main .levels .level,
+	main .levels .level:nth-of-type(even) {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	main .levels .level .info {
+		align-items: flex-start;
+		text-align: left;
+		justify-content: flex-start;
+	}
+	main .levels .level {
+		width: 100%;
+		height: auto; 
+		margin: 6vw 0;
+	}
+	main .levels .level .level-photo {
+		width: 100%;
+		margin-bottom: 4vw;
+		aspect-ratio: 3 / 2;
+	}
+	main .levels .level .level-photo img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	main .levels .level .info,
+	main.structure .levels .level .info {
+		width: 100%;
+		padding: 0 2vw;
+		margin: 0;
+		box-sizing: border-box;
+	}
+	main .levels .level .info .btn {
+		margin-top: 4vw;
+	}
+	main .rhythm-year .carousel-cell {
+		width: 100%;
+	}
+	main .rhythm-year .carousel-cell img {
+		height: 83.6vw;
+		margin-bottom: 6vw;
+	}
+	main .rhythm-year .carousel-cell::before {
+		height: calc(83.6vw + 3vw);
+		top: -1.5vw;
+		width: 106%;
+		left: -3%;
+	}
+	.flickity-page-dots .dot {
+		width: 5px;
+  		height: 5px;
+		margin: 0 3px;
+	}
+	main .rhythm-year .flickity-prev-next-button, 
+	main .teachers .flickity-prev-next-button, 
+	main .gallery .flickity-prev-next-button {
+		width: 8vw;
+		height: 8vw;
+	}
+	main .teachers .carousel-cell {
+  		width: 100%; 
+	}
+	main .teachers .carousel-cell img,
+	main .teachers .carousel-cell::before,
+	main .teachers .carousel-cell.is-selected img,
+	main .teachers .carousel-cell.is-selected::before {
+		width: 50vw; 
+		height: 50vw; 
+	}
+	main .teachers .carousel-cell::before,
+	main .teachers .carousel-cell.is-selected::before {
+		left: calc(50% - 25vw);
+	}
+	main .teachers .carousel, main .teachers .flickity-viewport {
+		height: 75vw!important;
+	}
+	main .teachers .carousel-cell h4 {
+		padding: 0 10vw;
+	}
+	main .teachers .carousel-cell h4, 
+	main .news .new .date, 
+	footer .contacts p, 
+	footer .bottom-menu .sub-menu li a, 
+	footer .logo a.bottom, 
+	footer .copyright p, 
+	main .news-list .new .date {
+		font-size: 2.8vw;
+	}
+	main .news {
+		padding: 5.208vw 6vw;
+	}
+	main .news .new {
+		padding: 3vw; 
+		box-sizing: border-box;
+		width: calc((100% / 2) - 2vw);
+		margin: 1vw;
+	}
+	main .news .new img {
+		height: 30vw; 
+		margin-bottom: 5vw;
+	}
+	main .gallery .carousel-cell {
+    	height: 60vw;
+	}
+	footer .contact-form .form-container {
+		padding: 8.208vw 3vw;
+	}
+	footer .contact-form form {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 5vw 3vw;
+	}
+	footer .contact-form form p {
+  		margin-bottom: 2vw; 
+	}
+	footer .contacts,
+	footer .bottom-menu {
+		width: 100%;
+		padding: 0;
+		margin-bottom: 3vw;
+	}
+	footer .bottom {
+		padding: 2.604vw 3vw 0;
+	}
+	footer .copyright {
+		padding: 4vw 3vw;
+		min-height: 5vw;
+	}
+	footer .copyright p {
+		left: 3vw;
+	}
+}

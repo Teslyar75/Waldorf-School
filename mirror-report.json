@@ -1,0 +1,157 @@
+{
+  "downloaded": 365,
+  "failed": [
+    {
+      "url": "https://www.waldorf-stupeni.school/wp-json/oembed/1.0/embed/",
+      "error": "HTTP 400"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/about-us/waldorf-pedagogy/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/about-us/history/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/about-us/media/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/about-us/rules/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/about-us/methodical-materials/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/school-structure/kindergarten/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/school-structure/elementary-school/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/school-structure/secondary-school/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/school-structure/high-school/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/school-structure/correctional-treatment-block/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/school-structure/seminar/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/xmlrpc.php",
+      "error": "HTTP 405"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/about-us/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/school-structure/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/news/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/contacts/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/help-us/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/haj-vsi-rany-zagoyuyutsya-skorishe/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/rizdvyanyj-yarmarok-16-grudnya/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/meni-nudno/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/ochikuvannya-rizdva/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/a-vashi-dity-chytayut/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/kindergarten/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/elementary-school/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/secondary-school/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/high-school/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/correctional-treatment-block/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/seminar/r/r/",
+      "error": "HTTP 404"
+    },
+    {
+      "url": "https://www.waldorf-stupeni.school/r/r/r/",
+      "error": "HTTP 404"
+    }
+  ],
+  "downloadedSample": [
+    "https://www.waldorf-stupeni.school/",
+    "https://www.waldorf-stupeni.school/about-us/",
+    "https://www.waldorf-stupeni.school/about-us/waldorf-pedagogy/",
+    "https://www.waldorf-stupeni.school/about-us/history/",
+    "https://www.waldorf-stupeni.school/about-us/media/",
+    "https://www.waldorf-stupeni.school/about-us/rules/",
+    "https://www.waldorf-stupeni.school/about-us/methodical-materials/",
+    "https://www.waldorf-stupeni.school/school-structure/",
+    "https://www.waldorf-stupeni.school/school-structure/kindergarten/",
+    "https://www.waldorf-stupeni.school/school-structure/elementary-school/",
+    "https://www.waldorf-stupeni.school/school-structure/secondary-school/",
+    "https://www.waldorf-stupeni.school/school-structure/high-school/",
+    "https://www.waldorf-stupeni.school/school-structure/correctional-treatment-block/",
+    "https://www.waldorf-stupeni.school/school-structure/seminar/",
+    "https://www.waldorf-stupeni.school/news/",
+    "https://www.waldorf-stupeni.school/contacts/",
+    "https://www.waldorf-stupeni.school/help-us/",
+    "https://www.waldorf-stupeni.school/haj-vsi-rany-zagoyuyutsya-skorishe/",
+    "https://www.waldorf-stupeni.school/rizdvyanyj-yarmarok-16-grudnya/",
+    "https://www.waldorf-stupeni.school/meni-nudno/",
+    "https://www.waldorf-stupeni.school/ochikuvannya-rizdva/",
+    "https://www.waldorf-stupeni.school/a-vashi-dity-chytayut/",
+    "https://www.waldorf-stupeni.school/wp-content/uploads/2023/12/5-1.jpg",
+    "https://www.waldorf-stupeni.school/wp-content/uploads/2023/12/5-1-225x300.jpg",
+    "https://www.waldorf-stupeni.school/wp-content/uploads/2023/12/5-1-150x150.jpg",
+    "https://www.waldorf-stupeni.school/wp-content/uploads/2023/12/4-1.jpg",
+    "https://www.waldorf-stupeni.school/wp-content/uploads/2023/12/4-1-225x300.jpg",
+    "https://www.waldorf-stupeni.school/wp-content/uploads/2023/12/4-1-150x150.jpg",
+    "https://www.waldorf-stupeni.school/wp-content/uploads/2023/12/3-2.jpg",
+    "https://www.waldorf-stupeni.school/wp-content/uploads/2023/12/3-2-225x300.jpg"
+  ]
+}

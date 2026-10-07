@@ -1,0 +1,2095 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>«Ступені» — план действий по проекту</title>
+<style>
+:root{--bg:#fbf7f0;--paper:#fffdf8;--ink:#2f2a24;--muted:#7a6e60;--accent:#b5562b;--accent2:#5f7f4f;--line:#eadfce;--code:#f4ede2}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.layout{display:grid;grid-template-columns:290px 1fr;min-height:100vh}
+aside{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 18px;background:linear-gradient(180deg,#f3e7d6,#eadcc6);border-right:1px solid var(--line)}
+aside .brand{font-weight:700;font-size:18px;color:var(--accent);margin-bottom:4px}
+aside .sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+aside ul{list-style:none;margin:0;padding:0}
+aside li a{display:block;padding:5px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14px}
+aside li.l3 a{padding-left:24px;font-size:13px;color:var(--muted)}
+aside li a:hover,aside li a.active{background:#fffaf2;color:var(--accent)}
+main{max-width:1080px;width:100%;justify-self:center;padding:36px 48px 80px;background:var(--paper);box-shadow:0 0 40px rgba(120,90,50,.06)}
+h1{font-size:34px;line-height:1.2;color:var(--accent);margin:.2em 0 .4em}
+h2{font-size:26px;margin-top:2.2em;padding-bottom:.3em;border-bottom:2px solid var(--line);color:#3d332a}
+h3{font-size:19px;margin-top:1.6em;color:var(--accent2)}
+a{color:var(--accent)} a:hover{text-decoration:none}
+blockquote{margin:0;padding:12px 18px;background:#f6eee1;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;color:#5a4d40}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:14px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#f3e7d6} tr:nth-child(even) td{background:#fcf8f1}
+code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:.9em}
+pre.code{position:relative;background:#2f2a24;color:#f7efe2;padding:16px;border-radius:10px;overflow:auto;font-size:13px}
+pre.code code{background:none;padding:0;color:inherit}
+pre.code .lang{position:absolute;top:6px;right:10px;font-size:11px;color:#c9b79f;text-transform:uppercase}
+.mermaid-wrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:1em 0;overflow:auto}
+pre.mermaid{margin:0;text-align:center;background:none}
+main img{max-width:100%;border-radius:12px;box-shadow:0 6px 24px rgba(90,60,30,.18);border:1px solid var(--line);margin:.6em 0 .2em}
+main img[src*="mobile"]{max-height:560px;width:auto;display:inline-block;margin-right:14px;vertical-align:top}
+main p:has(> img) + p em{color:var(--muted);font-size:14px}
+hr{border:none;border-top:1px dashed var(--line);margin:2em 0}
+p.navlinks{margin-top:1.6em;padding:10px 14px;background:#f6eee1;border-radius:10px;font-size:14px}
+p.navlinks a{font-weight:600}
+tr:has(a:target) td{animation:hl 2.4s ease} li.task{list-style:none;margin-left:-1.2em} h4{font-size:16px;margin-top:1.4em;color:#6b4a2f} :target{animation:hl 1.6s ease} @keyframes hl{from{background:#ffe7c2}to{background:transparent}}
+@media(max-width:900px){.layout{grid-template-columns:1fr}aside{position:relative;height:auto}main{padding:20px}}
+</style></head><body><div class="layout">
+<aside><div class="brand">🌿 Вальдорфская школа</div><div class="sub">«Ступені» · план действий · v1.0</div><nav><ul><li class="l2"><a href="#summary">Коротко</a></li><li class="l2"><a href="#current">Текущее состояние</a></li><li class="l2"><a href="#deps">Карта зависимостей между потоками</a></li><li class="l2"><a href="#decision">Ключевое решение: на чём строим</a></li><li class="l3"><a href="#dec-compare">Сравнение</a></li><li class="l3"><a href="#dec-reco">Рекомендация</a></li><li class="l3"><a href="#s0-steps">Шаги 0.x — общая основа</a></li><li class="l2"><a href="#s1">Поток 1. Обязательные разделы по ст. 30</a></li><li class="l3"><a href="#s1-steps">Шаги</a></li><li class="l2"><a href="#s2">Поток 2. Электронный журнал и учёт</a></li><li class="l3"><a href="#s2-steps">Шаги</a></li><li class="l2"><a href="#s3">Поток 3. Соцсети</a></li><li class="l3"><a href="#s3-steps">Шаги</a></li><li class="l2"><a href="#s4">Поток 4. Админка + AI-агент</a></li><li class="l3"><a href="#s4-steps">Шаги</a></li><li class="l2"><a href="#gantt">Общий график</a></li><li class="l2"><a href="#checklist">Чек-лист для школы</a></li><li class="l2"><a href="#questions">Открытые вопросы</a></li><li class="l2"><a href="#sources">Источники</a></li><li class="l2"><a href="#glossary">Глоссарий</a></li></ul></nav></aside>
+<main><h1>План действий по проекту «Ступені»: сайт, журнал, соцсети, админка с AI-агентом</h1>
+<blockquote>
+<p><strong>Для кого:</strong> Сергей (разработчик и организатор проекта) и руководство вальдорфского лицея и детского сада «Ступені» (<a href="https://www.waldorf-stupeni.school/" target="_blank" rel="noopener">waldorf-stupeni.school</a>, тел. +380 48 799-70-24).
+<strong>Что это:</strong> пошаговый план: что делаем, в каком порядке, кто отвечает, что нужно от школы. Это пара к документу <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html">«Схема автоматизации»</a>: там описано, <strong>как устроена</strong> система, а здесь <strong>как её построить</strong>.
+<strong>Версия:</strong> 1.0, 6 октября 2026. Все оценки трудозатрат — <strong>ориентировочные</strong> (⚠️ оценка). Факты о школе, которых у нас нет (плата, число учеников, номера лицензий), помечены <strong>[уточнить у школы]</strong>.
+<strong>Условные знаки:</strong> ✅ проверено по источнику · ⚠️ не проверено или наша оценка · ❓ открытый вопрос.</p>
+</blockquote>
+<h2><a id="toc"></a>Оглавление</h2>
+<ol>
+<li><a href="#summary">Коротко</a>: 4 потока, порядок, общий объём</li>
+<li><a href="#current">Текущее состояние</a>: что есть, ссылки на файлы проекта</li>
+<li><a href="#deps">Карта зависимостей между потоками</a></li>
+<li><a href="#decision">Ключевое решение: на чём строим</a> (статика / WordPress / новый стек) и <a href="#s0-steps">шаги 0.x</a></li>
+<li><a href="#s1">Поток 1. Обязательные разделы по ст. 30</a></li>
+<li><a href="#s2">Поток 2. Электронный журнал и учёт</a></li>
+<li><a href="#s3">Поток 3. Соцсети</a></li>
+<li><a href="#s4">Поток 4. Админка + AI-агент</a></li>
+<li><a href="#gantt">Общий график</a></li>
+<li><a href="#checklist">Чек-лист для школы</a></li>
+<li><a href="#questions">Открытые вопросы</a></li>
+<li><a href="#sources">Источники</a></li>
+<li><a href="#glossary">Глоссарий</a></li>
+</ol>
+<p>У каждого потока одинаковые подразделы: <strong>Цель → Результат → Шаги → Порядок/этапы → Что нужно от школы → Технические требования → Оценка сложности → Риски.</strong> Шаги пронумерованы (1.1, 1.2 …, 2.1 …), на каждый можно сослаться: например, <a href="#st-1-5">шаг 1.5</a> — починить формы.</p>
+<hr />
+<h2><a id="summary"></a>Коротко</h2>
+<p><strong>Задача.</strong> Сейчас у школы красивый, но «застывший» сайт: последняя новость — декабрь 2023 года, формы обратной связи в копии сайта не работают, сайт скрыт от поисковиков (<code>noindex</code>, см. <a href="#g-noindex">глоссарий</a>), а обязательного по закону блока «Інформаційна відкритість» по сути нет. Мы хотим не просто перерисовать сайт, а сделать <strong>рабочую систему</strong> из четырёх частей — «потоков»:</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Поток</th>
+<th>Что получит школа</th>
+<th>Срочность</th>
+<th>Объём ⚠️ оценка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><a href="#decision">Основа: решение по стеку, доступы, репозиторий</a></td>
+<td>один источник правды, понятно «на чём строим»</td>
+<td>сразу</td>
+<td>3–6 чел.-дней</td>
+</tr>
+<tr>
+<td>1</td>
+<td><a href="#s1">Обязательные разделы по ст. 30</a></td>
+<td>раздел «Інформаційна відкритість», рабочие формы, свежие новости, сайт виден в Google</td>
+<td><strong>высокая</strong> — это требование закона</td>
+<td>10–18 чел.-дней</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="#s2">Электронный журнал и учёт</a></td>
+<td>«Мрія» как официальный журнал (пилот), свой Telegram-бот для родителей</td>
+<td>средняя</td>
+<td>12–25 чел.-дней (гибрид)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="#s3">Соцсети</a></td>
+<td>агент готовит посты по «Ритму року», человек одобряет, публикация по расписанию, заявки попадают в список</td>
+<td>средняя</td>
+<td>15–25 чел.-дней</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="#s4">Админка + AI-агент</a></td>
+<td>одна панель управления: контент, пользователи, роли, документы, заявки; AI-помощник, который всё связывает</td>
+<td>постепенно</td>
+<td>25–45 чел.-дней</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Порядок.</strong> 0 → 1 (быстрая победа, <a href="#g-quickwin">quick win</a>) → параллельно 2 (звонок в «Мрію» и пилот) и 3 (ручной контент-план) → 4 (админка) → перенос 1–3 под управление админки и агента. Подробнее — <a href="#deps">карта зависимостей</a> и <a href="#gantt">общий график</a>.</p>
+<p><strong>Итого ⚠️ (оценка):</strong> примерно <strong>65–120 человеко-дней</strong> (<a href="#g-personday">чел.-день</a> — один рабочий день одного человека) разработки, то есть <strong>4–7 месяцев</strong> при одном разработчике на неполную загрузку. Самое долгое — не код, а <strong>сбор документов и решений от школы</strong> (см. <a href="#checklist">чек-лист для школы</a>).</p>
+<p><strong>Главная рекомендация в одну строку:</strong> сначала быстро закрываем закон (поток 1) на статической копии, параллельно звоним в «Мрію»; а «большую» систему (поток 4) строим на новом стеке, как описано в <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#stack">схеме: технологический стек</a>. Почему так — в разделе <a href="#decision">Ключевое решение</a>.</p>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#current">→ далее: Текущее состояние</a></p>
+<hr />
+<h2><a id="current"></a>Текущее состояние</h2>
+<h3><a id="cur-files"></a>Что есть в папке проекта</h3>
+<p>Папка на ноутбуке Сергея <a href="file:///D:/Site/waldorf-stupeni-school-redesign/" target="_blank" rel="noopener"><code>D:\Site\waldorf-stupeni-school-redesign</code></a> — это <strong>статическое зеркало</strong> (клон, копия в виде готовых HTML-файлов) живого сайта на WordPress (<a href="#g-wp">глоссарий: WordPress</a>, <a href="#g-static">статика</a>). Сделано 21 сентября 2026 года для редизайна.</p>
+<table>
+<thead>
+<tr>
+<th>Файл / папка</th>
+<th>Что это</th>
+<th>Важно для шагов</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/README.md" target="_blank" rel="noopener">README.md</a></td>
+<td>описание клона: формы не работают, <code>noindex</code>, как запустить</td>
+<td><a href="#st-1-5">1.5</a>, <a href="#st-1-8">1.8</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/start.bat" target="_blank" rel="noopener">start.bat</a></td>
+<td>локальный просмотр: запускает <code>npx serve -l 5180 .</code> → <code>http://127.0.0.1:5180/</code></td>
+<td><a href="#st-0-2">0.2</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/catalog.json" target="_blank" rel="noopener">catalog.json</a></td>
+<td>список 17 страниц, 5 записей (новостей) и 75 медиафайлов из WP REST API (<a href="#g-api">API</a>)</td>
+<td><a href="#st-4-2">4.2</a> — миграция</td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/mirror-report.json" target="_blank" rel="noopener">mirror-report.json</a></td>
+<td>отчёт зеркалирования: 365 файлов, 30 ошибок — почти все 404 по «мусорным» адресам <code>…/r/</code> (артефакт зеркала, по разбору проекта), плюс <code>xmlrpc.php</code> и <code>oembed</code></td>
+<td><a href="#st-1-8">1.8</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/rules/index.html" target="_blank" rel="noopener">rules/</a> (и <code>history/</code>, <code>media/</code>, <code>waldorf-pedagogy/</code>, <code>methodical-materials/</code> в корне)</td>
+<td>страницы-перенаправления, добавлены 24.09.2026: чинят короткие ссылки</td>
+<td><a href="#st-1-8">1.8</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/about-us/waldorf-pedagogy/index.html" target="_blank" rel="noopener">about-us/waldorf-pedagogy/</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/about-us/methodical-materials/index.html" target="_blank" rel="noopener">about-us/methodical-materials/</a></td>
+<td><strong>заглушки</strong> «Вибачте, ця сторінка в розробці»</td>
+<td><a href="#st-1-6">1.6</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/index.html" target="_blank" rel="noopener">index.html</a></td>
+<td>главная страница</td>
+<td><a href="#st-1-4">1.4</a>, <a href="#st-1-6">1.6</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-content/themes/waldorf/style.css" target="_blank" rel="noopener">wp-content/themes/waldorf/style.css</a></td>
+<td>стили темы <code>waldorf</code> — источник цветов и шрифтов</td>
+<td><a href="#st-1-4">1.4</a>, <a href="#st-4-2">4.2</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-content/themes/waldorf/js/flickity.pkgd.js" target="_blank" rel="noopener">js/flickity.pkgd.js</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-content/themes/waldorf/js/jquery-3.7.0.min.js" target="_blank" rel="noopener">jquery-3.7.0.min.js</a></td>
+<td>карусели (галерея, «Ритм року», учителя)</td>
+<td><a href="#st-1-7">1.7</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-content/plugins/contact-form-7/includes/js/index.js" target="_blank" rel="noopener">contact-form-7/…/index.js</a></td>
+<td>скрипт форм Contact Form 7 — в статике не отправляет письма</td>
+<td><a href="#st-1-5">1.5</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-json/index.html" target="_blank" rel="noopener">wp-json/</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-json/wp/v2/pages/129/index.html" target="_blank" rel="noopener">wp-json/wp/v2/pages/129</a></td>
+<td>сохранённые ответы WP REST API (тексты страниц)</td>
+<td><a href="#st-4-2">4.2</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/contacts/index.html" target="_blank" rel="noopener">contacts/</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/help-us/index.html" target="_blank" rel="noopener">help-us/</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/news/index.html" target="_blank" rel="noopener">news/</a></td>
+<td>«Контакти» (форма), «Допомогти нам», «Новини»</td>
+<td><a href="#st-1-5">1.5</a>, <a href="#st-1-6">1.6</a>, <a href="#st-3-7">3.7</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/about-us/rules/index.html" target="_blank" rel="noopener">about-us/rules/</a></td>
+<td>«Правила школи» — частично закрывает «правила поведінки»; в тексте <strong>старое название «НВК «Ступені»»</strong> вместо «ліцей»</td>
+<td><a href="#st-1-2">1.2</a>, <a href="#st-1-6">1.6</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/school-structure/correctional-treatment-block/index.html" target="_blank" rel="noopener">school-structure/correctional-treatment-block/</a></td>
+<td>«Корекційно-лікувальний блок» — основа для пункта «умови доступності (ООП)»</td>
+<td><a href="#st-1-2">1.2</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/school-structure/kindergarten/index.html" target="_blank" rel="noopener">school-structure/kindergarten/</a></td>
+<td>«Дитячий садочок» — нужны отдельные правила прийому</td>
+<td><a href="#st-1-2">1.2</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/Informaciyna-vidkrytist-sajt-Stupeni.md" target="_blank" rel="noopener">Informaciyna-vidkrytist-sajt-Stupeni.md</a> (= <a href="file:///D:/Site/waldorf-stupeni-school-redesign/dlya-administracii-informaciyna-vidkrytist.md" target="_blank" rel="noopener">dlya-administracii-informaciyna-vidkrytist.md</a>)</td>
+<td>служебная записка для администрации про ст. 30: перечень, структура раздела, приоритеты</td>
+<td><a href="#st-1-1">1.1</a>, <a href="#st-1-2">1.2</a></td>
+</tr>
+<tr>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/xmlrpc.php" target="_blank" rel="noopener">xmlrpc.php</a></td>
+<td>след WordPress; на новом сайте не нужен (риск атак)</td>
+<td><a href="#st-0-3">0.3</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Что уже изменено в копии</strong> (по разбору проекта <code>screens-and-project-review.md</code>): 05.10.2026 переделаны шапка и мобильное меню, баннеры с «точками фокуса» на лицах, блоки «Структура школи» (полный текст, фото в «рваной» рамке, шахматный порядок), навигация по якорям; <a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-content/themes/waldorf/style.css" target="_blank" rel="noopener">style.css</a> вырос примерно на 535 строк. <strong>Тексты, фото и новости не менялись.</strong> Рядом в проекте на ноутбуке лежит папка <code>_debug-header</code> (86 рабочих скриншотов «до/после») — это не часть сайта, при публикации её нужно исключить (<a href="#st-1-9">1.9</a>). Нетронутая копия зеркала — <code>D:\Site\waldorf-stupeni-school</code>. Исходный сайт — WordPress 7.1 с темой «Waldorf» (студия Полещука, 2023), плагины Contact Form 7 + reCAPTCHA v3, следы ACF.</p>
+<p><strong>Чего нет:</strong> папка <strong>не</strong> является <a href="#g-git">Git</a>-репозиторием (нет истории изменений); нет заготовок (stubs, «болванок») для админки, журнала и <a href="#g-backend">бэкенда</a>. Всё это создаём с нуля — см. <a href="#s4">поток 4</a>.</p>
+<h3><a id="cur-site"></a>Что видно на сайте</h3>
+<p>По скриншотам (папки <code>source/screens</code>: desktop-1…6, mobile-1…6, и 26 снимков из <code>D:\Фото сайта</code> — из них 24 уникальных; это снимки <strong>локальной правленой копии</strong> на <code>localhost:5180</code>, а не живого сайта; подробный разбор — в схеме, раздел <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#cur-shots">«Как сейчас: скриншоты»</a>):</p>
+<ul>
+<li><strong>Главная:</strong> первый экран (hero) с цитатой Штайнера и кнопками «Залишайтеся на зв'язку» и «Підтримайте нас»; блоки «Чому вальдорфська школа?» (там сказано, что школа <strong>против дистанционного обучения</strong> — важно для пункта «форми здобуття освіти», см. <a href="#st-1-2">1.2</a>), «Структура школи», «Ритм року» (13 праздников — основа <a href="#st-3-3">контент-календаря</a>), «Наші вчителі та вихователі» (27 карточек, 24 человека — есть повторы), новости, галерея, форма «Напишіть нам». Фраза «ми виступаємо проти дистанційної освіти» есть и на странице «Про нас».</li>
+<li><strong>Контакты:</strong> Одеса, вул. Ільфа та Петрова, 31-А; телефоны 799-70-24 (офіс), 799-70-25 (бухгалтерія), 715-66-22 (вахта) — по странице <a href="file:///D:/Site/waldorf-stupeni-school-redesign/contacts/index.html" target="_blank" rel="noopener">«Контакти»</a>.</li>
+<li><strong>«Допомогти нам»:</strong> призыв «20 євро протягом 20 місяців», но <strong>нет реквизитов, кнопки оплаты или формы</strong> — кнопка «Підтримайте нас» ведёт туда, где помочь нельзя → <a href="#st-1-6">1.6</a>.</li>
+<li><strong>Заглушки:</strong> «Вальдорфська педагогіка» и «Методичні матеріали» — «сторінка в розробці» → <a href="#st-1-6">1.6</a>.</li>
+<li><strong>Новости:</strong> 5 записей, все — декабрь 2023 года (последняя от 16.12.2023, по <a href="file:///D:/Site/waldorf-stupeni-school-redesign/catalog.json" target="_blank" rel="noopener">catalog.json</a>). Для родителей это выглядит как «школа не живёт» → <a href="#st-1-6">шаг 1.6</a>.</li>
+<li><strong>Соцсети в подвале:</strong> Facebook <code>waldorf.stupeni</code>, Instagram <code>waldorf.stupeni</code>, TikTok <code>@stupeni_school</code> (ссылки есть в <a href="file:///D:/Site/waldorf-stupeni-school-redesign/index.html" target="_blank" rel="noopener">index.html</a>). YouTube на сайте не найден → <a href="#st-3-1">3.1</a>.</li>
+<li><strong>Формальный блок «Інформаційна відкритість»</strong> практически отсутствует (подтверждает и <a href="file:///D:/Site/waldorf-stupeni-school-redesign/Informaciyna-vidkrytist-sajt-Stupeni.md" target="_blank" rel="noopener">записка для администрации</a>, раздел 2). По разбору скриншотов: из 17 пунктов ст. 30 полностью закрыт 1 (правила поведінки, и тот нужно обновить), частично — 4 (кадровий склад, правила прийому — только для садочка, умови доступності, обсяг — только наполняемость групп садочка), остальных нет; слова «булінг» на сайте нет вообще.</li>
+<li><strong>Технически:</strong> тема <code>waldorf</code>, формы Contact Form 7 с reCAPTCHA, на живом сайте <code>noindex, nofollow</code>. Подробнее — <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#cur-tech">схема: «Технически»</a> и <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#cur-gaps">«Главные пробелы»</a>.</li>
+</ul>
+<h3><a id="cur-gaps"></a>Главные пробелы → какой шаг их закрывает</h3>
+<table>
+<thead>
+<tr>
+<th>Пробел</th>
+<th>Шаг</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>нет раздела «Інформаційна відкритість»</td>
+<td><a href="#st-1-1">1.1</a>–<a href="#st-1-4">1.4</a></td>
+</tr>
+<tr>
+<td>формы не отправляются (в статике)</td>
+<td><a href="#st-1-5">1.5</a></td>
+</tr>
+<tr>
+<td>новости устарели (2023), 2 страницы-заглушки, старое название «НВК», «Допомогти нам» без реквизитов</td>
+<td><a href="#st-1-6">1.6</a>, <a href="#st-3-3">3.3</a></td>
+</tr>
+<tr>
+<td>сайт скрыт от поиска</td>
+<td><a href="#st-1-8">1.8</a></td>
+</tr>
+<tr>
+<td>нет журнала и связи с родителями</td>
+<td><a href="#s2">поток 2</a></td>
+</tr>
+<tr>
+<td>соцсети ведутся вручную, заявки теряются</td>
+<td><a href="#s3">поток 3</a>, <a href="#st-4-5">4.5</a></td>
+</tr>
+<tr>
+<td>нет админки, ролей, журнала действий</td>
+<td><a href="#s4">поток 4</a></td>
+</tr>
+<tr>
+<td>нет Git, нет тестовой площадки</td>
+<td><a href="#st-0-2">0.2</a>, <a href="#st-0-5">0.5</a></td>
+</tr>
+</tbody>
+</table>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#deps">→ далее: Карта зависимостей</a></p>
+<hr />
+<h2><a id="deps"></a>Карта зависимостей между потоками</h2>
+<p>Стрелка «A → B» значит «B нельзя закончить, пока не сделано A». Пунктир — «желательно, но можно временно обойтись».</p>
+<div class="mermaid-wrap"><pre class="mermaid">flowchart LR
+  D0[&quot;0. Решение по стеку&lt;br/&gt;+ доступы + Git&quot;]:::key
+  subgraph S1[&quot;Поток 1. Ст. 30&quot;]
+    A11[&quot;1.1–1.3 Структура и документы&quot;]
+    A14[&quot;1.4 Раздел в статике&lt;br/&gt;quick win&quot;]
+    A15[&quot;1.5 Рабочие формы&quot;]
+    A18[&quot;1.8–1.9 Запуск, снять noindex&quot;]
+  end
+  subgraph S2[&quot;Поток 2. Журнал&quot;]
+    B21[&quot;2.1–2.3 Звонок в Мрію,&lt;br/&gt;АІКОМ, решение педради&quot;]
+    B25[&quot;2.5 Пилот Мрії&quot;]
+    B27[&quot;2.7 Telegram-бот&quot;]
+  end
+  subgraph S3[&quot;Поток 3. Соцсети&quot;]
+    C33[&quot;3.3 Контент-календарь&quot;]
+    C34[&quot;3.4–3.6 Агент + одобрение&lt;br/&gt;+ расписание&quot;]
+    C37[&quot;3.7 UTM и заявки&quot;]
+  end
+  subgraph S4[&quot;Поток 4. Админка + агент&quot;]
+    E41[&quot;4.1–4.3 Роли, контент,&lt;br/&gt;пользователи&quot;]
+    E44[&quot;4.4 Реестр документов&lt;br/&gt;и сроки&quot;]
+    E45[&quot;4.5 Заявки (CRM)&quot;]
+    E47[&quot;4.7–4.8 AI-агент + HITL&quot;]
+  end
+  D0 --&gt; A14 &amp; A15 &amp; E41
+  A11 --&gt; A14 --&gt; A18
+  A15 --&gt; A18
+  B21 --&gt; B25
+  E41 --&gt; B27
+  E41 --&gt; E44 &amp; E45
+  A11 --&gt; E44
+  A15 --&gt; E45
+  C33 --&gt; C34
+  E47 --&gt; C34
+  C37 --&gt; E45
+  E44 -.-&gt; E47
+  B27 -.-&gt; E47
+  A18 -.-&gt; C37
+  classDef key fill:#f3c9a8,stroke:#b5562b,stroke-width:2px
+</pre></div>
+<p><strong>Как читать:</strong> единственная «жёсткая» общая точка — <a href="#st-0-3">решение 0.3</a> (на чём строим). Поток 1 можно начать сразу, не дожидаясь админки: <a href="#g-quickwin">быстрая победа</a> делается на статической копии. Поток 2 сначала вообще не код, а звонок и решение педради (<a href="#st-2-1">2.1</a>–<a href="#st-2-3">2.3</a>). Агент в соцсетях (<a href="#st-3-4">3.4</a>) и AI-оркестратор (<a href="#st-4-7">4.7</a>) зависят от админки: им нужно место, где человек одобряет черновики (<a href="#g-hitl">HITL</a>). Как модули связаны «по данным», показано в схеме: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#matrix">матрица взаимодействия</a> и <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#arch">общая архитектура</a>.</p>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#decision">→ далее: Ключевое решение</a></p>
+<hr />
+<h2><a id="decision"></a>Ключевое решение: на чём строим</h2>
+<p>Это решение нужно принять <strong>первым</strong> (<a href="#st-0-3">шаг 0.3</a>): от него зависит, где будут жить страницы ст. 30, куда уходят заявки из форм, где хранятся пользователи для бота и откуда агент берёт данные.</p>
+<h3><a id="dec-options"></a>Три варианта</h3>
+<ul>
+<li><strong>А. Оставить статику.</strong> Сайт = набор готовых HTML-файлов (<a href="#g-static">статический сайт</a>), как сейчас в папке проекта. Формы — через внешний сервис форм (<a href="#g-formbackend">form backend</a>). Правки — руками в файлах.</li>
+<li><strong>Б. Вернуться на WordPress.</strong> Живой сайт и так работает на WordPress с темой <code>waldorf</code>. Добавляем страницы в админке WordPress, формы Contact Form 7 на сервере работают (❓ проверить, приходят ли письма на живом сайте сейчас), соцсети и бота — через плагины или n8n (<a href="#g-n8n">глоссарий: n8n</a>).</li>
+<li><strong>В. Новый стек.</strong> Публичный сайт генерируется заранее (<a href="#g-ssg">SSG</a>, например Astro) из <a href="#g-headless">headless CMS</a> или из своей админки; рядом — свой <a href="#g-backend">бэкенд</a> (API + база PostgreSQL) для бота, заявок, ролей, реестра документов и AI-агента. Это вариант из <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#stack">схемы: технологический стек</a> (.NET 8 + PostgreSQL + React/Astro).</li>
+</ul>
+<h3><a id="dec-compare"></a>Сравнение</h3>
+<table>
+<thead>
+<tr>
+<th>Критерий</th>
+<th>А. Статика</th>
+<th>Б. WordPress</th>
+<th>В. Новый стек</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Скорость первого результата</td>
+<td><strong>дни</strong></td>
+<td>дни (если есть доступ к wp-admin ❓)</td>
+<td>недели–месяцы</td>
+</tr>
+<tr>
+<td>Стоимость хостинга ⚠️</td>
+<td>почти 0 (статический хостинг)</td>
+<td>текущий хостинг [уточнить у школы]</td>
+<td>VPS €5–30/мес ⚠️</td>
+</tr>
+<tr>
+<td>Кто правит контент</td>
+<td>только разработчик</td>
+<td>администрация сама</td>
+<td>администрация сама (своя админка)</td>
+</tr>
+<tr>
+<td>Формы</td>
+<td>внешний сервис (<a href="#st-1-5">1.5</a>)</td>
+<td>Contact Form 7 работает на сервере</td>
+<td>свой endpoint <code>POST /api/public/leads</code></td>
+</tr>
+<tr>
+<td>Безопасность</td>
+<td>лучшая (нечего взламывать)</td>
+<td>нужны обновления, плагины, защита <code>xmlrpc.php</code></td>
+<td>ответственность на нас, но под контролем</td>
+</tr>
+<tr>
+<td>Журнал / бот / роли (потоки 2, 4)</td>
+<td>невозможно без бэкенда</td>
+<td>через плагины — слабо, данные детей в WP ⚠️</td>
+<td><strong>да</strong>, всё в одной системе</td>
+</tr>
+<tr>
+<td>AI-агент (поток 4)</td>
+<td>нет</td>
+<td>частично (через WP REST API)</td>
+<td><strong>да</strong>, единый <a href="#g-toolregistry">реестр инструментов</a></td>
+</tr>
+<tr>
+<td>Реестр документов ст. 30 со сроками</td>
+<td>вручную</td>
+<td>вручную или плагин</td>
+<td><strong>да</strong> (<a href="#st-4-4">4.4</a>)</td>
+</tr>
+<tr>
+<td>Зависимость от одного человека</td>
+<td>высокая</td>
+<td>низкая</td>
+<td>средняя (нужна документация)</td>
+</tr>
+</tbody>
+</table>
+<h3><a id="dec-reco"></a>Рекомендация</h3>
+<p><strong>Двухскоростной путь:</strong></p>
+<ol>
+<li><strong>Сейчас (недели 1–4): вариант А как мост.</strong> На статической копии делаем раздел «Інформаційна відкритість», починяем формы внешним сервисом, обновляем новости (<a href="#st-1-4">шаги 1.4–1.7</a>). Если у школы есть доступ к wp-admin живого сайта, те же страницы и PDF можно <strong>сразу</strong> продублировать в WordPress — закон начнёт выполняться ещё до запуска редизайна (<a href="#st-1-9">1.9</a>).</li>
+<li><strong>Дальше (месяцы 2–6): вариант В.</strong> Строим свою админку и бэкенд (<a href="#s4">поток 4</a>), переносим туда контент из <a href="file:///D:/Site/waldorf-stupeni-school-redesign/catalog.json" target="_blank" rel="noopener">catalog.json</a> и <a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-json/index.html" target="_blank" rel="noopener">wp-json</a>, подключаем бота (<a href="#st-2-7">2.7</a>) и соцсети (<a href="#st-3-6">3.6</a>). Статика остаётся «выходом» публичного сайта (SSG), только собирается уже из админки.</li>
+<li><strong>Вариант Б</strong> — запасной: если разработка В откладывается, или школе важнее всего «правлю сам и сразу». Тогда WordPress можно использовать как headless CMS — см. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#stack-lowcode">схема: альтернатива на WordPress</a>; но журнал, согласия и роли всё равно лучше держать отдельно.</li>
+</ol>
+<h3><a id="dec-impact"></a>Как каждый поток зависит от решения</h3>
+<div class="mermaid-wrap"><pre class="mermaid">flowchart TB
+  Q{&quot;Шаг 0.3:&lt;br/&gt;на чём строим?&quot;}:::key
+  Q --&gt;|&quot;А. Статика&quot;| A[&quot;Поток 1: да, быстро&lt;br/&gt;Поток 2: только Мрія, без бота&lt;br/&gt;Поток 3: вручную + Business Suite&lt;br/&gt;Поток 4: нет&quot;]
+  Q --&gt;|&quot;Б. WordPress&quot;| B[&quot;Поток 1: да, правит школа&lt;br/&gt;Поток 2: Мрія + бот на n8n&lt;br/&gt;Поток 3: плагины / n8n&lt;br/&gt;Поток 4: частично&quot;]
+  Q --&gt;|&quot;В. Новый стек&quot;| C[&quot;Поток 1: да + реестр сроков&lt;br/&gt;Поток 2: Мрія + свой бот, данные у нас&lt;br/&gt;Поток 3: агент + HITL + UTM&lt;br/&gt;Поток 4: полностью&quot;]
+  A -. &quot;мост на 1–2 месяца&quot; .-&gt; C
+  classDef key fill:#f3c9a8,stroke:#b5562b,stroke-width:2px
+</pre></div>
+<table>
+<thead>
+<tr>
+<th>Поток</th>
+<th>А</th>
+<th>Б</th>
+<th>В (рекомендуем)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#s1">1. Ст. 30</a></td>
+<td>✅ quick win</td>
+<td>✅</td>
+<td>✅ + напоминания о сроках (<a href="#st-4-4">4.4</a>)</td>
+</tr>
+<tr>
+<td><a href="#s2">2. Журнал</a></td>
+<td>только «Мрія»</td>
+<td>«Мрія» + бот на n8n</td>
+<td>«Мрія» + свой бот (<a href="#st-2-7">2.7</a>), позже — свой журнал при необходимости (<a href="#st-2-10">2.10</a>)</td>
+</tr>
+<tr>
+<td><a href="#s3">3. Соцсети</a></td>
+<td>вручную</td>
+<td>частично</td>
+<td>агент + одобрение + расписание (<a href="#st-3-4">3.4</a>–<a href="#st-3-6">3.6</a>)</td>
+</tr>
+<tr>
+<td><a href="#s4">4. Админка</a></td>
+<td>✗</td>
+<td>частично</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3><a id="s0-steps"></a>Шаги 0.x — общая основа</h3>
+<p>Кто: <strong>С</strong> — Сергей (разработчик, организатор); <strong>Д</strong> — директор; <strong>А</strong> — адміністрація (заместитель, секретарь); <strong>Ю</strong> — юрист; <strong>В</strong> — вчителі; <strong>Р</strong> — редактор/SMM (человек, который ведёт соцсети); <strong>П</strong> — педагогічна рада (педсовет).</p>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Шаг</th>
+<th>Кто</th>
+<th>Вход</th>
+<th>Выход</th>
+<th>Зависимости / связи</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="st-0-1"></a>0.1</td>
+<td>Собрать доступы: домен, DNS, хостинг, wp-admin живого сайта, почта, Facebook/Instagram/TikTok, Google-аккаунт школы</td>
+<td>С + Д</td>
+<td>список ниже в <a href="#ch-access">чек-листе</a></td>
+<td>таблица доступов (в менеджере паролей, не в чате)</td>
+<td>нужно для <a href="#st-1-9">1.9</a>, <a href="#st-3-1">3.1</a></td>
+</tr>
+<tr>
+<td><a id="st-0-2"></a>0.2</td>
+<td>Превратить папку проекта в Git-репозиторий (приватный), первый коммит = «как есть»</td>
+<td>С</td>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/" target="_blank" rel="noopener">папка проекта</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/start.bat" target="_blank" rel="noopener">start.bat</a></td>
+<td>репозиторий, история правок</td>
+<td>основа для <a href="#st-1-4">1.4</a>, <a href="#st-4-2">4.2</a></td>
+</tr>
+<tr>
+<td><a id="st-0-3"></a>0.3</td>
+<td><strong>Решение по стеку</strong> (А / Б / В, см. <a href="#dec-compare">сравнение</a>)</td>
+<td>Д + С</td>
+<td>этот раздел</td>
+<td>короткий протокол решения</td>
+<td>влияет на все потоки (<a href="#dec-impact">схема зависимости</a>)</td>
+</tr>
+<tr>
+<td><a id="st-0-4"></a>0.4</td>
+<td>Назначить ответственных: за офіційний розділ сайту; за ОІС/журнал; за соцсети; за защиту персональных данных</td>
+<td>Д</td>
+<td>—</td>
+<td>приказ / распоряжение [уточнить у школы]</td>
+<td><a href="#st-1-10">1.10</a>, <a href="#st-2-4">2.4</a>, <a href="#st-3-5">3.5</a>, <a href="#st-2-9">2.9</a></td>
+</tr>
+<tr>
+<td><a id="st-0-5"></a>0.5</td>
+<td>Тестовая площадка (<a href="#g-staging">staging</a>) — закрытая копия сайта для показа администрации до публикации</td>
+<td>С</td>
+<td>0.2</td>
+<td>адрес вида <code>test.…</code> с паролем</td>
+<td><a href="#st-1-4">1.4</a>, <a href="#st-4-2">4.2</a></td>
+</tr>
+</tbody>
+</table>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#s1">→ далее: Поток 1. Ст. 30</a></p>
+<hr />
+<h2><a id="s1"></a>Поток 1. Обязательные разделы по ст. 30</h2>
+<p>Статья 30 Закона «Про освіту» (<a href="#g-art30">глоссарий: ст. 30</a>) требует от <strong>каждого</strong> заведения образования, в том числе частного, публиковать на сайте набор официальной информации. Хороший разбор — статья НУШ «<a href="https://nus.org.ua/2025/04/26/shho-maye-buty-na-sajti-shkoly/" target="_blank" rel="noopener">Що має бути на сайті школи?</a>». Для администрации уже подготовлена записка <a href="file:///D:/Site/waldorf-stupeni-school-redesign/Informaciyna-vidkrytist-sajt-Stupeni.md" target="_blank" rel="noopener">Informaciyna-vidkrytist-sajt-Stupeni.md</a>; полный чек-лист из 33 пунктов — в схеме: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#compliance">«Чек-лист ст. 30 + НУШ»</a>, устройство раздела — <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m1-openness">схема 1.5</a>.</p>
+<h3><a id="s1-goal"></a>Цель</h3>
+<p>Чтобы любой родитель, контролирующий орган или журналист за 2 клика нашёл на сайте все обязательные документы «Ступенів», а сайт снова был виден в поиске и принимал заявки.</p>
+<h3><a id="s1-result"></a>Результат (критерии готовности)</h3>
+<ul>
+<li class="task">☐ В главном меню есть пункт <strong>«Інформаційна відкритість»</strong> с 7 подразделами (как в записке, раздел 4).</li>
+<li class="task">☐ По каждой строке <a href="#s1-table">таблицы ст. 30</a> есть страница с <strong>текстом</strong> и, где нужно, <strong>PDF</strong>, плюс дата «Оновлено: …»; для неприменимых пунктов — честная пометка «не застосовується, тому що …».</li>
+<li class="task">☐ Формы «Напишіть нам» и «Контакти» доставляют заявку (проверено 3 тестовыми письмами) и показывают согласие на обработку данных (<a href="#st-1-5">1.5</a>).</li>
+<li class="task">☐ На сайте минимум 3 новости за текущий учебный год (<a href="#st-1-6">1.6</a>).</li>
+<li class="task">☐ Базовая доступность по WCAG пройдена (<a href="#st-1-7">1.7</a>): автоматическая проверка без критичных ошибок.</li>
+<li class="task">☐ После запуска: <code>noindex</code> снят, есть <code>sitemap.xml</code>, сайт в Google Search Console (<a href="#st-1-8">1.8</a>).</li>
+<li class="task">☐ Назначен ответственный и описан регламент «10 робочих днів» (<a href="#st-1-10">1.10</a>).</li>
+</ul>
+<h3><a id="s1-steps"></a>Шаги</h3>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Шаг</th>
+<th>Кто</th>
+<th>Вход</th>
+<th>Выход</th>
+<th>Зависимости / связи</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="st-1-1"></a>1.1</td>
+<td>Утвердить структуру раздела (7 подразделов) и адреса страниц</td>
+<td>Д + С</td>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/Informaciyna-vidkrytist-sajt-Stupeni.md" target="_blank" rel="noopener">записка</a>, раздел 4</td>
+<td>утверждённая карта раздела</td>
+<td><a href="#st-0-3">0.3</a>; схема <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m1-add">1.4 «новая карта сайта»</a></td>
+</tr>
+<tr>
+<td><a id="st-1-2"></a>1.2</td>
+<td>Собрать документы по <a href="#s1-table">таблице ниже</a> (PDF + текст)</td>
+<td>А</td>
+<td>таблица</td>
+<td>папка «ст. 30» с файлами и датами</td>
+<td><a href="#st-0-4">0.4</a>; всё — в <a href="#ch-docs">чек-листе</a></td>
+</tr>
+<tr>
+<td><a id="st-1-3"></a>1.3</td>
+<td>Юридически проверить применимость пунктов к частному заведению (харчування, кошторис, форми здобуття освіти, загальні збори)</td>
+<td>Ю + Д</td>
+<td>1.2</td>
+<td>список «обязательно / по условию / не применимо»</td>
+<td><a href="#questions">открытые вопросы</a></td>
+</tr>
+<tr>
+<td><a id="st-1-4"></a>1.4</td>
+<td><strong>Quick win:</strong> сверстать страницы раздела в статической копии в стиле темы <code>waldorf</code> (<a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-content/themes/waldorf/style.css" target="_blank" rel="noopener">style.css</a>), загрузить PDF</td>
+<td>С</td>
+<td>1.1, 1.2</td>
+<td>страницы на <a href="#st-0-5">тестовой площадке</a></td>
+<td><a href="#st-0-2">0.2</a>; позже переносится в админку (<a href="#st-1-11">1.11</a>)</td>
+</tr>
+<tr>
+<td><a id="st-1-5"></a>1.5</td>
+<td>Починить формы: временно — внешний сервис форм; потом — свой endpoint <code>POST /api/public/leads</code></td>
+<td>С</td>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/contacts/index.html" target="_blank" rel="noopener">contacts/</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-content/plugins/contact-form-7/includes/js/index.js" target="_blank" rel="noopener">CF7 index.js</a></td>
+<td>заявки приходят на почту школы, а позже — в <a href="#st-4-5">список заявок</a></td>
+<td><a href="#st-0-3">0.3</a>; <a href="#st-3-7">3.7</a> (UTM); схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#sc-lead">сценарий В</a></td>
+</tr>
+<tr>
+<td><a id="st-1-6"></a>1.6</td>
+<td>Обновить контент: 3–5 новостей 2025/26 (свято Михаїла, ліхтариків, набор в садочок), архив 2023 оставить; заполнить заглушки <a href="file:///D:/Site/waldorf-stupeni-school-redesign/about-us/waldorf-pedagogy/index.html" target="_blank" rel="noopener">«Вальдорфська педагогіка»</a> и <a href="file:///D:/Site/waldorf-stupeni-school-redesign/about-us/methodical-materials/index.html" target="_blank" rel="noopener">«Методичні матеріали»</a>; заменить «НВК» на «ліцей» в <a href="file:///D:/Site/waldorf-stupeni-school-redesign/about-us/rules/index.html" target="_blank" rel="noopener">«Правила школи»</a>; добавить реквизиты/кнопку и отчёт в <a href="file:///D:/Site/waldorf-stupeni-school-redesign/help-us/index.html" target="_blank" rel="noopener">«Допомогти нам»</a></td>
+<td>А + Р + С</td>
+<td>тексты от школы, фото с <a href="#st-3-2">согласиями</a>, реквизиты</td>
+<td>свежая лента <a href="file:///D:/Site/waldorf-stupeni-school-redesign/news/index.html" target="_blank" rel="noopener">«Новини»</a>, нет заглушек</td>
+<td>дальше ведётся по <a href="#st-3-3">контент-календарю 3.3</a></td>
+</tr>
+<tr>
+<td><a id="st-1-7"></a>1.7</td>
+<td>Доступность (<a href="#g-wcag">WCAG</a> 2.1, базовый уровень): alt-тексты фото, контраст, управление с клавиатуры, <code>lang=&quot;uk&quot;</code>, подписи к полям форм, карусели с паузой, PDF — текстовые, не сканы</td>
+<td>С</td>
+<td>страницы 1.4</td>
+<td>отчёт Lighthouse/axe без критичных ошибок</td>
+<td><a href="#st-1-2">1.2</a> (умови доступності для ООП)</td>
+</tr>
+<tr>
+<td><a id="st-1-8"></a>1.8</td>
+<td>SEO к запуску (<a href="#g-seo">SEO</a>): снять <code>noindex</code>, <code>robots.txt</code>, <code>sitemap.xml</code>, <a href="#g-redirect">301-редиректы</a> со старых адресов, починить ссылки <code>…/r/</code> из <a href="file:///D:/Site/waldorf-stupeni-school-redesign/mirror-report.json" target="_blank" rel="noopener">mirror-report.json</a>, подключить Google Search Console</td>
+<td>С</td>
+<td>1.4</td>
+<td>сайт индексируется</td>
+<td>только <strong>в момент запуска</strong> (<a href="#st-1-9">1.9</a>)</td>
+</tr>
+<tr>
+<td><a id="st-1-9"></a>1.9</td>
+<td>Публикация: либо запуск обновлённой статики на домене (<strong>без</strong> папки <code>_debug-header</code> и служебных .md), либо (если есть wp-admin) перенос правок темы и раздела на живой WordPress</td>
+<td>С + Д</td>
+<td>1.4–1.8, доступы <a href="#st-0-1">0.1</a></td>
+<td>раздел виден на waldorf-stupeni.school</td>
+<td>решение <a href="#st-0-3">0.3</a></td>
+</tr>
+<tr>
+<td><a id="st-1-10"></a>1.10</td>
+<td>Регламент обновления: кто, как часто, срок <strong>10 робочих днів</strong> после утверждения/изменения документа</td>
+<td>Д + А</td>
+<td><a href="#s1-table">таблица</a></td>
+<td>короткий регламент (1 страница)</td>
+<td>автоматизируется в <a href="#st-4-4">4.4</a></td>
+</tr>
+<tr>
+<td><a id="st-1-11"></a>1.11</td>
+<td>Перенести раздел в админку: документы как записи реестра с датой утверждения и сроком публикации</td>
+<td>С</td>
+<td><a href="#st-4-2">4.2</a>, <a href="#st-4-4">4.4</a></td>
+<td>школа обновляет сама</td>
+<td>схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m2-docs">реестр документов 2.6</a></td>
+</tr>
+</tbody>
+</table>
+<h4><a id="s1-table"></a>Таблица: пункт ст. 30 → документ → страница → кто обновляет → срок</h4>
+<p>Адрес раздела (предложение): <code>/informatsiyna-vidkrytist/</code> с подразделами <code>dokumenty</code>, <code>upravlinnya-ta-kadry</code>, <code>osvitniy-protses</code>, <code>vstup-i-vartist</code>, <code>bezpeka-ta-inkluziya</code>, <code>zvitnist</code>, <code>harchuvannya</code>. «Срок» — максимальное время на публикацию после утверждения или изменения документа.</p>
+<table>
+<thead>
+<tr>
+<th>Пункт (по ст. 30 / НУШ)</th>
+<th>Что даёт школа</th>
+<th>Страница / формат</th>
+<th>Кто обновляет</th>
+<th>Срок</th>
+<th>Применимо к «Ступеням»</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Статут</td>
+<td>действующая редакция статуту</td>
+<td><code>dokumenty</code> · PDF + краткое описание</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅ обязательно</td>
+</tr>
+<tr>
+<td>Ліцензії</td>
+<td>ліцензія на ЗЗСО и на дошкільну освіту [номера — уточнить у школы]</td>
+<td><code>dokumenty</code> · PDF/скрин из реестра + текст</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Сертифікати акредитації освітніх програм</td>
+<td>сертификаты (если есть)</td>
+<td><code>dokumenty</code> · PDF</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>❓ если есть</td>
+</tr>
+<tr>
+<td>Структура та органи управління</td>
+<td>схема: засновник, директор, педрада, другие органы</td>
+<td><code>upravlinnya-ta-kadry</code> · текст + схема</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Кадровий склад (за ліцензійними умовами)</td>
+<td>список педагогов: посада, кваліфікація, освіта</td>
+<td><code>upravlinnya-ta-kadry</code> · таблица (без лишних персональных данных)</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅ (на главной 24 человека с должностью и стажем, без квалификации и администрации — дополнить)</td>
+</tr>
+<tr>
+<td>Освітні програми і перелік компонентів</td>
+<td>освітня програма школы (вальдорфская программа утверждена ДСЯО — см. <a href="#sources">источники</a>)</td>
+<td><code>osvitniy-protses</code> · PDF + текст</td>
+<td>Д</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Територія обслуговування</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>⚪ в основном для комунальных; указать «не застосовується» ❓ Ю</td>
+</tr>
+<tr>
+<td>Ліцензований обсяг і фактична кількість учнів</td>
+<td>цифры [уточнить у школы]</td>
+<td><code>osvitniy-protses</code> · текст/таблица</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅ (сейчас только наполняемость групп садочка)</td>
+</tr>
+<tr>
+<td>Мова освітнього процесу</td>
+<td>заявление: «українська» [уточнить]</td>
+<td><code>osvitniy-protses</code> · текст</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Вакансії</td>
+<td>список вакансий / «вакансій немає»</td>
+<td><code>upravlinnya-ta-kadry</code> · текст</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Матеріально-технічне забезпечення</td>
+<td>перечень по ліцензійним умовам</td>
+<td><code>osvitniy-protses</code> · текст/PDF</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Результати моніторингу якості освіти</td>
+<td>итоги внутреннего моніторингу</td>
+<td><code>zvitnist</code> · PDF</td>
+<td>Д</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Річний звіт про діяльність</td>
+<td>річний звіт директора</td>
+<td><code>zvitnist</code> · PDF + краткий текст</td>
+<td>Д</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Правила прийому</td>
+<td>для школы <strong>и</strong> для садочка</td>
+<td><code>vstup-i-vartist</code> · текст + PDF</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅ (частично есть только для садочка — <a href="file:///D:/Site/waldorf-stupeni-school-redesign/school-structure/kindergarten/index.html" target="_blank" rel="noopener">страница садочка</a>)</td>
+</tr>
+<tr>
+<td>Умови доступності для осіб з ООП</td>
+<td>описание корекційно-лікувального блоку, условия, доступность здания</td>
+<td><code>bezpeka-ta-inkluziya</code> · текст</td>
+<td>Д</td>
+<td>10 р. д.</td>
+<td>✅ (есть <a href="file:///D:/Site/waldorf-stupeni-school-redesign/school-structure/correctional-treatment-block/index.html" target="_blank" rel="noopener">страница блока</a> — дополнить)</td>
+</tr>
+<tr>
+<td>Плата за навчання</td>
+<td>размер плати, порядок оплаты [уточнить у школы]</td>
+<td><code>vstup-i-vartist</code> · текст + PDF наказу</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Додаткові послуги і вартість</td>
+<td>перечень, цена, порядок надання/оплати</td>
+<td><code>vstup-i-vartist</code> · таблица</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Правила поведінки</td>
+<td>правила поведінки здобувача освіти</td>
+<td><code>bezpeka-ta-inkluziya</code> · текст; сверить с <a href="file:///D:/Site/waldorf-stupeni-school-redesign/about-us/rules/index.html" target="_blank" rel="noopener">«Правила школи»</a></td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Антибулінг: план заходів</td>
+<td>план запобігання та протидії булінгу</td>
+<td><code>bezpeka-ta-inkluziya</code> · PDF</td>
+<td>Д</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Антибулінг: порядок подання заяв (конфіденційно)</td>
+<td>порядок + контакт/форма для заявки</td>
+<td><code>bezpeka-ta-inkluziya</code> · текст + <strong>отдельная</strong> конфиденциальная форма → только директору</td>
+<td>Д + С</td>
+<td>10 р. д.</td>
+<td>✅ (форма — <a href="#st-1-5">1.5</a>)</td>
+</tr>
+<tr>
+<td>Антибулінг: порядок реагування</td>
+<td>порядок реагування на доведені випадки</td>
+<td><code>bezpeka-ta-inkluziya</code> · PDF</td>
+<td>Д</td>
+<td>10 р. д.</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Форми здобуття освіти</td>
+<td>честно: какие формы школа реально предлагает (очна, дистанційна, екстернат, сімейна, педагогічний патронаж)</td>
+<td><code>osvitniy-protses</code> · текст</td>
+<td>Д</td>
+<td>10 р. д.</td>
+<td>✅ ⚠️ на главной и в «Про нас» сказано, что школа против дистанционной освіти; в военное время (тревоги, укрытия) это может пугать родителей — формулировку согласовать</td>
+</tr>
+<tr>
+<td>Результати інституційного аудиту</td>
+<td>результаты (если проводился)</td>
+<td><code>zvitnist</code> · PDF</td>
+<td>Д</td>
+<td><strong>3 р. д.</strong></td>
+<td>❓ по условию</td>
+</tr>
+<tr>
+<td>Громадська акредитація</td>
+<td>информация (если была)</td>
+<td><code>zvitnist</code> · текст</td>
+<td>Д</td>
+<td>10 р. д.</td>
+<td>❓ по условию</td>
+</tr>
+<tr>
+<td>Загальні збори (конференція) колективу</td>
+<td>информация о собраниях</td>
+<td><code>upravlinnya-ta-kadry</code> · текст</td>
+<td>А</td>
+<td>10 р. д.</td>
+<td>❓ по условию</td>
+</tr>
+<tr>
+<td>Харчування</td>
+<td>щоденне меню + організація-постачальник</td>
+<td><code>harchuvannya</code> · ежедневно текст/PDF</td>
+<td>А</td>
+<td>ежедневно</td>
+<td>❓ если в школе есть питание</td>
+</tr>
+<tr>
+<td>Кошторис, фінзвіт, благодійна допомога</td>
+<td>отчёт о поступлениях и использовании средств</td>
+<td><code>zvitnist</code> · PDF/таблица</td>
+<td>Д + бухгалтер</td>
+<td>10 р. д.</td>
+<td>❓ обязательно при публичных средствах; <strong>рекомендуем</strong> отчёт о пожертвованиях в любом случае — из-за кнопки «Підтримайте нас» и <a href="file:///D:/Site/waldorf-stupeni-school-redesign/help-us/index.html" target="_blank" rel="noopener">«Допомогти нам»</a></td>
+</tr>
+<tr>
+<td>Жеребкування, списки зарахованих, конкурс на керівника</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>⚪ в основном для державних/комунальних</td>
+</tr>
+</tbody>
+</table>
+<p>Как это потом автоматизируется: каждая строка становится записью реестра в админке (<a href="#st-4-4">4.4</a>), а агент напоминает о сроках (<a href="#st-4-7">4.7</a>). Что именно хранится — <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m2-docs">схема 2.6</a>.</p>
+<div class="mermaid-wrap"><pre class="mermaid">flowchart LR
+  A[&quot;Документ утверждён&lt;br/&gt;или изменён&quot;] --&gt; B[&quot;Админ. загружает PDF&lt;br/&gt;+ текст + дату&quot;]
+  B --&gt; C{&quot;Проверка&lt;br/&gt;директором&quot;}
+  C --&gt;|&quot;ок&quot;| D[&quot;Публикация на сайте&lt;br/&gt;«Оновлено: дата»&quot;]
+  C --&gt;|&quot;правки&quot;| B
+  A -. &quot;таймер 10 р. д.&lt;br/&gt;(3 р. д. для аудиту)&quot; .-&gt; R[&quot;Напоминание агента&lt;br/&gt;шаг 4.4&quot;]
+  R -.-&gt; B
+</pre></div>
+<h4><a id="s1-forms"></a>Формы: что выбрать</h4>
+<table>
+<thead>
+<tr>
+<th>Вариант</th>
+<th>Как</th>
+<th>Плюсы</th>
+<th>Минусы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Сервис форм (например, Formspree, Web3Forms — ⚠️ тарифы и лимиты проверить)</td>
+<td>в HTML формы меняем <code>action</code> на адрес сервиса</td>
+<td>работает за час, без сервера</td>
+<td>данные родителей у третьей стороны, лимиты бесплатного тарифа</td>
+</tr>
+<tr>
+<td>Contact Form 7 на живом WordPress</td>
+<td>оставить как есть</td>
+<td>ничего не делать</td>
+<td>работает только с WordPress-сервером</td>
+</tr>
+<tr>
+<td><strong>Свой endpoint</strong> <code>POST /api/public/leads</code></td>
+<td>бэкенд из <a href="#s4">потока 4</a></td>
+<td>согласие, UTM, антиспам, заявка сразу в <a href="#st-4-5">CRM-список</a></td>
+<td>нужен бэкенд</td>
+</tr>
+</tbody>
+</table>
+<p>Рекомендация: сервис форм как мост → свой endpoint после <a href="#st-4-5">4.5</a>. В любой форме: чекбокс согласия с коротким текстом и ссылкой на политику конфиденциальности (<a href="#g-pdn">ПД</a>), скрытые поля <a href="#g-utm">UTM</a>.</p>
+<h3><a id="s1-stages"></a>Порядок / этапы</h3>
+<ol>
+<li><strong>Н01–Н02:</strong> <a href="#st-1-1">1.1</a>, начало <a href="#st-1-2">1.2</a> (документы первой очереди из записки: статут, ліцензії, правила прийому, вартість, антибулінг, форми здобуття освіти, освітні програми), <a href="#st-1-5">1.5</a> через сервис форм.</li>
+<li><strong>Н03–Н05:</strong> <a href="#st-1-3">1.3</a>, <a href="#st-1-4">1.4</a> на тестовой площадке, <a href="#st-1-6">1.6</a>, <a href="#st-1-7">1.7</a>. Показ администрации.</li>
+<li><strong>Н06–Н07:</strong> <a href="#st-1-9">1.9</a> публикация (по решению — на статике или в WordPress), <a href="#st-1-10">1.10</a> регламент.</li>
+<li><strong>При запуске редизайна:</strong> <a href="#st-1-8">1.8</a> (снять <code>noindex</code> — только когда контент актуален!).</li>
+<li><strong>После админки:</strong> <a href="#st-1-11">1.11</a>.</li>
+</ol>
+<h3><a id="s1-school"></a>Что нужно от команды школы</h3>
+<ul>
+<li><strong>Документы:</strong> все строки <a href="#s1-table">таблицы</a> со статусом ✅; по ❓ — ответ «есть / нет / не применимо». Сводно — <a href="#ch-docs">чек-лист: документы</a>.</li>
+<li><strong>Решения:</strong> формулировка про формы здобуття освіти; публиковать ли отчёт о пожертвованиях; какие фото учителей и данные о кадрах можно показывать.</li>
+<li><strong>Люди:</strong> ответственный за офіційний розділ (<a href="#st-0-4">0.4</a>); юрист на 1–2 часа (<a href="#st-1-3">1.3</a>).</li>
+<li><strong>Доступы:</strong> домен/хостинг/wp-admin (<a href="#st-0-1">0.1</a>); почтовый ящик, куда идут заявки.</li>
+<li><strong>Согласия:</strong> письменное согласие учителей на публикацию фото и данных в «кадровому складі» (если сверх минимума по закону).</li>
+</ul>
+<h3><a id="s1-tech"></a>Технические требования</h3>
+<ul>
+<li>Страницы — HTML в стиле темы <code>waldorf</code>; каждый документ: текст на странице + PDF (текстовый, с возможностью поиска), имя файла латиницей, дата оновлення.</li>
+<li>Адреса стабильные (не менять после публикации), меню на мобильных — в 1 уровень.</li>
+<li>Формы: HTTPS, согласие, антиспам (reCAPTCHA уже используется в CF7 — либо honeypot-поле), уведомление на почту школы.</li>
+<li>Доступность — <a href="#g-wcag">WCAG</a> 2.1 AA как ориентир; проверка Lighthouse/axe.</li>
+<li>SEO — <code>sitemap.xml</code>, <code>robots.txt</code>, 301 со старых адресов WordPress (slug из <a href="file:///D:/Site/waldorf-stupeni-school-redesign/catalog.json" target="_blank" rel="noopener">catalog.json</a>), Open Graph-картинки для соцсетей (<a href="#s3">поток 3</a>).</li>
+</ul>
+<h3><a id="s1-effort"></a>Оценка сложности</h3>
+<p><strong>Средняя.</strong> ⚠️ Оценка: <strong>10–18 чел.-дней</strong> разработчика (quick win — 5–8, запуск и SEO — 3–5, перенос в админку — 2–5). Основной риск по срокам — сбор документов (<a href="#st-1-2">1.2</a>), это время школы, а не разработчика.</p>
+<h3><a id="s1-risks"></a>Риски</h3>
+<table>
+<thead>
+<tr>
+<th>Риск</th>
+<th>Что делаем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>документы готовятся неделями</td>
+<td>публикуем по мере готовности, начиная с первой очереди; в реестре видно, чего не хватает</td>
+</tr>
+<tr>
+<td>в PDF попадают лишние персональные данные (подписи, паспортные данные)</td>
+<td>проверка перед публикацией (<a href="#st-1-3">1.3</a>), закрашивание</td>
+</tr>
+<tr>
+<td>сняли <code>noindex</code> раньше времени — Google проиндексировал старые новости и пустые страницы</td>
+<td><code>noindex</code> снимаем только на <a href="#st-1-8">1.8</a></td>
+</tr>
+<tr>
+<td>формулировка про дистанционное обучение противоречит фактическим формам</td>
+<td>согласовать с директором и юристом</td>
+</tr>
+<tr>
+<td>сервис форм перестанет быть бесплатным</td>
+<td>мост на 1–2 месяца, затем свой endpoint (<a href="#st-4-5">4.5</a>)</td>
+</tr>
+<tr>
+<td>статика и живой WordPress расходятся</td>
+<td>один источник правды: после <a href="#st-0-3">0.3</a> правим только в одном месте</td>
+</tr>
+</tbody>
+</table>
+<p>Подробнее о рисках публичного сайта — <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m1-risks">схема 1.12</a>.</p>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#s2">→ далее: Поток 2. Журнал</a></p>
+<hr />
+<h2><a id="s2"></a>Поток 2. Электронный журнал и учёт</h2>
+<p>Здесь основа — исследование <code>research-mriia.md</code> (6 октября 2026, ссылки на источники — в разделе <a href="#sources">Источники</a>). Архитектура модуля журнала описана в схеме: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#mod-journal">3. Электронный журнал + «Мрія»</a> и <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m3-mriia">3.9 Интеграция с «Мрією»</a>.</p>
+<p><strong>Ключевые факты (✅ проверено в исследовании):</strong></p>
+<ul>
+<li><a href="#g-mriia">«Мрія»</a> — бесплатная (0 грн, Постанова КМУ № 177, п. 4 и 20) и <strong>добровольная</strong> государственная система МОН и Минцифры: веб-портал для учителей (school.mriia.gov.ua) + приложение для учеников, родителей, учителей. Частные школы подключаться могут.</li>
+<li>Условие: школа работает в <a href="#g-aikom">АІКОМ</a> 2.0, данные о классах и учениках актуальны. «Ступені» в АІКОМ уже есть: <strong>№ 23389</strong>, приватний ліцей I–III ступенів с дошкольным отделением (там же указано 27 учителей). ❓ Актуальность классов/учеников — проверить (<a href="#st-2-2">2.2</a>).</li>
+<li><strong>Публичного API у «Мрії» нет.</strong> Другая система (<a href="#g-ois">ОІС</a>) обменивается с ней данными только через договор с ДП «ДІЯ»; сейчас подключены только <strong>Human школа</strong> и <strong>Eddy</strong>. Своя система одной школы почти наверняка не подключится ⚠️.</li>
+<li>Электронный журнал <strong>не обязателен</strong> (позиция МОН, сентябрь 2025). Если вести свой — он должен соответствовать <strong>наказу МОН № 707</strong> (экспорт pdf/csv/xlsx, подпись директора <a href="#g-kep">КЕП</a> в конце года, ответственный за ОІС, передача статистики в АІКОМ).</li>
+<li><strong>Наказ МОН № 722</strong> (04.05.2026, 1–9 классы с 2026/27): 1–2 классы — только вербальная шкала; 3–4 — формувальне словесно, итог — уровневое (П/С/Д/В); 5–12 — 12-балльная. Школа может ввести свою шкалу с правилами перевода. <strong>Оценка — конфиденциальная информация</strong>: только педагоги, ученик и его родители. → <strong>Никаких оценок в групповых чатах.</strong></li>
+<li>Telegram-бот бесплатный; Viber-бот с 05.02.2024 — только по заявке, <strong>€115/мес</strong> + оплата каждого сообщения, которое бот отправляет первым.</li>
+</ul>
+<h3><a id="s2-goal"></a>Цель</h3>
+<p>Учителя ведут учёт (оценки, в том числе <a href="#g-formative">формувальне</a> и описательное оценивание, <a href="#g-epoch">епохи</a>, посещаемость, расписание, домашние задания) <strong>в одном месте без двойного ввода</strong>, а родители вовремя и в удобном канале получают то, что им нужно знать, — без нарушения приватности детей.</p>
+<h3><a id="s2-result"></a>Результат (критерии готовности)</h3>
+<ul>
+<li class="task">☐ Педрада приняла решение о системе журнала и правилах вальдорфского оценивания (как характеристики соотносятся со шкалами наказу 722) (<a href="#st-2-3">2.3</a>).</li>
+<li class="task">☐ Пилот в «Мрії»: 1–2 класса, один семестр (или одна эпоха), учителя ставят оценки и «Н», родители видят их в приложении (<a href="#st-2-5">2.5</a>).</li>
+<li class="task">☐ Telegram-бот: родитель подключается по личному коду, даёт согласие, получает объявления класса/школы; есть <code>/stop</code> и тихие часы (<a href="#st-2-7">2.7</a>, <a href="#st-2-8">2.8</a>).</li>
+<li class="task">☐ Ведётся журнал согласий; родители предупреждены, что Telegram — зарубежный сервис (<a href="#st-2-9">2.9</a>).</li>
+<li class="task">☐ Принято решение о масштабировании или плане Б (<a href="#st-2-10">2.10</a>).</li>
+</ul>
+<h4><a id="s2-interfaces"></a>Интерфейсы: кто что видит</h4>
+<table>
+<thead>
+<tr>
+<th>Роль</th>
+<th>Оценки и характеристики</th>
+<th>Посещаемость</th>
+<th>Расписание</th>
+<th>Домашние задания</th>
+<th>Канал</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Вчитель</strong> (предметник)</td>
+<td>ставит в своих классах; «олівчиком» — промежуточные; комментарии</td>
+<td>отмечает «Н»</td>
+<td>видит своё</td>
+<td>задаёт, проверяет (сдача онлайн — с 2026/27 поэтапно)</td>
+<td>портал «Мрії»</td>
+</tr>
+<tr>
+<td><strong>Класний керівник</strong> (<a href="#g-class-teacher">глоссарий</a>)</td>
+<td>видит все предметы класса; итог семестра «Повідомити результати»; годовая характеристика ❓</td>
+<td>видит, получает записки об отсутствии</td>
+<td>—</td>
+<td>—</td>
+<td>портал «Мрії» + админка (<a href="#st-4-3">4.3</a>) для объявлений</td>
+</tr>
+<tr>
+<td><strong>Батьки</strong></td>
+<td>только своего ребёнка; табель в «Портфоліо»</td>
+<td>видят; подают записку об отсутствии онлайн</td>
+<td>видят</td>
+<td>видят</td>
+<td>приложение «Мрія» (push) + наш Telegram-бот (объявления)</td>
+</tr>
+<tr>
+<td><strong>Учень</strong></td>
+<td>свои результаты</td>
+<td>—</td>
+<td>видит</td>
+<td>видит, сдаёт</td>
+<td>приложение «Мрія»</td>
+</tr>
+<tr>
+<td><strong>Адміністрація</strong></td>
+<td>всё; сводки</td>
+<td>всё</td>
+<td>составляет (конструктор, с 2026/27 — автоматически)</td>
+<td>—</td>
+<td>портал «Мрії» + админка</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Вальдорфская специфика:</strong> эпохальное обучение (главный урок 3–4 недели по одной теме), развёрнутые словесные характеристики, отсутствие оценок в младших классах. ⚠️ Можно ли хранить в «Мрії» длинную годовую характеристику и свою шкалу — публично не описано → вопрос №4 для звонка (<a href="#st-2-1">2.1</a>). Если нельзя — характеристики храним в своей админке (<a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m3-api">схема: сущность Characteristic</a>), родитель читает их в личном кабинете.</p>
+<h4><a id="s2-compare"></a>Сравнение вариантов A / B / C</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>A. Подключиться к «Мрії»</strong></th>
+<th><strong>B. Готовая ОІС, синхронизированная с «Мрією»</strong> (Human, Eddy)</th>
+<th><strong>C. Свой журнал</strong> (+ экспорт)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Стоимость ✅/⚠️</td>
+<td>0 грн</td>
+<td>Human — 36 грн/мес с НДС за пользователя (⚠️ кто «пользователь» — уточнить); Eddy — для частных не опубликовано</td>
+<td>хостинг €5–30/мес ⚠️ + время разработчика</td>
+</tr>
+<tr>
+<td>Трудозатраты ⚠️</td>
+<td>несколько недель (подключение, обучение)</td>
+<td>2–4 недели внедрения</td>
+<td>MVP 250–500 ч (≈ 30–60 чел.-дней), полная 600–1000+ ч</td>
+</tr>
+<tr>
+<td>Вальдорфские характеристики</td>
+<td>❓ уточнить</td>
+<td>Human: вербальное оценивание, заметки класного керівника ✅</td>
+<td>✅ полностью под себя</td>
+</tr>
+<tr>
+<td>Telegram/Viber</td>
+<td>❌ только push и чаты на Signal</td>
+<td>⚠️ не заявлено</td>
+<td>✅ свой бот</td>
+</tr>
+<tr>
+<td>Официальный журнал (наказ 707)</td>
+<td>✅</td>
+<td>✅</td>
+<td>только если выполнить все требования 707 ⚠️</td>
+</tr>
+<tr>
+<td>Связь с «Мрією»</td>
+<td>— (это она)</td>
+<td>✅ двусторонняя синхронизация</td>
+<td>❌ (подключение как ОІС для одной школы нереально ⚠️)</td>
+</tr>
+<tr>
+<td>Риски</td>
+<td>вход родителей через BankID/Дія.Підпис и РНОКПП — у иностранцев проблема</td>
+<td>платно, зависимость от вендора</td>
+<td>безопасность, поддержка, КЕП, АІКОМ — на нас</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Рекомендация — гибрид:</strong> <strong>A</strong> как официальный журнал (сначала пилот) <strong>+ свой Telegram-бот</strong> для вальдорфских объявлений, расписания праздников, напоминаний и (при необходимости) уведомлений «есть новая характеристика — читайте в кабинете». <strong>B</strong> — если «Мрія» не подойдёт под вальдорфское оценивание, а платить школа готова. <strong>C</strong> — только если и A, и B не подходят, а уведомления об оценках в Telegram критичны; тогда журнал строим по требованиям наказа 707 и передаём статистику в АІКОМ вручную. Viber на старте <strong>не</strong> подключаем.</p>
+<h3><a id="s2-steps"></a>Шаги</h3>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Шаг</th>
+<th>Кто</th>
+<th>Вход</th>
+<th>Выход</th>
+<th>Зависимости / связи</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="st-2-1"></a>2.1</td>
+<td>Звонок в отдел привлечения школ «Мрії» (+380733032599, +380505759652, +380676025814, пн–пт 10–18) с <a href="#s2-call">вопросами</a></td>
+<td>Д + С</td>
+<td>список вопросов</td>
+<td>ответы письменно (email)</td>
+<td>ни от чего не зависит — <strong>можно в первую неделю</strong></td>
+</tr>
+<tr>
+<td><a id="st-2-2"></a>2.2</td>
+<td>Проверить данные в АІКОМ 2.0 (карточка № 23389): классы, ученики, учителя</td>
+<td>А</td>
+<td>доступ директора к АІКОМ</td>
+<td>данные актуальны</td>
+<td>условие для 2.4</td>
+</tr>
+<tr>
+<td><a id="st-2-3"></a>2.3</td>
+<td>Решение педради: система журнала (A/B/C), правила перевода вальдорфских характеристик в шкалы наказа 722, что считается «эпохой» в журнале</td>
+<td>П + Д</td>
+<td>ответы 2.1, <a href="#s2-compare">сравнение</a></td>
+<td>протокол педради</td>
+<td>связано с <a href="#st-1-2">1.2</a> (освітня програма)</td>
+</tr>
+<tr>
+<td><a id="st-2-4"></a>2.4</td>
+<td>Подать заявку на mriia.gov.ua/app → звонок-знакомство → заява-приєднання → обучение ответственных</td>
+<td>Д + ответственный за ОІС (<a href="#st-0-4">0.4</a>)</td>
+<td>2.2, 2.3</td>
+<td>школа подключена</td>
+<td>—</td>
+</tr>
+<tr>
+<td><a id="st-2-5"></a>2.5</td>
+<td>Пилот: 1–2 класса на семестр/эпоху; еженедельно 15 минут обратной связи от учителей</td>
+<td>В + С</td>
+<td>2.4</td>
+<td>отчёт пилота: что неудобно, сколько времени уходит</td>
+<td>влияет на <a href="#st-2-10">2.10</a></td>
+</tr>
+<tr>
+<td><a id="st-2-6"></a>2.6</td>
+<td>Инструкция для родителей: как войти в «Мрію» (BankID/Дія.Підпис, РНОКПП), как ребёнку до 14 лет подтвердить вход по QR; что делать родителям без РНОКПП</td>
+<td>С + А</td>
+<td>2.4</td>
+<td>1-страничная памятка + новость на сайте</td>
+<td><a href="#st-1-6">1.6</a></td>
+</tr>
+<tr>
+<td><a id="st-2-7"></a>2.7</td>
+<td>Telegram-бот MVP (<a href="#g-botapi">Bot API</a>): подключение по <a href="#g-deeplink">deep link</a> <code>https://t.me/&lt;бот&gt;?start=&lt;код&gt;</code> (личный одноразовый код на пару «родитель–ребёнок», 7 дней), экран согласия «Погоджуюсь», привязка к классу; объявления класса/школы; <code>/stop</code></td>
+<td>С</td>
+<td>пользователи и классы из <a href="#st-4-3">4.3</a> (на старте — таблица от школы)</td>
+<td>работающий бот на 1–2 пилотных классах</td>
+<td><a href="#st-0-3">0.3</a>; схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#sc-attendance">сценарий Б</a></td>
+</tr>
+<tr>
+<td><a id="st-2-8"></a>2.8</td>
+<td>Правила уведомлений и тихие часы (<a href="#s2-notify">таблица</a>), еженедельный дайджест описательных оцениваний</td>
+<td>Д + С</td>
+<td>2.3</td>
+<td>настройки бота</td>
+<td><a href="#st-4-8">4.8</a> (рассылки — через одобрение)</td>
+</tr>
+<tr>
+<td><a id="st-2-9"></a>2.9</td>
+<td>Приватность: текст согласия, журнал согласий, уведомление о передаче данных за границу (Telegram), оценка рисков (<a href="#g-dpia">DPIA</a>), сроки хранения</td>
+<td>Ю + С</td>
+<td><a href="#g-pdn">Закон про захист ПД</a></td>
+<td>согласие + политика</td>
+<td><a href="#st-3-2">3.2</a> (фото), схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#privacy">приватность</a></td>
+</tr>
+<tr>
+<td><a id="st-2-10"></a>2.10</td>
+<td>Решение по итогам пилота: вся школа на «Мрії» / переход на B / свой журнал C; нужен ли Viber</td>
+<td>Д + П</td>
+<td>2.5, опрос родителей</td>
+<td>протокол</td>
+<td>при C — шаг 2.11</td>
+</tr>
+<tr>
+<td><a id="st-2-11"></a>2.11</td>
+<td>(Только при C) Свой журнал по наказу 707: экспорт pdf/csv/xlsx, подпись КЕП, передача статистики в АІКОМ, аудит</td>
+<td>С</td>
+<td>2.10</td>
+<td>MVP журнала</td>
+<td><a href="#st-4-6">4.6</a> (аудит), схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m3-diagram">модель данных</a></td>
+</tr>
+</tbody>
+</table>
+<h4><a id="s2-call"></a>Вопросы для звонка в «Мрію» (шаг 2.1)</h4>
+<ol>
+<li>Можно ли хранить словесные (развёрнутые) характеристики и <strong>собственную шкалу</strong> школы? Как отражаются эпохи?</li>
+<li>Какие именно push-уведомления получают родители (каждая оценка? каждая «Н»?), можно ли их настроить?</li>
+<li>Есть ли API <strong>только для чтения</strong> или вебхуки (<a href="#g-webhook">webhook</a>) о новых оценках/пропусках, чтобы школа сама дублировала уведомления в Telegram?</li>
+<li>Можно ли выгрузить свои данные (экспорт журнала в xlsx/csv/pdf)?</li>
+<li>Есть ли порядок подключения ОІС и технические требования (Трембіта, КСЗИ)? Может ли подключиться ОІС одной школы?</li>
+<li>Как быть с родителями без РНОКПП (иностранцы)?</li>
+<li>Есть ли версия для садочка (ЗДО — пилот) и можно ли «Ступеням» в него войти?</li>
+</ol>
+<h4><a id="s2-bot"></a>Как родитель подключается к боту</h4>
+<div class="mermaid-wrap"><pre class="mermaid">sequenceDiagram
+  autonumber
+  participant A as Адміністрація
+  participant P as Батьки
+  participant T as Telegram
+  participant B as Наш бот (бэкенд)
+  A-&gt;&gt;B: создать код для пары «родитель–ребёнок» (7 дней)
+  B--&gt;&gt;A: ссылка t.me/бот?start=код
+  A-&gt;&gt;P: лично: распечатка или email
+  P-&gt;&gt;T: открыть ссылку
+  T-&gt;&gt;B: /start код
+  B-&gt;&gt;P: текст согласия + кнопка «Погоджуюсь»
+  P-&gt;&gt;B: Погоджуюсь
+  B-&gt;&gt;B: сохранить chat_id, запись в журнал согласий
+  B--&gt;&gt;P: «Підключено: клас [N]. /stop — відписатися»
+</pre></div>
+<p>Viber-аналог: <code>viber://pa?chatURI=&lt;бот&gt;&amp;context=&lt;код&gt;</code> ⚠️ проверить по документации Viber REST Bot API. Включаем только если родители массово попросят: оценка ⚠️ ≈ €115 + €60–90 в месяц при одной вечерней сводке.</p>
+<h4><a id="s2-notify"></a>Правила уведомлений</h4>
+<p>Время — по Киеву. <strong>Тихие часы: 21:00–08:00</strong> и выходные (кроме срочного).</p>
+<table>
+<thead>
+<tr>
+<th>Что</th>
+<th>Канал</th>
+<th>Когда</th>
+<th>Тихие часы</th>
+<th>Содержание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Объявление школы (свято, ярмарок, собрание)</td>
+<td>бот: всем подписанным школы/класса</td>
+<td>09:00–20:00, через <a href="#st-4-8">одобрение</a></td>
+<td>соблюдаются</td>
+<td>текст + ссылка на сайт</td>
+</tr>
+<tr>
+<td>Изменение расписания, отмена занятий</td>
+<td>бот: класс</td>
+<td>сразу после подтверждения</td>
+<td>соблюдаются, кроме «завтра с утра»</td>
+<td>коротко + что делать</td>
+</tr>
+<tr>
+<td>Безопасность (повітряна тривога, эвакуация, срочное закрытие)</td>
+<td>бот: все</td>
+<td><strong>сразу</strong></td>
+<td><strong>игнорируются</strong></td>
+<td>только факт и инструкция</td>
+</tr>
+<tr>
+<td>Оценки, «Н» (если журнал — «Мрія»)</td>
+<td>push «Мрії»</td>
+<td>как в «Мрії»</td>
+<td>—</td>
+<td><strong>в нашем боте не дублируем</strong> (нет API)</td>
+</tr>
+<tr>
+<td>Описательное оценивание / новая характеристика</td>
+<td>бот: <strong>лично</strong> родителю</td>
+<td><strong>еженедельный дайджест</strong>, пятница 17:00</td>
+<td>соблюдаются</td>
+<td>«Вчитель додав відгук з [предмет/епоха]. Читайте в кабінеті» — <strong>без текста оценки</strong></td>
+</tr>
+<tr>
+<td>Пропуск без предупреждения (если свой журнал C)</td>
+<td>бот: лично</td>
+<td>один раз, в 12:00 того же дня</td>
+<td>соблюдаются</td>
+<td>«[Ім'я] сьогодні відсутній(я) на уроках. Якщо це помилка — напишіть класному керівнику»</td>
+</tr>
+<tr>
+<td>Напоминание об оплате [уточнить у школы, нужно ли]</td>
+<td>бот/email: лично</td>
+<td>1 раз в месяц</td>
+<td>соблюдаются</td>
+<td>без сумм в тексте ⚠️</td>
+</tr>
+<tr>
+<td>Напоминание учителю (заполнить журнал, характеристики)</td>
+<td>бот сотрудников</td>
+<td>будни 15:00</td>
+<td>соблюдаются</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Правило минимизации:</strong> в мессенджер — только то, что нужно, чтобы человек открыл защищённое место (кабинет или «Мрію»). Оценки и характеристики — <strong>никогда</strong> в групповые чаты (наказ 722). Подробнее о приватности — <a href="#st-2-9">2.9</a> и <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#privacy">схема: приватность</a>.</p>
+<h3><a id="s2-stages"></a>Порядок / этапы</h3>
+<ol>
+<li><strong>Н01–Н03:</strong> <a href="#st-2-1">2.1</a> звонок, <a href="#st-2-2">2.2</a> АІКОМ, <a href="#st-2-3">2.3</a> педрада.</li>
+<li><strong>Н04–Н06:</strong> <a href="#st-2-4">2.4</a> подключение, <a href="#st-2-6">2.6</a> памятка, <a href="#st-2-9">2.9</a> согласия.</li>
+<li><strong>Н07–Н18:</strong> <a href="#st-2-5">2.5</a> пилот (семестр); с Н13, когда готов каркас админки (<a href="#st-4-1">4.1</a>), — <a href="#st-2-7">2.7</a>–<a href="#st-2-8">2.8</a> бот в пилотных классах.</li>
+<li><strong>После пилота:</strong> <a href="#st-2-10">2.10</a> решение; при варианте C — <a href="#st-2-11">2.11</a>.</li>
+</ol>
+<h3><a id="s2-school"></a>Что нужно от команды школы</h3>
+<ul>
+<li><strong>Решения:</strong> педрада по системе журнала и шкалам (<a href="#st-2-3">2.3</a>); какие классы в пилоте; правила уведомлений (<a href="#st-2-8">2.8</a>).</li>
+<li><strong>Люди:</strong> ответственный за ОІС (<a href="#st-0-4">0.4</a>); 1–2 учителя-пилота; контактное лицо для родителей.</li>
+<li><strong>Доступы:</strong> директор — в АІКОМ 2.0; учителя — BankID/Дія.Підпис для входа в «Мрію».</li>
+<li><strong>Данные:</strong> список классов, учеников и родителей (для кодов бота) — <strong>в защищённом виде</strong>, не в мессенджере.</li>
+<li><strong>Согласия:</strong> письменное или электронное согласие родителей на обработку данных и на получение сообщений в Telegram (<a href="#st-2-9">2.9</a>). Сводно — <a href="#ch-consent">чек-лист: согласия</a>.</li>
+</ul>
+<h3><a id="s2-tech"></a>Технические требования</h3>
+<ul>
+<li>Бот: Telegram Bot API, <a href="#g-webhook">вебхук</a> на наш бэкенд (HTTPS), лимиты — до 1 сообщения/сек в один чат, ≈30/сек при рассылке ✅; очередь исходящих (<a href="#g-outbox">outbox</a>) с повторами.</li>
+<li>Хранение: chat_id, привязка родитель–ребёнок–класс, журнал согласий, статус подписки; без оценок, если журнал в «Мрії».</li>
+<li>Доступ: <a href="#g-rbac">RBAC</a> — родитель видит только своего ребёнка; учитель — только свои классы (<a href="#st-4-1">4.1</a>).</li>
+<li>При варианте C: экспорт pdf/csv/xlsx, КЕП, бэкапы, журнал действий (<a href="#st-4-6">4.6</a>), передача статистики в АІКОМ.</li>
+</ul>
+<h3><a id="s2-effort"></a>Оценка сложности</h3>
+<ul>
+<li><strong>Гибрид (A + бот):</strong> <strong>средняя</strong>, ⚠️ <strong>12–25 чел.-дней</strong> (80–200 ч по оценке исследования): бот 6–10, памятки и согласия 2–4, сопровождение пилота 4–8, интеграция с админкой 2–4.</li>
+<li><strong>Вариант C (свой журнал):</strong> <strong>высокая</strong>, ⚠️ MVP 30–60 чел.-дней, полная версия 75–125+ чел.-дней.</li>
+</ul>
+<h3><a id="s2-risks"></a>Риски</h3>
+<table>
+<thead>
+<tr>
+<th>Риск</th>
+<th>Что делаем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«Мрія» не поддерживает вальдорфские характеристики</td>
+<td>храним характеристики у себя (<a href="#st-4-2">4.2</a>), в «Мрії» — только обязательные шкалы; или вариант B</td>
+</tr>
+<tr>
+<td>родители без РНОКПП/BankID не войдут в «Мрію»</td>
+<td>важное дублируем в бот/email; вопрос 6 на <a href="#s2-call">звонке</a></td>
+</tr>
+<tr>
+<td>двойной ввод (учитель пишет и в «Мрію», и у нас)</td>
+<td>в боте <strong>не</strong> дублируем оценки; свой журнал — только при C</td>
+</tr>
+<tr>
+<td>утечка оценок в групповые чаты</td>
+<td>правило <a href="#s2-notify">минимизации</a>, обучение учителей</td>
+</tr>
+<tr>
+<td>Viber дорог</td>
+<td>старт только с Telegram и email</td>
+</tr>
+<tr>
+<td>своя система не соответствует наказу 707</td>
+<td>при C — сверка требований с юристом/департаментом образования</td>
+</tr>
+</tbody>
+</table>
+<p>Подробнее — <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m3-risks">схема 3.10 «Риски»</a>.</p>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#s3">→ далее: Поток 3. Соцсети</a></p>
+<hr />
+<h2><a id="s3"></a>Поток 3. Соцсети</h2>
+<p>Как устроен агент рекламы — в схеме: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#mod-social">4. Агент рекламы в соцсетях</a> и <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#sc-fair">сценарий А: анонс ярмарки</a>. Здесь — как его внедрить.</p>
+<h3><a id="s3-goal"></a>Цель</h3>
+<p>Регулярно и без лишней нагрузки на учителей рассказывать о жизни школы в Facebook, Instagram, YouTube и TikTok, приводить новые семьи на сайт и <strong>не терять ни одной заявки</strong> — при этом защищая детей на фото.</p>
+<h3><a id="s3-result"></a>Результат (критерии готовности)</h3>
+<ul>
+<li class="task">☐ Есть контент-календарь на учебный год по «Ритму року» + школьные события (<a href="#st-3-3">3.3</a>).</li>
+<li class="task">☐ Агент готовит черновики постов на украинском, человек одобряет, публикация идёт по расписанию (<a href="#st-3-4">3.4</a>–<a href="#st-3-6">3.6</a>).</li>
+<li class="task">☐ На каждого ребёнка на фото есть согласие (или фото не публикуется) (<a href="#st-3-2">3.2</a>).</li>
+<li class="task">☐ Все ссылки из соцсетей помечены <a href="#g-utm">UTM</a>, заявки с сайта и из сообщений попадают в один список (<a href="#st-3-7">3.7</a>, <a href="#st-4-5">4.5</a>).</li>
+<li class="task">☐ Ежемесячный отчёт: охват, переходы, заявки (<a href="#st-3-8">3.8</a>).</li>
+</ul>
+<h3><a id="s3-steps"></a>Шаги</h3>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Шаг</th>
+<th>Кто</th>
+<th>Вход</th>
+<th>Выход</th>
+<th>Зависимости / связи</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="st-3-1"></a>3.1</td>
+<td>Инвентаризация аккаунтов: Facebook <code>waldorf.stupeni</code>, Instagram <code>waldorf.stupeni</code>, TikTok <code>@stupeni_school</code> (ссылки — в <a href="file:///D:/Site/waldorf-stupeni-school-redesign/index.html" target="_blank" rel="noopener">index.html</a>), YouTube ❓ нет на сайте. Перевести Instagram в профессиональный (бизнес) аккаунт, связать со страницей Facebook в Meta Business Suite</td>
+<td>Р + С</td>
+<td>доступы <a href="#st-0-1">0.1</a></td>
+<td>все аккаунты принадлежат школе (а не частному лицу), 2 администратора</td>
+<td>—</td>
+</tr>
+<tr>
+<td><a id="st-3-2"></a>3.2</td>
+<td>Политика фото детей: форма согласия родителей (сайт / соцсети / только внутри школы / нет), список «не фотографировать», правила (без фамилий, без лиц крупным планом без согласия, без геометок)</td>
+<td>Ю + Д + А</td>
+<td><a href="#g-pdn">Закон про захист ПД</a></td>
+<td>бланк согласия + отметка в базе (<a href="#st-4-3">4.3</a>)</td>
+<td><a href="#st-2-9">2.9</a>; <a href="#st-1-6">1.6</a></td>
+</tr>
+<tr>
+<td><a id="st-3-3"></a>3.3</td>
+<td>Контент-календарь: «Ритм року» с главной (Свято врожаю, св. Михаїла, ліхтариків, Різдвяна спіраль, св. Миколая, Різдвяна вистава, Масляна, 8 березня, Великдень, Олімпійські ігри, Останній дзвоник, День школи, Вечір старшокласників) + Різдвяний ярмарок, дні відкритих дверей, набір у садочок</td>
+<td>Р + А</td>
+<td><a href="file:///D:/Site/waldorf-stupeni-school-redesign/index.html" target="_blank" rel="noopener">главная</a> (блок «Ритм року»), <a href="file:///D:/Site/waldorf-stupeni-school-redesign/catalog.json" target="_blank" rel="noopener">медиа «Feast of St. Michael», «Festival of lanterns»…</a></td>
+<td>таблица: дата [уточнить у школы], событие, анонс за 7–10 дней, отчёт через 1–2 дня</td>
+<td>основа для <a href="#st-1-6">1.6</a></td>
+</tr>
+<tr>
+<td><a id="st-3-4"></a>3.4</td>
+<td>Агент-черновик (<a href="#g-llm">LLM</a>): из новости сайта, заметки учителя или пункта календаря → пост для каждой сети (длина, хэштеги, призыв, UTM-ссылка); проверка фото по отметкам согласия</td>
+<td>С</td>
+<td>3.3, <a href="#st-4-2">4.2</a></td>
+<td>черновики в админке</td>
+<td><a href="#st-4-7">4.7</a> — тот же агент</td>
+</tr>
+<tr>
+<td><a id="st-3-5"></a>3.5</td>
+<td>Одобрение (<a href="#g-hitl">HITL</a>): редактор видит черновик, правит, нажимает «Одобрить и запланировать»; без одобрения ничего не уходит</td>
+<td>Р</td>
+<td>3.4</td>
+<td>одобренный пост с датой</td>
+<td><a href="#st-4-8">4.8</a></td>
+</tr>
+<tr>
+<td><a id="st-3-6"></a>3.6</td>
+<td>Публикация по расписанию через официальные API: Facebook/Instagram — <a href="#g-graphapi">Meta Graph API</a> (нужны бизнес-аккаунт, приложение Meta и его проверка — App Review ⚠️); YouTube — YouTube Data API (видео из непроверенного приложения публикуются как приватные до аудита ⚠️ проверить); TikTok — Content Posting API (до аудита приложения — только приватные публикации ⚠️ проверить). <strong>На старте</strong> — ручное планирование в Meta Business Suite</td>
+<td>С</td>
+<td>3.5, доступы 3.1</td>
+<td>посты выходят по расписанию</td>
+<td><a href="#st-0-3">0.3</a> (без бэкенда — только вручную)</td>
+</tr>
+<tr>
+<td><a id="st-3-7"></a>3.7</td>
+<td>Заявки: UTM-ссылки на сайт → форма (<a href="#st-1-5">1.5</a>) → список заявок в админке (<a href="#st-4-5">4.5</a>); автоответ в личные сообщения Instagram/Facebook со ссылкой на форму (Messenger/Instagram Messaging API, окно 24 часа после сообщения человека ⚠️ проверить)</td>
+<td>С + А</td>
+<td>1.5, 4.5</td>
+<td>ни одна заявка не теряется; ответ в течение 1 рабочего дня</td>
+<td>схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#sc-lead">сценарий В</a></td>
+</tr>
+<tr>
+<td><a id="st-3-8"></a>3.8</td>
+<td>Метрики: охват, вовлечённость, переходы по UTM, заявки, записи на день открытых дверей; ежемесячный отчёт директору</td>
+<td>С → агент</td>
+<td>3.6, 3.7</td>
+<td>отчёт в админке</td>
+<td><a href="#st-4-9">4.9</a></td>
+</tr>
+</tbody>
+</table>
+<h4><a id="s3-flow"></a>Как пост проходит путь от события до заявки</h4>
+<div class="mermaid-wrap"><pre class="mermaid">flowchart LR
+  K[&quot;Календарь&lt;br/&gt;«Ритм року» 3.3&quot;] --&gt; G[&quot;Агент: черновик&lt;br/&gt;текст + фото + UTM 3.4&quot;]
+  N[&quot;Новость на сайте 1.6&quot;] --&gt; G
+  G --&gt; F{&quot;Фото: есть&lt;br/&gt;согласия? 3.2&quot;}
+  F --&gt;|&quot;нет&quot;| X[&quot;Заменить фото&lt;br/&gt;или убрать лица&quot;] --&gt; G
+  F --&gt;|&quot;да&quot;| H{&quot;Редактор&lt;br/&gt;одобряет? 3.5&quot;}
+  H --&gt;|&quot;правки&quot;| G
+  H --&gt;|&quot;да&quot;| S[&quot;Расписание&lt;br/&gt;FB / IG / YT / TikTok 3.6&quot;]
+  S --&gt; U[&quot;Переход по UTM&lt;br/&gt;на сайт&quot;] --&gt; L[&quot;Форма → заявка&lt;br/&gt;в админке 4.5&quot;]
+  S --&gt; DM[&quot;Сообщение в DM&quot;] --&gt; AR[&quot;Автоответ&lt;br/&gt;со ссылкой на форму 3.7&quot;] --&gt; L
+  L --&gt; M[&quot;Метрики 3.8&quot;]
+</pre></div>
+<h3><a id="s3-stages"></a>Порядок / этапы</h3>
+<ol>
+<li><strong>Сразу, Н02–Н04 (без кода):</strong> <a href="#st-3-1">3.1</a>, <a href="#st-3-2">3.2</a>, <a href="#st-3-3">3.3</a>; посты вручную по календарю, UTM-ссылки вручную (генератор UTM — любой бесплатный).</li>
+<li><strong>После админки, Н22–Н24:</strong> <a href="#st-3-4">3.4</a>–<a href="#st-3-5">3.5</a> — агент и одобрение.</li>
+<li><strong>После проверки приложений Meta/TikTok/Google, Н25–Н28:</strong> <a href="#st-3-6">3.6</a> — автопубликация.</li>
+<li><strong>Параллельно с <a href="#st-1-5">1.5</a> и <a href="#st-4-5">4.5</a>:</strong> <a href="#st-3-7">3.7</a>, затем <a href="#st-3-8">3.8</a>.</li>
+</ol>
+<h3><a id="s3-school"></a>Что нужно от команды школы</h3>
+<ul>
+<li><strong>Доступы:</strong> администраторские права на страницу Facebook, Instagram, TikTok; решение, заводить ли YouTube.</li>
+<li><strong>Люди:</strong> редактор/SMM (<a href="#st-0-4">0.4</a>) — 2–3 часа в неделю на одобрение; учителя присылают 2–3 фото и 2 предложения после события.</li>
+<li><strong>Решения:</strong> тон и правила (что можно, что нельзя), даты праздников на год, хэштеги.</li>
+<li><strong>Согласия:</strong> согласия родителей на фото (<a href="#st-3-2">3.2</a>); согласия учителей на публикацию их фото. Сводно — <a href="#ch-consent">чек-лист: согласия</a>.</li>
+</ul>
+<h3><a id="s3-tech"></a>Технические требования</h3>
+<ul>
+<li>Официальные API (не «серые» сервисы с паролями от аккаунтов); токены — в защищённом хранилище секретов, не в коде.</li>
+<li>Приложение Meta: разрешения на публикацию в Page и Instagram, проверка приложения (App Review) ⚠️; TikTok и YouTube — аудит приложения для публичных постов ⚠️.</li>
+<li>Медиа: хранение в приватном хранилище, отметка согласия у каждого фото, удаление EXIF-геоданных.</li>
+<li>Очередь публикаций с повторами и <a href="#g-idempotency">идемпотентностью</a> (чтобы пост не вышел дважды).</li>
+<li>UTM-схема: <code>utm_source=instagram&amp;utm_medium=social&amp;utm_campaign=&lt;событие&gt;</code>.</li>
+</ul>
+<h3><a id="s3-effort"></a>Оценка сложности</h3>
+<p><strong>Средняя.</strong> ⚠️ Оценка: <strong>15–25 чел.-дней</strong> (агент и черновики 5–8, одобрение 2–3, интеграции с API 5–10 с учётом проверок приложений, UTM/заявки/метрики 3–4). Ручной этап — почти 0 разработки.</p>
+<h3><a id="s3-risks"></a>Риски</h3>
+<table>
+<thead>
+<tr>
+<th>Риск</th>
+<th>Что делаем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>фото ребёнка без согласия</td>
+<td>автоматическая проверка отметок + обязательное одобрение человеком</td>
+</tr>
+<tr>
+<td>проверка приложения Meta/TikTok затягивается или отклонена</td>
+<td>ручное планирование в Business Suite как постоянный запасной путь</td>
+</tr>
+<tr>
+<td>агент пишет «рекламно», не в вальдорфском духе</td>
+<td>примеры удачных постов в инструкции агента, правки редактора</td>
+</tr>
+<tr>
+<td>аккаунты оформлены на частное лицо</td>
+<td>перевести на школу, 2 администратора (<a href="#st-3-1">3.1</a>)</td>
+</tr>
+<tr>
+<td>заявки из DM теряются</td>
+<td>автоответ + единый список заявок (<a href="#st-4-5">4.5</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>Подробнее — <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m4-risks">схема 4.9 «Риски»</a>.</p>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#s4">→ далее: Поток 4. Админка + AI-агент</a></p>
+<hr />
+<h2><a id="s4"></a>Поток 4. Админка + AI-агент</h2>
+<p>«Админка» — закрытая панель управления сайтом и данными школы. «AI-агент» — помощник на основе языковой модели (<a href="#g-llm">LLM</a>), похожий на Grok Bot: он понимает просьбу человека («анонсируй ярмарок»), сам вызывает нужные функции модулей (<a href="#g-toolcalling">tool calling</a>) и <strong>готовит</strong> результат, а публикует или отправляет только после одобрения. В схеме: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#mod-admin">2. Админка</a>, <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#mod-orch">5. Оркестратор</a>, <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#roles">роли и права</a>.</p>
+<h3><a id="s4-goal"></a>Цель</h3>
+<p>Дать школе <strong>одну</strong> точку управления: контент сайта, документы ст. 30, пользователи и роли, заявки, рассылки бота, посты соцсетей — и AI-помощника, который связывает потоки 1–3, напоминает о сроках и экономит время администрации, не принимая решений за людей.</p>
+<h3><a id="s4-result"></a>Результат (критерии готовности)</h3>
+<ul>
+<li class="task">☐ Вход по ролям: адміністрація, вчитель, батьки, учень, редактор (+ технический администратор). Каждая роль видит только своё (<a href="#st-4-1">4.1</a>).</li>
+<li class="task">☐ Контент сайта (страницы, новости, документы, медиа) правится в админке, сайт пересобирается автоматически (<a href="#st-4-2">4.2</a>).</li>
+<li class="task">☐ Реестр документов ст. 30 с датами и напоминаниями (<a href="#st-4-4">4.4</a>).</li>
+<li class="task">☐ Список заявок из форм и соцсетей (<a href="#st-4-5">4.5</a>).</li>
+<li class="task">☐ Журнал действий: кто, когда, что изменил или отправил (<a href="#st-4-6">4.6</a>).</li>
+<li class="task">☐ Агент умеет читать и готовить черновики по всем модулям; публикация/отправка — только через одобрение; 4 недели без инцидентов (<a href="#st-4-7">4.7</a>, <a href="#st-4-8">4.8</a>).</li>
+</ul>
+<h3><a id="s4-steps"></a>Шаги</h3>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Шаг</th>
+<th>Кто</th>
+<th>Вход</th>
+<th>Выход</th>
+<th>Зависимости / связи</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="st-4-1"></a>4.1</td>
+<td>Модель ролей и прав (<a href="#g-rbac">RBAC</a>): адміністрація, вчитель, батьки, учень, редактор; правила «родитель — только свой ребёнок», «учитель — только свои классы»</td>
+<td>С + Д</td>
+<td><a href="#s4-roles">таблица ролей</a></td>
+<td>матрица прав, тесты прав</td>
+<td><a href="#st-0-3">0.3</a>; схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#roles">роли</a></td>
+</tr>
+<tr>
+<td><a id="st-4-2"></a>4.2</td>
+<td>Админка контента + миграция: страницы, новости, медиа из <a href="file:///D:/Site/waldorf-stupeni-school-redesign/catalog.json" target="_blank" rel="noopener">catalog.json</a> и <a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-json/index.html" target="_blank" rel="noopener">wp-json</a> (сохранить slug); сборка статического сайта (<a href="#g-ssg">SSG</a>) по кнопке «Опублікувати»</td>
+<td>С</td>
+<td>0.2, 0.5</td>
+<td>школа правит сама</td>
+<td><a href="#st-1-11">1.11</a>, <a href="#st-3-4">3.4</a></td>
+</tr>
+<tr>
+<td><a id="st-4-3"></a>4.3</td>
+<td>Пользователи и приглашения: учителя (email), родители (коды бота, <a href="#st-2-7">2.7</a>), ученики (по решению школы); отметки согласий (фото, ПД, сообщения)</td>
+<td>С + А</td>
+<td>4.1, данные от школы</td>
+<td>база людей и связей «ребёнок–родитель–класс»</td>
+<td><a href="#st-2-9">2.9</a>, <a href="#st-3-2">3.2</a></td>
+</tr>
+<tr>
+<td><a id="st-4-4"></a>4.4</td>
+<td>Реестр документов ст. 30: каждая строка <a href="#s1-table">таблицы</a> = запись (документ, дата утверждения, срок публикации 10/3 р. д., ответственный, статус); напоминания ответственному</td>
+<td>С</td>
+<td><a href="#st-1-10">1.10</a></td>
+<td>«светофор» в админке: опубликовано / скоро срок / просрочено</td>
+<td>схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m2-docs">2.6</a></td>
+</tr>
+<tr>
+<td><a id="st-4-5"></a>4.5</td>
+<td>Заявки (<a href="#g-crm">CRM</a>-список, <a href="#g-lead">лиды</a>): форма сайта, DM, телефон (ручной ввод); статусы «новая → связались → экскурсия → заявление»; UTM-источник</td>
+<td>С + А</td>
+<td><a href="#st-1-5">1.5</a>, <a href="#st-3-7">3.7</a></td>
+<td>ни одна заявка не теряется</td>
+<td>схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#sc-lead">сценарий В</a></td>
+</tr>
+<tr>
+<td><a id="st-4-6"></a>4.6</td>
+<td>Журнал действий (<a href="#g-audit">audit log</a>): входы, изменения, публикации, рассылки, действия агента</td>
+<td>С</td>
+<td>4.1</td>
+<td>неизменяемый журнал</td>
+<td><a href="#st-4-8">4.8</a></td>
+</tr>
+<tr>
+<td><a id="st-4-7"></a>4.7</td>
+<td>AI-агент: <a href="#g-toolregistry">реестр инструментов</a> по уровням <code>read</code> → <code>draft</code> → <code>publish/send</code>; доступ к модулям через API или <a href="#g-mcp">MCP</a>-сервер; инструкции на украинском, вальдорфский тон</td>
+<td>С</td>
+<td>4.1–4.6</td>
+<td>агент в админке и в боте сотрудников</td>
+<td><a href="#st-3-4">3.4</a>, <a href="#st-2-8">2.8</a>, <a href="#st-4-4">4.4</a>; схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m5-api">5.9 реестр</a></td>
+</tr>
+<tr>
+<td><a id="st-4-8"></a>4.8</td>
+<td>Human-in-the-loop: очередь «На одобрение» (посты, рассылки бота, публикация документов); кто может одобрять что; лимиты (например, не больше N рассылок в день)</td>
+<td>С + Д</td>
+<td>4.7</td>
+<td>без одобрения агент ничего не публикует и не отправляет</td>
+<td>схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m5-hitl">5.8 HITL и аудит</a></td>
+</tr>
+<tr>
+<td><a id="st-4-9"></a>4.9</td>
+<td>Еженедельная сводка директору: новые заявки, документы со сроками, посты недели, статистика бота</td>
+<td>агент → Д</td>
+<td>4.4, 4.5, 3.8</td>
+<td>письмо/сообщение в понедельник 09:00</td>
+<td>схема: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#sc-mriia">сценарий Г</a></td>
+</tr>
+<tr>
+<td><a id="st-4-10"></a>4.10</td>
+<td>Эксплуатация: хостинг, бэкапы (ежедневно, проверка восстановления), мониторинг, обновления, документация для «второго разработчика»</td>
+<td>С</td>
+<td>всё</td>
+<td>инструкция + план восстановления</td>
+<td>снижает риск «один человек» (<a href="#dec-compare">решение</a>)</td>
+</tr>
+</tbody>
+</table>
+<h4><a id="s4-roles"></a>Роли</h4>
+<table>
+<thead>
+<tr>
+<th>Роль</th>
+<th>Что может</th>
+<th>Чего не может</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Адміністрація</strong></td>
+<td>всё в контенте, документах, заявках, пользователях; одобрять публикации и рассылки</td>
+<td>менять журнал действий</td>
+</tr>
+<tr>
+<td><strong>Вчитель</strong></td>
+<td>объявления своему классу (через одобрение), черновики новостей, фото с событий; характеристики своих учеников (если храним у себя)</td>
+<td>видеть чужие классы, публиковать без одобрения</td>
+</tr>
+<tr>
+<td><strong>Батьки</strong></td>
+<td>личный кабинет: свой ребёнок, объявления, характеристики, согласия (отозвать)</td>
+<td>видеть других детей</td>
+</tr>
+<tr>
+<td><strong>Учень</strong></td>
+<td>расписание, объявления, свои материалы (по решению школы)</td>
+<td>видеть данные других</td>
+</tr>
+<tr>
+<td><strong>Редактор</strong></td>
+<td>соцсети и новости: черновики, одобрение постов, календарь</td>
+<td>персональные данные детей, кроме отметок согласия на фото</td>
+</tr>
+<tr>
+<td><strong>Тех. администратор</strong> (Сергей)</td>
+<td>настройки, интеграции, бэкапы</td>
+<td>читать содержимое характеристик без необходимости (принцип минимального доступа)</td>
+</tr>
+</tbody>
+</table>
+<h4><a id="s4-agent"></a>Агент как оркестратор над потоками 1–3</h4>
+<div class="mermaid-wrap"><pre class="mermaid">flowchart TB
+  H[&quot;Человек: директор, редактор,&lt;br/&gt;администрация&quot;] --&gt;|&quot;просьба на украинском&quot;| AG[&quot;AI-агент&lt;br/&gt;LLM + tool calling&quot;]
+  AG --&gt; TR[&quot;Реестр инструментов&lt;br/&gt;read / draft / publish&quot;]
+  TR --&gt; M1[&quot;Поток 1: сайт&lt;br/&gt;страницы, документы, реестр ст. 30&quot;]
+  TR --&gt; M2[&quot;Поток 2: бот&lt;br/&gt;объявления, дайджест&quot;]
+  TR --&gt; M3[&quot;Поток 3: соцсети&lt;br/&gt;черновики, расписание, метрики&quot;]
+  TR --&gt; M4[&quot;Заявки CRM&lt;br/&gt;и пользователи&quot;]
+  AG --&gt;|&quot;publish / send&quot;| Q[&quot;Очередь «На одобрення»&lt;br/&gt;шаг 4.8&quot;]
+  Q --&gt;|&quot;одобрено&quot;| OUT[&quot;Публикация / отправка&quot;]
+  Q --&gt;|&quot;отклонено&quot;| AG
+  AG --&gt; LOG[(&quot;Журнал действий 4.6&quot;)]
+  OUT --&gt; LOG
+  T[&quot;Таймеры: сроки ст. 30,&lt;br/&gt;календарь Ритму року&quot;] --&gt; AG
+</pre></div>
+<p>Примеры задач агенту: «Підготуй анонс Свята ліхтариків на сайт, Instagram і в бот 3-го класу» → 3 черновика в очереди; «Що з документами по ст. 30?» → список просроченных; «Скільки заявок з TikTok за жовтень?» → ответ из <a href="#st-4-5">4.5</a>. Агент <strong>никогда</strong> не видит оценки и характеристики, если в этом нет необходимости для задачи, и не отправляет ничего детям напрямую.</p>
+<h3><a id="s4-stages"></a>Порядок / этапы</h3>
+<ol>
+<li><strong>Каркас (Н08–Н12):</strong> <a href="#st-4-1">4.1</a>, <a href="#st-4-2">4.2</a>, <a href="#st-4-6">4.6</a>, <a href="#st-4-10">4.10</a> (бэкапы с первого дня).</li>
+<li><strong>Данные (Н13–Н16):</strong> <a href="#st-4-3">4.3</a>, <a href="#st-4-4">4.4</a>, <a href="#st-4-5">4.5</a> — после этого переносим <a href="#st-1-11">1.11</a> и подключаем бота <a href="#st-2-7">2.7</a> к базе.</li>
+<li><strong>Агент, уровень read/draft (Н17–Н21):</strong> <a href="#st-4-7">4.7</a> + <a href="#st-4-8">4.8</a>; 4 недели «только черновики».</li>
+<li><strong>Агент, уровень publish/send (Н22–Н25):</strong> включаем по одному инструменту после 4 недель без инцидентов; <a href="#st-4-9">4.9</a>.</li>
+</ol>
+<h3><a id="s4-school"></a>Что нужно от команды школы</h3>
+<ul>
+<li><strong>Решения:</strong> кто какие роли получает; кто одобряет публикации и рассылки; какие задачи агенту разрешены, какие — никогда.</li>
+<li><strong>Люди:</strong> 1–2 «первых пользователя» из администрации для тестов; редактор.</li>
+<li><strong>Данные:</strong> списки сотрудников (email), классов, родителей — в защищённом виде.</li>
+<li><strong>Доступы:</strong> домен для админки (<code>admin.…</code>), почтовый ящик для уведомлений.</li>
+<li><strong>Согласия и документы:</strong> политика конфиденциальности сайта и админки, правила использования AI (что агенту нельзя), согласие на передачу данных провайдеру языковой модели (минимизировать — ПД детей модели не отправлять). Сводно — <a href="#checklist">чек-лист</a>.</li>
+</ul>
+<h3><a id="s4-tech"></a>Технические требования</h3>
+<ul>
+<li>Стек по решению <a href="#st-0-3">0.3</a>, рекомендованный — <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#stack">схема: стек</a>: бэкенд (.NET 8 или Node.js) + PostgreSQL + React-админка + SSG-сайт; авторизация через <a href="#g-jwt">JWT</a>, роли в токене.</li>
+<li>Все действия — через API с проверкой прав; агент работает <strong>с правами того человека, который его попросил</strong>, не больше.</li>
+<li>Очередь задач и <a href="#g-outbox">outbox</a> для рассылок и публикаций; повторы и <a href="#g-idempotency">идемпотентность</a>.</li>
+<li>Журнал действий неизменяемый; бэкапы ежедневно, хранение не менее 30 дней ⚠️ (уточнить по политике школы).</li>
+<li>LLM: провайдер с договором об обработке данных; маскировка ПД перед отправкой модели; лимиты стоимости.</li>
+</ul>
+<h3><a id="s4-effort"></a>Оценка сложности</h3>
+<p><strong>Высокая.</strong> ⚠️ Оценка: <strong>25–45 чел.-дней</strong> (роли и вход 4–6, контент и миграция 6–10, пользователи/реестр/заявки 6–10, журнал действий 2–3, агент и HITL 6–12, эксплуатация 2–4).</p>
+<h3><a id="s4-risks"></a>Риски</h3>
+<table>
+<thead>
+<tr>
+<th>Риск</th>
+<th>Что делаем</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>агент публикует ошибку или неуместный текст</td>
+<td>только черновики + одобрение (<a href="#st-4-8">4.8</a>), поэтапное включение</td>
+</tr>
+<tr>
+<td>утечка персональных данных детей</td>
+<td>минимальные права, маскировка ПД перед LLM, аудит, шифрование бэкапов</td>
+</tr>
+<tr>
+<td>«всё держится на одном разработчике»</td>
+<td>документация, Git, второй администратор, план восстановления (<a href="#st-4-10">4.10</a>)</td>
+</tr>
+<tr>
+<td>админка сложна для администрации</td>
+<td>2 сценария на старте («новость», «документ»), обучение 1 час, подсказки</td>
+</tr>
+<tr>
+<td>расходы на LLM растут</td>
+<td>лимиты, кэш, простые задачи — без модели</td>
+</tr>
+</tbody>
+</table>
+<p>Подробнее — <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m2-risks">схема 2.10</a> и <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#m5-risks">5.10</a>.</p>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#gantt">→ далее: Общий график</a></p>
+<hr />
+<h2><a id="gantt"></a>Общий график</h2>
+<p>Недели считаются <strong>от старта проекта</strong> (Н01 — первая неделя после решения <a href="#st-0-3">0.3</a>); это не календарные даты. Предполагается один разработчик на неполную загрузку и оперативные ответы школы ⚠️.</p>
+<div class="mermaid-wrap"><pre class="mermaid">gantt
+    title План по неделям от старта, не даты
+    dateFormat YYYY-MM-DD
+    axisFormat Н%W
+    todayMarker off
+    section 0 Основа
+    0.1-0.5 Доступы, Git, решение, staging      :f0, 2001-01-01, 2w
+    section 1 Ст. 30
+    1.1-1.3 Структура, документы, юрист        :a1, 2001-01-01, 4w
+    1.4-1.7 Quick win, формы, новости, WCAG    :a2, after f0, 3w
+    1.9-1.10 Публикация и регламент            :a3, after a2, 2w
+    1.8 Снять noindex при запуске редизайна    :milestone, a4, after e2, 0d
+    1.11 Перенос в админку                     :a5, after e2, 2w
+    section 2 Журнал
+    2.1-2.3 Звонок в Мрію, АІКОМ, педрада      :b1, 2001-01-01, 3w
+    2.4 2.6 2.9 Подключение, памятки, согласия :b2, after b1, 3w
+    2.5 Пилот Мрії, семестр                    :b3, after b2, 12w
+    2.7-2.8 Telegram-бот в пилоте              :b4, after e1, 4w
+    2.10 Решение по итогам пилота              :milestone, b5, after b3, 0d
+    section 3 Соцсети
+    3.1-3.3 Аккаунты, фото-согласия, календарь :c1, 2001-01-08, 3w
+    Ручные посты по календарю                  :c2, after c1, 10w
+    3.4-3.5 Агент-черновик и одобрение         :c3, after e3, 3w
+    3.6-3.8 Автопубликация, UTM, метрики       :c4, after c3, 4w
+    section 4 Админка и агент
+    4.1 4.2 4.6 4.10 Каркас, контент, аудит    :e1, after a3, 5w
+    4.3-4.5 Пользователи, реестр, заявки       :e2, after e1, 4w
+    4.7-4.8 Агент read и draft плюс HITL       :e3, after e2, 5w
+    4.7 publish и send, 4.9 сводки             :e4, after e3, 4w
+</pre></div>
+<table>
+<thead>
+<tr>
+<th>Фаза</th>
+<th>Недели ⚠️</th>
+<th>Что готово в конце</th>
+<th>Схема</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0. Основа</strong></td>
+<td>Н01–Н02</td>
+<td>доступы, Git, решение по стеку</td>
+<td><a href="#s0-steps">шаги 0.x</a></td>
+</tr>
+<tr>
+<td><strong>1. Закон и быстрые победы</strong></td>
+<td>Н01–Н07</td>
+<td>раздел «Інформаційна відкритість» опубликован, формы работают, свежие новости</td>
+<td><a href="#s1">поток 1</a></td>
+</tr>
+<tr>
+<td><strong>2. Мрія-пилот и календарь</strong></td>
+<td>Н01–Н20</td>
+<td>школа в «Мрії», пилот идёт; контент-план по «Ритму року»</td>
+<td><a href="#s2">поток 2</a>, <a href="#st-3-3">3.3</a></td>
+</tr>
+<tr>
+<td><strong>3. Админка</strong></td>
+<td>Н08–Н16</td>
+<td>контент, роли, реестр ст. 30, заявки, бот на базе</td>
+<td><a href="#s4">поток 4</a></td>
+</tr>
+<tr>
+<td><strong>4. Агент и автоматизация</strong></td>
+<td>Н17–Н28</td>
+<td>агент с одобрением, автопубликация, еженедельные сводки</td>
+<td><a href="#st-4-7">4.7</a>, <a href="#st-3-6">3.6</a></td>
+</tr>
+</tbody>
+</table>
+<p>Сравните с фазами в схеме: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#rollout">План внедрения</a>.</p>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#checklist">→ далее: Чек-лист для школы</a></p>
+<hr />
+<h2><a id="checklist"></a>Чек-лист для школы</h2>
+<p>Всё, что нужно от «Ступенів», в одном месте. Ссылка в скобках ведёт к шагу, где это используется.</p>
+<h3><a id="ch-docs"></a>Документы</h3>
+<ul>
+<li class="task">☐ Статут, ліцензії (школа + садочок) [номера — уточнить у школы], сертифікати акредитації (если есть) → <a href="#st-1-2">1.2</a>, <a href="#s1-table">таблица</a></li>
+<li class="task">☐ Структура та органи управління; кадровий склад; вакансії → <a href="#st-1-2">1.2</a></li>
+<li class="task">☐ Освітня програма і перелік компонентів; мова; ліцензований обсяг і фактична кількість учнів [уточнить у школы]; МТБ → <a href="#st-1-2">1.2</a></li>
+<li class="task">☐ Правила прийому — школа <strong>и</strong> садочок → <a href="#st-1-2">1.2</a></li>
+<li class="task">☐ Розмір плати за навчання; додаткові послуги і їх вартість [уточнить у школы] → <a href="#st-1-2">1.2</a></li>
+<li class="task">☐ Правила поведінки (сверить с «Правила школи»); 3 документа по булінгу (план, порядок подання заяв, порядок реагування) → <a href="#st-1-2">1.2</a></li>
+<li class="task">☐ Умови доступності для ООП (корекційно-лікувальний блок) → <a href="#st-1-2">1.2</a></li>
+<li class="task">☐ Форми здобуття освіти — честная формулировка → <a href="#st-1-2">1.2</a>, <a href="#st-1-3">1.3</a></li>
+<li class="task">☐ Річний звіт, результати моніторингу якості → <a href="#st-1-2">1.2</a></li>
+<li class="task">☐ По условию: інституційний аудит, громадська акредитація, загальні збори, харчування (меню + постачальник), кошторис/фінзвіт, отчёт о пожертвованиях → <a href="#st-1-3">1.3</a></li>
+</ul>
+<h3><a id="ch-decisions"></a>Решения</h3>
+<ul>
+<li class="task">☐ Стек: А / Б / В → <a href="#st-0-3">0.3</a></li>
+<li class="task">☐ Структура раздела «Інформаційна відкритість» → <a href="#st-1-1">1.1</a></li>
+<li class="task">☐ Публиковать ли отчёт о пожертвованиях → <a href="#st-1-3">1.3</a></li>
+<li class="task">☐ Система журнала, шкалы и перевод характеристик (педрада) → <a href="#st-2-3">2.3</a></li>
+<li class="task">☐ Классы для пилота «Мрії» → <a href="#st-2-5">2.5</a></li>
+<li class="task">☐ Правила уведомлений и тихие часы → <a href="#st-2-8">2.8</a></li>
+<li class="task">☐ Viber: да / нет / позже → <a href="#st-2-10">2.10</a></li>
+<li class="task">☐ YouTube: заводить ли канал; тон и правила постов → <a href="#st-3-1">3.1</a>, <a href="#st-3-3">3.3</a></li>
+<li class="task">☐ Кто одобряет публикации и рассылки; что агенту запрещено → <a href="#st-4-8">4.8</a></li>
+</ul>
+<h3><a id="ch-people"></a>Люди</h3>
+<ul>
+<li class="task">☐ Ответственный за офіційний розділ сайту → <a href="#st-0-4">0.4</a>, <a href="#st-1-10">1.10</a></li>
+<li class="task">☐ Ответственный за ОІС/журнал → <a href="#st-0-4">0.4</a>, <a href="#st-2-4">2.4</a></li>
+<li class="task">☐ Ответственный за защиту персональных данных → <a href="#st-2-9">2.9</a></li>
+<li class="task">☐ Редактор/SMM (2–3 ч в неделю) → <a href="#st-3-5">3.5</a></li>
+<li class="task">☐ 1–2 учителя для пилота → <a href="#st-2-5">2.5</a></li>
+<li class="task">☐ Юрист на консультацию → <a href="#st-1-3">1.3</a>, <a href="#st-2-9">2.9</a></li>
+</ul>
+<h3><a id="ch-access"></a>Доступы</h3>
+<ul>
+<li class="task">☐ Домен, DNS, хостинг, wp-admin живого сайта → <a href="#st-0-1">0.1</a></li>
+<li class="task">☐ Почтовый ящик для заявок → <a href="#st-1-5">1.5</a></li>
+<li class="task">☐ АІКОМ 2.0 (директор) → <a href="#st-2-2">2.2</a></li>
+<li class="task">☐ Facebook-страница, Instagram, TikTok (права администратора), Meta Business Suite → <a href="#st-3-1">3.1</a></li>
+<li class="task">☐ Google-аккаунт школы (Search Console, YouTube) → <a href="#st-1-8">1.8</a></li>
+</ul>
+<h3><a id="ch-consent"></a>Согласия</h3>
+<ul>
+<li class="task">☐ Родители: обработка персональных данных; сообщения в Telegram (с предупреждением о передаче за границу) → <a href="#st-2-7">2.7</a>, <a href="#st-2-9">2.9</a></li>
+<li class="task">☐ Родители: фото и видео детей (сайт / соцсети / только внутри / нет) → <a href="#st-3-2">3.2</a></li>
+<li class="task">☐ Учителя: фото и данные на сайте и в соцсетях → <a href="#st-1-2">1.2</a>, <a href="#st-3-2">3.2</a></li>
+<li class="task">☐ Политика конфиденциальности сайта и админки, правила использования AI → <a href="#st-4-8">4.8</a></li>
+</ul>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#questions">→ далее: Открытые вопросы</a></p>
+<hr />
+<h2><a id="questions"></a>Открытые вопросы</h2>
+<table>
+<thead>
+<tr>
+<th>№</th>
+<th>Вопрос</th>
+<th>Кому</th>
+<th>Влияет на</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Есть ли у школы доступ к wp-admin, хостингу и домену? Кто платит за хостинг?</td>
+<td>Д</td>
+<td><a href="#st-0-1">0.1</a>, <a href="#st-1-9">1.9</a>, <a href="#decision">решение</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Приходят ли сейчас письма из форм <strong>живого</strong> сайта?</td>
+<td>А</td>
+<td><a href="#st-1-5">1.5</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Какие пункты ст. 30 обязательны именно для частного «Ступенів» (харчування, кошторис, територія обслуговування, загальні збори)?</td>
+<td>Ю</td>
+<td><a href="#st-1-3">1.3</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Какие формы здобуття освіти школа реально предлагает (на главной — «против дистанционного»)?</td>
+<td>Д</td>
+<td><a href="#s1-table">таблица</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Есть ли в школе питание? Кто постачальник?</td>
+<td>А</td>
+<td><a href="#s1-table">таблица</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Можно ли в «Мрії» хранить характеристики и свою шкалу; какие push получают родители; есть ли read-only API/вебхуки; экспорт; ЗДО-пилот?</td>
+<td>«Мрія»</td>
+<td><a href="#st-2-1">2.1</a>, <a href="#s2-call">вопросы для звонка</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Актуальны ли данные в АІКОМ 2.0 (№ 23389)?</td>
+<td>Д</td>
+<td><a href="#st-2-2">2.2</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Как программа «Ступенів» переводит характеристики в шкалы наказа 722?</td>
+<td>П</td>
+<td><a href="#st-2-3">2.3</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Сколько родителей без РНОКПП/BankID?</td>
+<td>А</td>
+<td><a href="#st-2-6">2.6</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Нужно ли уведомлять Уповноваженого ВРУ з прав людини об обработке ПД?</td>
+<td>Ю</td>
+<td><a href="#st-2-9">2.9</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Viber: актуальные тарифы для Украины и порядок заявки</td>
+<td>С</td>
+<td><a href="#st-2-10">2.10</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Условия проверки приложений Meta, TikTok, YouTube на дату подачи</td>
+<td>С</td>
+<td><a href="#st-3-6">3.6</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>На ноутбуке есть отдельные проекты <code>D:\Site\Site_51204634</code> (прототип на Nicepage с «Кабінет учителя», «Документи», FAQ) и, по его README, <code>D:\Site_for_School</code> — использовать ли их наработки? ❓ не изучались</td>
+<td>С</td>
+<td><a href="#s4">поток 4</a>, <a href="#st-1-4">1.4</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Реквизиты для пожертвований и нужен ли онлайн-платёж на «Допомогти нам»?</td>
+<td>Д + бухгалтер</td>
+<td><a href="#st-1-6">1.6</a></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Кому из провайдеров LLM школа готова доверить тексты (без ПД детей)?</td>
+<td>Д</td>
+<td><a href="#st-4-7">4.7</a></td>
+</tr>
+</tbody>
+</table>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#sources">→ далее: Источники</a></p>
+<hr />
+<h2><a id="sources"></a>Источники</h2>
+<p><strong>Закон и ст. 30</strong></p>
+<ul>
+<li>НУШ: «Що має бути на сайті школи?» — <a href="https://nus.org.ua/2025/04/26/shho-maye-buty-na-sajti-shkoly/" target="_blank" rel="noopener">https://nus.org.ua/2025/04/26/shho-maye-buty-na-sajti-shkoly/</a></li>
+<li>Закон України «Про освіту» (ст. 30) — <a href="https://zakon.rada.gov.ua/laws/show/2145-19" target="_blank" rel="noopener">https://zakon.rada.gov.ua/laws/show/2145-19</a></li>
+<li>Записка для администрации: <a href="file:///D:/Site/waldorf-stupeni-school-redesign/Informaciyna-vidkrytist-sajt-Stupeni.md" target="_blank" rel="noopener">Informaciyna-vidkrytist-sajt-Stupeni.md</a></li>
+<li>Схема автоматизации: <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#compliance">чек-лист ст. 30 + НУШ</a></li>
+</ul>
+<p><strong>«Мрія», АІКОМ, журнал</strong> (по исследованию <code>research-mriia.md</code>, 06.10.2026)</p>
+<ul>
+<li>«Мрія» для школ — <a href="https://mriia.gov.ua/app" target="_blank" rel="noopener">https://mriia.gov.ua/app</a> ; Минцифры о проекте — <a href="https://thedigital.gov.ua/projects/technologies/mriia" target="_blank" rel="noopener">https://thedigital.gov.ua/projects/technologies/mriia</a></li>
+<li>Постанова КМУ № 177 від 16.02.2024 (Положення про «Мрію») — <a href="https://docs.dtkt.ua/doc/177-2024-%D0%BF" target="_blank" rel="noopener">https://docs.dtkt.ua/doc/177-2024-п</a></li>
+<li>КМУ: подключиться может каждая школа — <a href="https://www.kmu.gov.ua/news/ponad-2-000-shkil-z-usiiei-ukrainy-rozpochaly-novyi-navchalnyi-rik-iz-osvitnoiu-ekosystemoiu-mriia" target="_blank" rel="noopener">https://www.kmu.gov.ua/news/ponad-2-000-shkil-z-usiiei-ukrainy-rozpochaly-novyi-navchalnyi-rik-iz-osvitnoiu-ekosystemoiu-mriia</a></li>
+<li>МОН: «Мрія» доступна каждой школе — <a href="https://mon.gov.ua/news/mriia-dostupna-kozhnii-shkoli-iak-shkoly-pidiednuvatymut-do-ekosystemy" target="_blank" rel="noopener">https://mon.gov.ua/news/mriia-dostupna-kozhnii-shkoli-iak-shkoly-pidiednuvatymut-do-ekosystemy</a></li>
+<li>АІКОМ: карточка лицея № 23389 — <a href="https://aikom.iea.gov.ua/zzso/view?zzsoId=23389" target="_blank" rel="noopener">https://aikom.iea.gov.ua/zzso/view?zzsoId=23389</a> ; подключение ОІС — <a href="https://aikom.iea.gov.ua/site/connect" target="_blank" rel="noopener">https://aikom.iea.gov.ua/site/connect</a></li>
+<li>Human школа и «Мрія» — <a href="https://www.human.ua/post/human-school-integrated-with-educational-application-mriya" target="_blank" rel="noopener">https://www.human.ua/post/human-school-integrated-with-educational-application-mriya</a> ; тарифы — <a href="https://www.human.ua/taryfy" target="_blank" rel="noopener">https://www.human.ua/taryfy</a></li>
+<li>Наказ МОН № 707 (електронна документація) — <a href="https://zakon.rada.gov.ua/laws/show/z1029-22" target="_blank" rel="noopener">https://zakon.rada.gov.ua/laws/show/z1029-22</a></li>
+<li>НУШ: електронний журнал не обов'язковий (2025) — <a href="https://nus.org.ua/2025/09/08/elektronnyj-zhurnal-u-shkoli-shho-potribno-znaty/" target="_blank" rel="noopener">https://nus.org.ua/2025/09/08/elektronnyj-zhurnal-u-shkoli-shho-potribno-znaty/</a></li>
+<li>Наказ МОН № 722 (оцінювання, 2026) — <a href="https://osvita.ua/legislation/Ser_osv/97517/" target="_blank" rel="noopener">https://osvita.ua/legislation/Ser_osv/97517/</a></li>
+<li>Вальдорфская программа 1–4 классов — <a href="https://osvita.ua/school/program/program-1-4/95815/" target="_blank" rel="noopener">https://osvita.ua/school/program/program-1-4/95815/</a></li>
+<li>Освіторія: как «Мрія» меняет день учителя — <a href="https://osvitoria.media/lessons/yak-mriya-zminyuye-robochyj-den-uchytelya-vysnovky-testuvannya-zastosunku/" target="_blank" rel="noopener">https://osvitoria.media/lessons/yak-mriya-zminyuye-robochyj-den-uchytelya-vysnovky-testuvannya-zastosunku/</a></li>
+</ul>
+<p><strong>Боты и персональные данные</strong></p>
+<ul>
+<li>Telegram: deep linking — <a href="https://core.telegram.org/bots/features#deep-linking" target="_blank" rel="noopener">https://core.telegram.org/bots/features#deep-linking</a> ; лимиты — <a href="https://core.telegram.org/bots/faq" target="_blank" rel="noopener">https://core.telegram.org/bots/faq</a> ; Bot API — <a href="https://core.telegram.org/bots/api" target="_blank" rel="noopener">https://core.telegram.org/bots/api</a></li>
+<li>Viber: коммерческая модель ботов — <a href="https://help.viber.com/hc/en-us/articles/15247629658525-Bot-commercial-model" target="_blank" rel="noopener">https://help.viber.com/hc/en-us/articles/15247629658525-Bot-commercial-model</a> ; REST Bot API — <a href="https://developers.viber.com/docs/api/rest-bot-api/" target="_blank" rel="noopener">https://developers.viber.com/docs/api/rest-bot-api/</a></li>
+<li>Закон «Про захист персональних даних» — <a href="https://zakon.rada.gov.ua/laws/show/2297-17/" target="_blank" rel="noopener">https://zakon.rada.gov.ua/laws/show/2297-17/</a> ; законопроект № 8153 — <a href="https://itd.rada.gov.ua/billinfo/Bills/CardByRn?conv=9&amp;regNum=8153" target="_blank" rel="noopener">https://itd.rada.gov.ua/billinfo/Bills/CardByRn?conv=9&amp;regNum=8153</a></li>
+</ul>
+<p><strong>Соцсети и веб</strong> (⚠️ условия меняются — проверять при подаче)</p>
+<ul>
+<li>Instagram: публикация контента через API — <a href="https://developers.facebook.com/docs/instagram-platform/content-publishing/" target="_blank" rel="noopener">https://developers.facebook.com/docs/instagram-platform/content-publishing/</a></li>
+<li>YouTube Data API: загрузка видео — <a href="https://developers.google.com/youtube/v3/docs/videos/insert" target="_blank" rel="noopener">https://developers.google.com/youtube/v3/docs/videos/insert</a></li>
+<li>TikTok Content Posting API — <a href="https://developers.tiktok.com/doc/content-posting-api-get-started" target="_blank" rel="noopener">https://developers.tiktok.com/doc/content-posting-api-get-started</a></li>
+<li>WCAG 2.1 — <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener">https://www.w3.org/TR/WCAG21/</a></li>
+</ul>
+<p><strong>Разборы в той же папке:</strong> <code>research-mriia.md</code> (исследование «Мрії» и вариантов журнала, 06.10.2026), <code>screens-and-project-review.md</code> (разбор скриншотов и проекта, 06.10.2026).</p>
+<p><strong>Файлы проекта:</strong> <a href="file:///D:/Site/waldorf-stupeni-school-redesign/README.md" target="_blank" rel="noopener">README.md</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/catalog.json" target="_blank" rel="noopener">catalog.json</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/mirror-report.json" target="_blank" rel="noopener">mirror-report.json</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/index.html" target="_blank" rel="noopener">index.html</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/start.bat" target="_blank" rel="noopener">start.bat</a>, <a href="file:///D:/Site/waldorf-stupeni-school-redesign/wp-content/themes/waldorf/style.css" target="_blank" rel="noopener">style.css</a>.</p>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#glossary">→ далее: Глоссарий</a></p>
+<hr />
+<h2><a id="glossary"></a>Глоссарий</h2>
+<p>Если термин есть и в глоссарии схемы — дана ссылка «[схема]».</p>
+<ul>
+<li><a id="g-api"></a><strong>API</strong> (Application Programming Interface) — «розетка» программы, через которую другая программа может получать или отправлять данные.</li>
+<li><a id="g-audit"></a><strong>Журнал действий, audit log</strong> — неизменяемая запись «кто, когда, что сделал». <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-audit">схема</a></li>
+<li><a id="g-aikom"></a><strong>АІКОМ</strong> — государственная автоматизированная информационная система об образовании; из неё «Мрія» берёт данные о школах, классах, учениках. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-aikom">схема</a></li>
+<li><a id="g-backend"></a><strong>Бэкенд (backend)</strong> — серверная часть: база данных и логика, которых пользователь не видит (заявки, бот, роли).</li>
+<li><a id="g-botapi"></a><strong>Telegram Bot API</strong> — бесплатный официальный интерфейс для создания ботов в Telegram.</li>
+<li><a id="g-crm"></a><strong>CRM</strong> (Customer Relationship Management) — здесь: простой список заявок от семей со статусами и историей контактов.</li>
+<li><a id="g-deeplink"></a><strong>Deep link (глубокая ссылка)</strong> — ссылка, которая открывает бота сразу с параметром, например <code>t.me/бот?start=код</code>; по коду бот узнаёт, чей это родитель.</li>
+<li><a id="g-dpia"></a><strong>DPIA</strong> — оценка рисков для персональных данных до запуска системы. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-dpia">схема</a></li>
+<li><a id="g-epoch"></a><strong>Епоха (эпоха)</strong> — в вальдорфской школе 3–4 недели главного урока по одной теме. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-epoch">схема</a></li>
+<li><a id="g-formbackend"></a><strong>Сервис форм (form backend)</strong> — внешний сервис, который принимает данные из HTML-формы и пересылает на почту; нужен статическому сайту.</li>
+<li><a id="g-formative"></a><strong>Формувальне оцінювання</strong> (formative assessment) — оценивание, которое помогает ребёнку расти, а не ставит итог; часто словесное.</li>
+<li><a id="g-git"></a><strong>Git</strong> — система хранения истории изменений файлов; позволяет вернуть любую прошлую версию.</li>
+<li><a id="g-graphapi"></a><strong>Meta Graph API</strong> — официальный интерфейс Facebook/Instagram для публикации постов и ответов на сообщения от имени бизнес-аккаунта.</li>
+<li><a id="g-headless"></a><strong>Headless CMS</strong> — система управления контентом «без головы»: админка и хранилище текстов, а внешний вид сайта делается отдельно.</li>
+<li><a id="g-hitl"></a><strong>HITL</strong> (human-in-the-loop, «человек в контуре») — правило: автоматика готовит, человек одобряет. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-hitl">схема</a></li>
+<li><a id="g-idempotency"></a><strong>Идемпотентность</strong> — повтор одного и того же запроса не создаёт дубль (пост не выйдет дважды). <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-idempotency">схема</a></li>
+<li><a id="g-jwt"></a><strong>JWT</strong> — подписанный «пропуск» пользователя с его ролями. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-jwt">схема</a></li>
+<li><a id="g-kep"></a><strong>КЕП</strong> — кваліфікований електронний підпис, юридически равен собственноручной подписи.</li>
+<li><a id="g-lead"></a><strong>Лид (lead)</strong> — заявка потенциальной семьи. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-lead">схема</a></li>
+<li><a id="g-llm"></a><strong>LLM</strong> (large language model) — большая языковая модель, «мозг» AI-агента.</li>
+<li><a id="g-mcp"></a><strong>MCP</strong> (Model Context Protocol) — стандарт, по которому AI-агент подключается к инструментам. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-mcp">схема</a></li>
+<li><a id="g-mriia"></a><strong>«Мрія»</strong> — бесплатная государственная образовательная экосистема МОН и Минцифры: журнал, дневник, домашние задания, чаты, Мрія ID. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-mriia">схема</a></li>
+<li><a id="g-n8n"></a><strong>n8n</strong> — сервис автоматизации «если случилось X — сделай Y», можно поставить на свой сервер.</li>
+<li><a id="g-noindex"></a><strong>noindex, nofollow</strong> — метка в коде страницы «не показывать в поиске»; сейчас стоит на живом сайте.</li>
+<li><a id="g-ois"></a><strong>ОІС</strong> — освітня інформаційна система (электронный журнал и т. п.); подключённые к «Мрії» — Human и Eddy. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-ois">схема</a></li>
+<li><a id="g-outbox"></a><strong>Outbox</strong> — таблица исходящих сообщений; фоновый процесс отправляет их и повторяет при ошибке. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-outbox">схема</a></li>
+<li><a id="g-personday"></a><strong>Человеко-день (чел.-день)</strong> — один рабочий день (≈6–8 ч) одного человека; используется для оценок.</li>
+<li><a id="g-pdn"></a><strong>ПД, персональные данные</strong> — сведения о человеке; регулируются Законом України «Про захист персональних даних». <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-pdn">схема</a></li>
+<li><a id="g-quickwin"></a><strong>Quick win (быстрая победа)</strong> — полезный результат за дни, без ожидания большой системы.</li>
+<li><a id="g-rbac"></a><strong>RBAC</strong> — доступ по ролям (роль определяет, что можно). <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-rbac">схема</a></li>
+<li><a id="g-redirect"></a><strong>301-редирект</strong> — постоянное перенаправление со старого адреса на новый; сохраняет позиции в поиске.</li>
+<li><a id="g-seo"></a><strong>SEO</strong> — настройка сайта, чтобы его находили в Google.</li>
+<li><a id="g-ssg"></a><strong>SSG</strong> (static site generator) — программа, которая собирает готовые HTML-страницы из контента (например, Astro).</li>
+<li><a id="g-staging"></a><strong>Staging (тестовая площадка)</strong> — закрытая копия сайта для проверки до публикации.</li>
+<li><a id="g-static"></a><strong>Статический сайт (статика)</strong> — сайт из готовых файлов без сервера-программы; быстрый и безопасный, но без форм и личных кабинетов.</li>
+<li><a id="g-art30"></a><strong>Ст. 30</strong> — статья 30 Закона «Про освіту» о прозорості та інформаційній відкритості закладу освіти. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-art30">схема</a></li>
+<li><a id="g-class-teacher"></a><strong>Класний керівник</strong> — в вальдорфской школе часто ведёт класс много лет. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-class-teacher">схема</a></li>
+<li><a id="g-toolcalling"></a><strong>Tool calling</strong> — способность AI-модели вызывать функции (инструменты): «найди», «создай черновик», «запланируй».</li>
+<li><a id="g-toolregistry"></a><strong>Реестр инструментов (tool registry)</strong> — список функций, которые агенту разрешено вызывать, с уровнем риска. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-tool-registry">схема</a></li>
+<li><a id="g-utm"></a><strong>UTM-метки</strong> — хвост ссылки (<code>?utm_source=…</code>), по которому видно, откуда пришёл посетитель. <a href="%D0%92%D0%B0%D0%BB%D1%8C%D0%B4%D0%BE%D1%80%D1%84%D1%81%D0%BA%D0%B0%D1%8F-%D1%88%D0%BA%D0%BE%D0%BB%D0%B0-%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8.html#g-utm">схема</a></li>
+<li><a id="g-wcag"></a><strong>WCAG</strong> — международные правила доступности сайтов для людей с инвалидностью.</li>
+<li><a id="g-webhook"></a><strong>Вебхук (webhook)</strong> — сервис сам «стучится» на наш сервер, когда что-то произошло (например, родитель написал боту).</li>
+<li><a id="g-wp"></a><strong>WordPress</strong> — популярная система для сайтов; на ней сейчас работает живой сайт школы.</li>
+</ul>
+<p class="navlinks"><a href="#toc">↑ к оглавлению</a> · <a href="#summary">→ далее: к началу — Коротко</a></p>
+</main></div>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+mermaid.initialize({startOnLoad:false,theme:"base",securityLevel:"loose",
+ themeVariables:{primaryColor:"#f6e3cf",primaryBorderColor:"#b5562b",primaryTextColor:"#2f2a24",lineColor:"#8a7a66",secondaryColor:"#e3ecd9",tertiaryColor:"#fff8ee",fontFamily:"Segoe UI, Roboto, Arial"}});
+window.mermaid=mermaid;window.__mermaidErrors=[];
+try{await mermaid.run({querySelector:"pre.mermaid",suppressErrors:false,postRenderCallback:()=>{}});}catch(e){window.__mermaidErrors.push(String(e&&e.message||e));}
+if(location.hash){const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t)t.scrollIntoView({behavior:'instant'});}
+window.__mermaidDone=true;
+</script>
+<script>
+const links=[...document.querySelectorAll('aside a')];const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map.get(e.target.id);if(a)a.classList.add('active');}})},{rootMargin:"0px 0px -75% 0px"});
+map.forEach((a,id)=>{const el=document.getElementById(id);if(el)obs.observe(el);});
+</script></body></html>
