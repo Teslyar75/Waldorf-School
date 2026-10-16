@@ -73,6 +73,7 @@
       box-shadow: 0 6px 24px rgba(91, 80, 86, 0.15);
     }
   </style>
+  <link rel="stylesheet" href="/assets/site-extra.css">
 </head>
 <body>
   <div class="bar">
@@ -102,9 +103,11 @@
       'protydiya-nasylstvu.pdf': 'Про запобігання і протидію насильству'
     };
     var params = new URLSearchParams(location.search);
+    var srcParam = params.get('src') || '';
+    if (/^\/(data\/uploads|wp-content\/uploads)\/[\w\/.%-]+\.pdf$/i.test(srcParam) && srcParam.indexOf('..') < 0) { params.set('file', srcParam.split('/').pop()); window.__stSrc = srcParam; }
     var file = params.get('file') || 'statut.pdf';
     file = file.replace(/[^a-z0-9._-]/gi, '');
-    var src = '../../wp-content/uploads/dokumenty/' + file;
+    var src = window.__stSrc || (/^statut-2024\.pdf$/.test(file) ? '../../data/uploads/' : '../../wp-content/uploads/dokumenty/') + file;
     var titleEl = document.getElementById('doc-title');
     var statusEl = document.getElementById('status');
     var pageLabel = document.getElementById('page-label');

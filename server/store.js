@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DATA_DIR = path.join(__dirname, '..', 'data');
+const DATA_DIR = process.env.CMS_DATA_DIR ? path.resolve(process.env.CMS_DATA_DIR) : path.join(__dirname, '..', 'data');
 const UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
 
 function ensureDirs() {

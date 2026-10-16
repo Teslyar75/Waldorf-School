@@ -1,0 +1,446 @@
+{
+  "items": [
+    {
+      "id": "book-1",
+      "order": 10,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/ua-vykhovannya-dytyny.jpg",
+      "original": "Die Erziehung des Kindes vom Gesichtspunkte der Geisteswissenschaft, 1907",
+      "language": "українська (Наірі)",
+      "title": "Виховання дитини з погляду духовної науки",
+      "author": "Рудольф Штайнер",
+      "description": "Коротка брошура 1907 року, з якої виросла вальдорфська педагогіка. Штайнер пояснює, як змінюються потреби дитини в перші семиріччя і чому виховання має йти за розвитком.",
+      "links": [
+        {
+          "label": "Замовити",
+          "url": "https://www.yakaboo.ua/ua/vihovannja-ditini-z-pogljadu-duhovnoi-nauki.html"
+        },
+        {
+          "label": "Читати (англ.)",
+          "url": "https://rsarchive.org/Articles/GA034/English/Singles/EduChi_essay.html"
+        }
+      ]
+    },
+    {
+      "id": "book-2",
+      "order": 20,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "",
+      "original": "GA 308",
+      "language": "українська (Наірі, 2021)",
+      "title": "Методика навчання та передумови виховання",
+      "author": "Рудольф Штайнер",
+      "description": "Останній публічний педагогічний курс Штайнера, прочитаний у Штутгарті у квітні 1924 року. Про те, як методика викладання випливає з розуміння віку дитини.",
+      "links": [
+        {
+          "label": "Замовити",
+          "url": "https://book.ua/book/metodyka-navchannia-ta-peredumovy-vykhovannia"
+        },
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-308/"
+        }
+      ]
+    },
+    {
+      "id": "book-3",
+      "order": 30,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/ua-leitmotyvy.jpg",
+      "original": "",
+      "language": "українська (Наірі)",
+      "title": "Лейтмотиви вальдорфської педагогіки. Від 3 до 9 років",
+      "author": "Райнер Патцлафф, Вольфганг Засмансхаузен",
+      "description": "Основні принципи виховання у вальдорфському садку та перших класах школи. Стисле наукове обґрунтування цілісного розвитку дитини до десяти років.",
+      "links": [
+        {
+          "label": "Замовити",
+          "url": "https://www.yakaboo.ua/ua/leitlinien-der-waldorfpadagogik-fur-die-kindheit-von-3-bis-9-jahren-945548.html"
+        }
+      ]
+    },
+    {
+      "id": "book-4",
+      "order": 40,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/ua-zapytannya.jpg",
+      "original": "",
+      "language": "українська (Наірі, 2018)",
+      "title": "Вальдорфські школи: запитання й відповіді",
+      "author": "Збірник",
+      "description": "Відповіді на запитання, які найчастіше ставлять батьки, що вперше знайомляться з вальдорфськими школами в Україні, разом зі статтями з журналу «Дитина».",
+      "links": [
+        {
+          "label": "Замовити (е-книга)",
+          "url": "https://www.yakaboo.ua/ua/val-dorfs-ki-shkoli-zapitannja-j-vidpovidi-1886455.html"
+        }
+      ]
+    },
+    {
+      "id": "book-5",
+      "order": 50,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "",
+      "original": "",
+      "language": "українська (Наірі)",
+      "title": "Вальдорфська педагогіка в Україні. З повагою до дитини",
+      "author": "Збірник статей",
+      "description": "Збірка статей про становлення та практику вальдорфської педагогіки в Україні.",
+      "links": [
+        {
+          "label": "Замовити у видавництві",
+          "url": "https://nairi.org.ua/valdorfska-pedahohika-v-ukraini.-z-povahoiu-do-dytyny-fail-pdf/"
+        }
+      ]
+    },
+    {
+      "id": "book-6",
+      "order": 60,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/ua-osvitnya-programa-1-2.jpg",
+      "original": "",
+      "language": "українська (Наірі, 2019)",
+      "title": "Освітня програма за вальдорфською педагогікою. 1–2 класи",
+      "author": "Колектив авторів",
+      "description": "Освітня програма першого циклу початкової освіти, розроблена відповідно до Закону «Про освіту» і Державного стандарту початкової освіти.",
+      "links": [
+        {
+          "label": "Замовити (е-книга)",
+          "url": "https://www.yakaboo.ua/osvitnja-programa-za-val-dorfs-koju-pedagogikoju-pershij-cikl-pochatkovoi-osviti-1-2-klasi-3057635.html"
+        }
+      ]
+    },
+    {
+      "id": "book-7",
+      "order": 70,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/study-of-man.jpg",
+      "original": "GA 293 · Study of Man",
+      "language": "російська",
+      "title": "Общее учение о человеке как основа педагогики",
+      "author": "Рудольф Штайнер",
+      "description": "Лекції для вчителів першої вальдорфської школи (1919) — теоретична основа методики: мислення, почування і воля людини. (Обкладинка англійського видання.)",
+      "links": [
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-293/"
+        },
+        {
+          "label": "Читати (англ.)",
+          "url": "https://rsarchive.org/Lectures/GA293/"
+        }
+      ]
+    },
+    {
+      "id": "book-8",
+      "order": 80,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "",
+      "original": "GA 294 · Practical Advice to Teachers",
+      "language": "російська",
+      "title": "Искусство воспитания. Методика и дидактика",
+      "author": "Рудольф Штайнер",
+      "description": "Другий курс 1919 року: практичні поради з викладання письма, читання, рахунку, іноземних мов та мистецтв.",
+      "links": [
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-294/"
+        },
+        {
+          "label": "Читати (англ.)",
+          "url": "https://rsarchive.org/Lectures/GA294/"
+        }
+      ]
+    },
+    {
+      "id": "book-9",
+      "order": 90,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "",
+      "original": "GA 295",
+      "language": "російська",
+      "title": "Искусство воспитания. Семинарские обсуждения и лекции по учебному плану",
+      "author": "Рудольф Штайнер",
+      "description": "Семінарські заняття з першими вальдорфськими вчителями та лекції про навчальний план.",
+      "links": [
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-295/"
+        }
+      ]
+    },
+    {
+      "id": "book-10",
+      "order": 100,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/kingdom-of-childhood-ga311.jpg",
+      "original": "GA 311 · The Kingdom of Childhood",
+      "language": "російська",
+      "title": "Педагогика, основанная на познании человека",
+      "author": "Рудольф Штайнер",
+      "description": "Лекції 1924 року для вчителів в Англії — доступний вступ до методики з прикладами для молодших класів. (Обкладинка німецького видання.)",
+      "links": [
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-311/"
+        },
+        {
+          "label": "Читати (англ.)",
+          "url": "https://rsarchive.org/Lectures/GA311/"
+        }
+      ]
+    },
+    {
+      "id": "book-11",
+      "order": 110,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "",
+      "original": "GA 301",
+      "language": "російська",
+      "title": "Духовное обновление педагогики",
+      "author": "Рудольф Штайнер",
+      "description": "Курс 1920 року для широкого кола слухачів про те, як педагогіка може оновитися через глибше розуміння людини.",
+      "links": [
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-301/"
+        }
+      ]
+    },
+    {
+      "id": "book-12",
+      "order": 120,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "",
+      "original": "GA 302",
+      "language": "російська",
+      "title": "Познание человека и учебный процесс",
+      "author": "Рудольф Штайнер",
+      "description": "Лекції для вчителів про зв’язок навчального матеріалу з віковим розвитком учнів середніх і старших класів.",
+      "links": [
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-302/"
+        }
+      ]
+    },
+    {
+      "id": "book-13",
+      "order": 130,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "",
+      "original": "GA 303",
+      "language": "російська",
+      "title": "Здоровое развитие телесно-физического как основа раскрытия душевно-духовного",
+      "author": "Рудольф Штайнер",
+      "description": "Різдвяний курс 1921–1922 років про здоров’я дитини, рух, мистецтво і їхню роль у навчанні.",
+      "links": [
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-303/"
+        }
+      ]
+    },
+    {
+      "id": "book-14",
+      "order": 140,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "",
+      "original": "GA 305",
+      "language": "російська",
+      "title": "Духовно-душевные основы педагогики",
+      "author": "Рудольф Штайнер",
+      "description": "Оксфордський курс 1922 року — огляд принципів вальдорфської школи для міжнародної аудиторії.",
+      "links": [
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-305/"
+        }
+      ]
+    },
+    {
+      "id": "book-15",
+      "order": 150,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "",
+      "original": "GA 307",
+      "language": "російська",
+      "title": "Современная духовная жизнь и воспитание",
+      "author": "Рудольф Штайнер",
+      "description": "Лекції 1923 року (Ілклі) про історію виховання та завдання сучасної школи.",
+      "links": [
+        {
+          "label": "Читати (рос.)",
+          "url": "https://sophiaheart.org/lib/shtayner/ga-307/"
+        }
+      ]
+    },
+    {
+      "id": "book-16",
+      "order": 160,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/carlgren-erziehung-zur-freiheit.jpg",
+      "original": "Erziehung zur Freiheit",
+      "language": "російська (1993); оригінал — німецька",
+      "title": "Воспитание к свободе. Педагогика Рудольфа Штейнера",
+      "author": "Франс Карлгрен",
+      "description": "Класичний ілюстрований огляд вальдорфських шкіл від садка до старших класів із роботами учнів. (Обкладинка німецького видання.)",
+      "links": [
+        {
+          "label": "Open Library",
+          "url": "https://openlibrary.org/works/OL5480108W"
+        }
+      ]
+    },
+    {
+      "id": "book-17",
+      "order": 170,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/school-as-a-journey.jpg",
+      "original": "Школа як подорож",
+      "language": "англійська",
+      "title": "School as a Journey",
+      "author": "Торін Фінсер",
+      "description": "Учитель розповідає про вісім років зі своїм класом — від першого до восьмого. Жива історія про роль класного вчителя.",
+      "links": [
+        {
+          "label": "Open Library",
+          "url": "https://openlibrary.org/works/OL3508886W"
+        }
+      ]
+    },
+    {
+      "id": "book-18",
+      "order": 180,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/understanding-waldorf-education.jpg",
+      "original": "Зрозуміти вальдорфську освіту",
+      "language": "англійська",
+      "title": "Understanding Waldorf Education",
+      "author": "Джек Петраш",
+      "description": "Коротка книга для батьків: навіщо в школі рукоділля, рух і мистецтво та як вони пов’язані з мисленням дитини.",
+      "links": [
+        {
+          "label": "Open Library",
+          "url": "https://openlibrary.org/works/OL8544012W"
+        }
+      ]
+    },
+    {
+      "id": "book-19",
+      "order": 190,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/clouder-rawson-waldorf-education.jpg",
+      "original": "Вальдорфська освіта",
+      "language": "англійська",
+      "title": "Waldorf Education",
+      "author": "Крістофер Клаудер, Мартін Роусон",
+      "description": "Стислий вступ до історії руху, етапів розвитку дитини та сучасних питань вальдорфської школи.",
+      "links": [
+        {
+          "label": "Open Library",
+          "url": "https://openlibrary.org/works/OL34559219W"
+        }
+      ]
+    },
+    {
+      "id": "book-20",
+      "order": 200,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/rawson-richter-curriculum.jpg",
+      "original": "Освітні завдання та зміст вальдорфського навчального плану",
+      "language": "англійська",
+      "title": "The Educational Tasks and Content of the Steiner Waldorf Curriculum",
+      "author": "Мартін Роусон, Тобіас Ріхтер (ред.)",
+      "description": "Довідник для вчителів: що і навіщо вивчають у кожному класі. Корисний для планування епох.",
+      "links": [
+        {
+          "label": "Open Library",
+          "url": "https://openlibrary.org/works/OL35020671W"
+        }
+      ]
+    },
+    {
+      "id": "book-21",
+      "order": 210,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/lievegoed-phases-of-childhood.jpg",
+      "original": "Фази дитинства",
+      "language": "англійська",
+      "title": "Phases of Childhood",
+      "author": "Бернард Ліфхуд",
+      "description": "Нідерландський лікар і педагог описує етапи розвитку дитини від народження до дорослості.",
+      "links": [
+        {
+          "label": "Open Library",
+          "url": "https://openlibrary.org/works/OL8660449W"
+        }
+      ]
+    },
+    {
+      "id": "book-22",
+      "order": 220,
+      "visible": true,
+      "available": false,
+      "price": "",
+      "cover": "/wp-content/uploads/books/hq/simplicity-parenting.jpg",
+      "original": "Простота у вихованні",
+      "language": "англійська",
+      "title": "Simplicity Parenting",
+      "author": "Кім Джон Пейн",
+      "description": "Практична книга для батьків про те, як зменшити перевантаження дитини і повернути в дім ритм і спокій.",
+      "links": [
+        {
+          "label": "Сайт автора",
+          "url": "https://www.simplicityparenting.com/"
+        },
+        {
+          "label": "Open Library",
+          "url": "https://openlibrary.org/works/OL13841470W"
+        }
+      ]
+    }
+  ]
+}

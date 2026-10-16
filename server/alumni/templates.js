@@ -88,36 +88,17 @@ function buildEmail({ alumni, articleUrl, unsubscribeUrl }) {
   return { subject, text, html };
 }
 
-function renderAlumniPage({ title, date, bodyHtml, siteUrl }) {
-  return `<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHtml(title)} — Ступені</title>
-  <link rel="stylesheet" href="/wp-content/themes/waldorf/style.css">
-  <style>
-    .alumni-page { max-width: 720px; margin: 2rem auto; padding: 1rem 1.5rem 3rem; }
-    .alumni-page h1 { margin-bottom: 0.35rem; font-size: 1.75rem; }
-    .alumni-date { color: #666; margin-bottom: 1.25rem; }
-    .alumni-lead { font-size: 1.1rem; }
-    .alumni-attr { margin-top: 2rem; color: #666; }
-    .alumni-nav { margin: 1rem 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-  </style>
-</head>
-<body>
-  <nav class="alumni-nav">
-    <a class="btn orange" href="/">← На головну</a>
-    <a class="btn" href="/vypusknyky/">Усі випускники тижня</a>
-    <a class="btn" href="/batky/">Для батьків</a>
-  </nav>
-  <article class="alumni-page">
-    <h1>${escapeHtml(title)}</h1>
-    <p class="alumni-date">${escapeHtml(date)}</p>
-    <div class="alumni-body">${bodyHtml}</div>
-  </article>
-</body>
-</html>`;
+function renderAlumniPage({ title, date, bodyHtml, siteUrl, slug }) {
+  const { wrapInShell } = require('../site-shell');
+  const html = wrapInShell({
+    title,
+    urlPath: slug ? `/vypusknyky/${slug}/` : '/vypusknyky/',
+    crumbs: [['Випускники тижня', '/vypusknyky/']],
+    bodyHtml: `<p class="muted">${escapeHtml(date)}</p>${bodyHtml}
+<div class="st-actions"><a class="btn orange" href="/vypusknyky/">Усі випускники тижня</a><a class="btn" href="/batky/">Для батьків</a></div>`,
+  });
+  if (html) return html;
+  return `<!DOCTYPE html><html lang="uk"><head><meta charset="UTF-8"><title>${escapeHtml(title)}</title><link rel="stylesheet" href="/wp-content/themes/waldorf/style.css"><link rel="stylesheet" href="/assets/site-extra.css"></head><body><main class="page"><div class="content"><h1>${escapeHtml(title)}</h1>${bodyHtml}</div></main></body></html>`;
 }
 
 function escapeHtml(s) {

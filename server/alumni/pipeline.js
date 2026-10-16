@@ -55,35 +55,16 @@ function ensureVypuskIndex(articles) {
     )
     .join('\n') || '<li>Поки немає публікацій — запустіть <code>npm run alumni:weekly</code>.</li>';
 
-  const html = `<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Випускники тижня — Ступені</title>
-  <link rel="stylesheet" href="/wp-content/themes/waldorf/style.css">
-  <style>
-    .alumni-index { max-width: 720px; margin: 2rem auto; padding: 1rem 1.5rem 3rem; }
-    .alumni-index ul { line-height: 1.8; padding-left: 1.25rem; }
-    .muted { color: #777; font-size: 0.9rem; }
-    .alumni-nav { margin: 1rem 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-  </style>
-</head>
-<body>
-  <nav class="alumni-nav">
-    <a class="btn orange" href="/">← На головну</a>
-    <a class="btn" href="/batky/">Реєстрація для батьків</a>
-  </nav>
-  <main class="alumni-index">
-    <h1>Випускники вальдорфських шкіл</h1>
-    <p>Раз на тиждень ми коротко знайомимо спільноту з людьми, які навчалися у вальдорфських (Steiner) школах світу.</p>
-    <ul>
+  const { wrapInShell } = require('../site-shell');
+  const html = wrapInShell({
+    title: 'Випускники вальдорфських шкіл',
+    urlPath: '/vypusknyky/',
+    bodyHtml: `<p>Раз на тиждень ми коротко знайомимо спільноту з людьми, які навчалися у вальдорфських (Steiner) школах світу.</p>
+<ul class="st-list">
 ${list}
-    </ul>
-    <p class="muted">Джерело каталогу імен: <a href="https://www.thewaldorfs.waldorf.net/" target="_blank" rel="noopener">theWaldorfs</a>.</p>
-  </main>
-</body>
-</html>`;
+</ul>
+<div class="st-actions"><a class="btn orange" href="/batky/">Реєстрація для батьків</a></div>`,
+  });
 
   fs.writeFileSync(path.join(VYPUSK_DIR, 'index.html'), html, 'utf8');
 }

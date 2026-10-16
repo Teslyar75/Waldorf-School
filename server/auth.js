@@ -4,6 +4,9 @@ const { v4: uuidv4 } = require('uuid');
 const { readJson, writeJson } = require('./store');
 
 const JWT_SECRET = process.env.CMS_JWT_SECRET || 'stupeni-local-cms-dev-secret';
+if (!process.env.CMS_JWT_SECRET) {
+  console.warn('[auth] УВАГА: CMS_JWT_SECRET не задано — використовується локальний dev-секрет. Перед публікацією задайте змінну середовища CMS_JWT_SECRET.');
+}
 const USERS_FILE = 'users.json';
 
 /** Ролі (від найвищої до найнижчої) */

@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "id": "doc-1",
+      "order": 10,
+      "visible": true,
+      "section": "Установчі документи",
+      "note": "Переоформлена 13.07.2023",
+      "title": "Ліцензія (АВ №499958, 2010) + Розпорядження ОВА №458/А-2023 про переоформлення ліцензії",
+      "url": "/wp-content/uploads/dokumenty/licenziya.pdf"
+    },
+    {
+      "id": "doc-2",
+      "order": 20,
+      "visible": true,
+      "section": "Установчі документи",
+      "note": "",
+      "title": "Ліцензія АВ №499958 (фото)",
+      "url": "/data/uploads/licenziya-AV-499958-2010.jpg"
+    },
+    {
+      "id": "doc-3",
+      "order": 30,
+      "visible": true,
+      "section": "Установчі документи",
+      "note": "Рішення засновника №1/2 від 05.02.2024",
+      "title": "Статут (нова редакція 2024)",
+      "url": "/data/uploads/statut-2024.pdf"
+    },
+    {
+      "id": "doc-4",
+      "order": 40,
+      "visible": true,
+      "section": "Освітній процес",
+      "note": "",
+      "title": "Освітня програма 2026/2027",
+      "url": "/wp-content/uploads/dokumenty/osvitnya-programa.pdf"
+    },
+    {
+      "id": "doc-5",
+      "order": 50,
+      "visible": true,
+      "section": "Освітній процес",
+      "note": "",
+      "title": "Річний план роботи 2026/2027",
+      "url": "/wp-content/uploads/dokumenty/richnyy-plan-roboty-2026-2027.pdf"
+    },
+    {
+      "id": "doc-6",
+      "order": 60,
+      "visible": true,
+      "section": "Освітній процес",
+      "note": "",
+      "title": "План виховної роботи 2026/2027",
+      "url": "/wp-content/uploads/dokumenty/richnyy-plan-vyhovnoyi-roboty.pdf"
+    },
+    {
+      "id": "doc-7",
+      "order": 70,
+      "visible": true,
+      "section": "Безпека та протидія булінгу",
+      "note": "",
+      "title": "Положення про запобігання насильству та булінгу (наказ №82 від 01.10.2026)",
+      "url": "/wp-content/uploads/dokumenty/protydiya-nasylstvu.pdf"
+    }
+  ]
+}

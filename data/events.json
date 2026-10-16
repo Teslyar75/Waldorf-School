@@ -9,12 +9,12 @@
       "type": "holiday",
       "description": "Вівторок. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Терещенко-Черниш Каріна (1 клас); Лагунова Тетяна, Ярчевська Руслана (11 клас)",
+      "responsible": "1 клас — Терещенко-Черниш Каріна; 11 клас — Лагунова Тетяна, Ярчевська Руслана",
       "image": "./wp-content/uploads/2023/12/school-day-rotated.jpg",
       "order": 1,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-02",
@@ -25,16 +25,16 @@
       "type": "holiday",
       "description": "Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Лагунова Тетяна, Ярчевська Руслана",
+      "responsible": "Основні вчителі, куратори",
       "image": "./wp-content/uploads/2023/12/harvest-festival.jpg",
       "order": 2,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-03",
-      "title": "Епоха свята Святого Михайла",
+      "title": "Епоха свята Святого Михаїла",
       "date": "2026-09-21",
       "dateEnd": "2026-10-23",
       "season": "осінь",
@@ -46,7 +46,7 @@
       "order": 3,
       "published": true,
       "showInRhythm": false,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-04",
@@ -57,12 +57,12 @@
       "type": "open-day",
       "description": "Субота. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Лагунова Тетяна, Ярчевська Руслана",
+      "responsible": "Вчителі ліцею",
       "image": "./wp-content/uploads/2023/12/school1.jpg",
       "order": 4,
       "published": true,
       "showInRhythm": false,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-05",
@@ -73,28 +73,28 @@
       "type": "holiday",
       "description": "П’ятниця. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Довганюк Ганна",
+      "responsible": "11 клас — Лагунова Тетяна, Довганюк Ганна, Ярчевська Руслана",
       "image": "./wp-content/uploads/2023/12/school-day-rotated.jpg",
       "order": 5,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-06",
-      "title": "Свято святого Михайла",
+      "title": "Свято святого Михаїла",
       "date": "2026-10-23",
       "dateEnd": "2026-10-23",
       "season": "осінь",
       "type": "holiday",
       "description": "П’ятниця. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Терещенко-Черниш Каріна (1, 7, 8 класи); Лагунова Тетяна, Ярчевська Руслана (11 клас)",
+      "responsible": "1, 7, 8 класи — Терещенко-Черниш Каріна, Тесленко Ганна, Ярчевська Руслана, Лук’янченко Наталя",
       "image": "./wp-content/uploads/2023/12/feast-of-st.-michael.jpg",
       "order": 6,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-07",
@@ -135,14 +135,14 @@
       "dateEnd": "2026-11-21",
       "season": "осінь",
       "type": "holiday",
-      "description": "П’ятниця. Класи 1–11.",
+      "description": "Класи 1–11. Уточнити день тижня: у плані вказано «п’ятниця», але 21.11.2026 — субота.",
       "grades": "1–11",
-      "responsible": "Лагунова Тетяна, Ярчевська Руслана",
+      "responsible": "Вчителі ліцею; 11 клас — Лагунова Тетяна, Ярчевська Руслана",
       "image": "./wp-content/uploads/2023/12/festival-of-lanterns.jpg",
       "order": 9,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-10",
@@ -169,12 +169,12 @@
       "type": "holiday",
       "description": "П’ятниця. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Терещенко-Черниш Каріна (1–3); Швидка Світлана, Губіна Ірина",
+      "responsible": "1–3 класи — Терещенко-Черниш Каріна, Швидка Світлана, Губіна Ірина",
       "image": "./wp-content/uploads/2023/12/saint-nicholass-day.jpg",
       "order": 11,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-12",
@@ -185,12 +185,12 @@
       "type": "market",
       "description": "Субота. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Габович Іван, Слюнько Ганна, Толкаченко Ганна, Шевчук Марія; Швидка Світлана, Губіна Ірина",
+      "responsible": "Габович Іван, Слюнько Ганна, Толкаченко Ганна, Губіна Ірина, Шевчук Марія",
       "image": "./wp-content/uploads/2023/12/christmas-performance.jpg",
       "order": 12,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-13",
@@ -201,28 +201,28 @@
       "type": "holiday",
       "description": "П’ятниця. Класи 1–4.",
       "grades": "1–4",
-      "responsible": "Швидка Світлана, Губіна Ірина",
+      "responsible": "2, 3 класи — Швидка Світлана, Губіна Ірина",
       "image": "./wp-content/uploads/2023/12/passing-the-christmas-spiral.jpg",
       "order": 13,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-14",
-      "title": "Різдвяний концерт / Різдвяна вистава",
+      "title": "Різдвяний концерт",
       "date": "2026-12-18",
       "dateEnd": "2026-12-18",
       "season": "зима",
       "type": "holiday",
       "description": "П’ятниця. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Довганюк Ганна",
+      "responsible": "Довганюк Ганна, Ярчевська Руслана",
       "image": "./wp-content/uploads/2023/12/christmas-performance.jpg",
       "order": 14,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-15",
@@ -233,12 +233,12 @@
       "type": "holiday",
       "description": "Четвер. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Довганюк Ганна",
+      "responsible": "Вчителі ліцею; 11 клас — Лагунова Тетяна",
       "image": "./wp-content/uploads/2023/12/christmas-performance.jpg",
       "order": 15,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2026-16",
@@ -247,14 +247,14 @@
       "dateEnd": "2027-01-08",
       "season": "зима",
       "type": "vacation",
-      "description": "Повернення до школи: 11 січня 2027 (понеділок).",
+      "description": "Повернення до школи: 11 січня 2027 (понеділок). У плані надруковано «08.01.2026» — очевидна описка, використано 08.01.2027 (уточнити).",
       "grades": "1–11",
       "responsible": "",
       "image": "./wp-content/themes/waldorf/images/no-image.png",
       "order": 16,
       "published": true,
       "showInRhythm": false,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2027-17",
@@ -281,12 +281,12 @@
       "type": "holiday",
       "description": "Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Довганюк Ганна; Кудакова Тетяна (5 клас)",
+      "responsible": "5 клас — Кудакова Тетяна; Довганюк Ганна, Ярчевська Руслана",
       "image": "./wp-content/uploads/2023/12/shrovetide.jpg",
       "order": 18,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2027-19",
@@ -297,12 +297,12 @@
       "type": "market",
       "description": "Субота. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Габович Іван, Слюнько Ганна, Толкаченко Ганна, Шевчук Марія",
+      "responsible": "Габович Іван, Толкаченко Ганна, Шевчук Марія, Слюнько Ганна, Швидка Світлана",
       "image": "./wp-content/uploads/2023/12/shrovetide.jpg",
       "order": 19,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2027-20",
@@ -345,12 +345,12 @@
       "type": "open-day",
       "description": "Субота. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Лагунова Тетяна, Ярчевська Руслана",
+      "responsible": "Вчителі ліцею",
       "image": "./wp-content/uploads/2023/12/school1.jpg",
       "order": 22,
       "published": true,
       "showInRhythm": false,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2027-23",
@@ -361,12 +361,12 @@
       "type": "holiday",
       "description": "Вівторок. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Лагунова Тетяна, Ярчевська Руслана",
+      "responsible": "Основні вчителі, куратори 1–11 класів",
       "image": "./wp-content/uploads/2023/12/easter.jpg",
       "order": 23,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2027-24",
@@ -377,12 +377,12 @@
       "type": "open-day",
       "description": "Субота. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Лагунова Тетяна, Ярчевська Руслана",
+      "responsible": "Вчителі ліцею",
       "image": "./wp-content/uploads/2023/12/school2.jpg",
       "order": 24,
       "published": true,
       "showInRhythm": false,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2027-25",
@@ -391,14 +391,14 @@
       "dateEnd": "2027-05-31",
       "season": "весна",
       "type": "holiday",
-      "description": "Понеділок. Класи 1–11.",
+      "description": "Понеділок. Класи 1–11. Уточнити дату: у плані «31 червня, понеділок» (такої дати немає); попередньо 31.05.2027 (понеділок).",
       "grades": "1–11",
       "responsible": "Лагунова Тетяна, Ярчевська Руслана",
       "image": "./wp-content/uploads/2023/12/the-last-bell.jpg",
       "order": 25,
       "published": true,
       "showInRhythm": true,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2027-26",
@@ -409,12 +409,12 @@
       "type": "open-day",
       "description": "Субота. Класи 1–11.",
       "grades": "1–11",
-      "responsible": "Лагунова Тетяна, Ярчевська Руслана",
+      "responsible": "Вчителі ліцею",
       "image": "./wp-content/uploads/2023/12/school3-rotated.jpg",
       "order": 26,
       "published": true,
       "showInRhythm": false,
-      "updatedAt": "2026-10-16T00:00:00.000Z"
+      "updatedAt": "2026-10-16T11:00:35.654Z"
     },
     {
       "id": "cal-2027-27",

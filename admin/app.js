@@ -3,10 +3,20 @@
   const USER_KEY = 'stupeni_cms_user';
 
   const TABS = [
+    { id: 'dashboard', label: 'Головна', permission: 'pages' },
+    { id: 'banners', label: 'Банери сторінок', permission: 'pages' },
+    { id: 'editor', label: 'Редактор сторінок', permission: 'pages' },
+    { id: 'documents', label: 'Документи', permission: 'pages' },
+    { id: 'books', label: 'Книги', permission: 'pages' },
+    { id: 'schools', label: 'Школи світу', permission: 'pages' },
+    { id: 'clubs', label: 'Гуртки', permission: 'pages' },
     { id: 'news', label: 'Новини', permission: 'news' },
     { id: 'events', label: 'Календар / Ритм року', permission: 'events' },
     { id: 'media', label: 'Медіа', permission: 'media' },
     { id: 'pages', label: 'Розділи', permission: 'pages' },
+    { id: 'staff', label: 'Педагоги', permission: 'pages' },
+    { id: 'applications', label: 'Заявки на вступ', permission: 'settings' },
+    { id: 'contact', label: 'Звернення', permission: 'settings' },
     { id: 'nav', label: 'Навігація', permission: 'nav' },
     { id: 'settings', label: 'Налаштування', permission: 'settings' },
     { id: 'account', label: 'Мій пароль', permission: 'password:self' },
@@ -132,6 +142,7 @@
       .join('');
     $$('.nav-btn', nav).forEach((btn) => {
       btn.onclick = () => {
+        if (window.StupeniAdminGuard && !window.StupeniAdminGuard()) return;
         state.tab = btn.dataset.tab;
         renderTabs();
         render();
@@ -139,6 +150,7 @@
     });
   }
 
+  window.StupeniAdmin = { api, toast, escapeHtml, mediaUrl, isImageUrl, can, state, go: (t) => { if (window.StupeniAdminGuard && !window.StupeniAdminGuard()) return; state.tab = t; renderTabs(); render(); } };
   async function render() {
     const root = $('#content');
     root.innerHTML = '<p class="muted">Завантаження…</p>';
@@ -148,9 +160,13 @@
       else if (state.tab === 'media') await renderMedia(root);
       else if (state.tab === 'pages') await renderPages(root);
       else if (state.tab === 'nav') await renderNav(root);
+      else if (state.tab === 'staff') await renderStaff(root);
+      else if (state.tab === 'applications') await renderInbox(root, 'applications');
+      else if (state.tab === 'contact') await renderInbox(root, 'contact');
       else if (state.tab === 'settings') await renderSettings(root);
       else if (state.tab === 'account') renderAccount(root);
       else if (state.tab === 'users') await renderUsers(root);
+      else if (window.StupeniAdminExtra && window.StupeniAdminExtra[state.tab]) await window.StupeniAdminExtra[state.tab](root);
     } catch (e) {
       root.innerHTML = `<p class="error">${escapeHtml(e.message)}</p>`;
     }
@@ -293,6 +309,12 @@
         <div class="row">
           <div><label>Сезон</label><input id="e-season" value="${escapeHtml(item?.season || '')}" placeholder="осінь / зима…"></div>
           <div><label>Дата</label><input id="e-date" type="date" value="${escapeHtml(item?.date || '')}"></div>
+          <div><label>Дата завершення</label><input id="e-dateEnd" type="date" value="${escapeHtml(item?.dateEnd || '')}"></div>
+        </div>
+        <div class="row">
+          <div><label>Тип</label><select id="e-type">${[['holiday','Свято'],['vacation','Канікули'],['school','Шкільна подія'],['meeting','Збори / зустріч'],['other','Інше']].map(([v,l])=>`<option value="${v}" ${(item?.type||'holiday')===v?'selected':''}>${l}</option>`).join('')}</select></div>
+          <div><label>Класи</label><input id="e-grades" value="${escapeHtml(item?.grades || '')}" placeholder="1–4, усі…"></div>
+          <div><label>Відповідальні</label><input id="e-resp" value="${escapeHtml(item?.responsible || '')}"></div>
         </div>
         <label>Зображення (URL)</label><input id="e-image" value="${escapeHtml(item?.image || '')}">
         <label>Опис</label><textarea id="e-desc">${escapeHtml(item?.description || '')}</textarea>
@@ -308,6 +330,10 @@
           order: Number($('#e-order', ed).value),
           season: $('#e-season', ed).value.trim(),
           date: $('#e-date', ed).value,
+          dateEnd: $('#e-dateEnd', ed).value || $('#e-date', ed).value,
+          type: $('#e-type', ed).value,
+          grades: $('#e-grades', ed).value.trim(),
+          responsible: $('#e-resp', ed).value.trim(),
           image: $('#e-image', ed).value.trim(),
           description: $('#e-desc', ed).value,
           published: $('#e-pub', ed).checked,
@@ -623,7 +649,13 @@
       };
     });
 
+    let sections = [];
+    try { sections = (await api('/api/admin/pages/_sections')).items || []; } catch { sections = []; }
+    let pdfMedia = [];
+    try { pdfMedia = ((await api('/api/admin/media')).items || []).filter((m) => m.document || /\.pdf$/i.test(m.url || '')); } catch { pdfMedia = []; }
+
     function openPg(item) {
+      let docs = (item?.documents || []).map((d) => ({ ...d }));
       const ed = $('#pg-editor', root);
       ed.classList.remove('hidden');
       const isNew = !item;
@@ -635,9 +667,25 @@
         </div>
         <label>Банер (URL)</label><input id="p-banner" value="${escapeHtml(item?.banner || '')}">
         <label>Текст (HTML)</label><textarea id="p-body" style="min-height:200px">${escapeHtml(item?.body || '')}</textarea>
+        <div class="panel" style="margin-top:.75rem">
+          <h4 style="margin-top:0">Документи PDF на вкладці</h4>
+          <p class="muted">PDF показуються на сторінці карточками — відвідувач відкриває або завантажує файл.</p>
+          <div id="p-docs"></div>
+          <div class="row" style="margin-top:.5rem">
+            <div><label>Додати з медіатеки</label>
+              <select id="p-doc-pick"><option value="">— оберіть PDF —</option>${pdfMedia
+                .map((m) => `<option value="${escapeHtml(m.url)}">${escapeHtml(m.title || m.url)}</option>`)
+                .join('')}</select></div>
+            <div><label>…або завантажити новий PDF</label><input type="file" id="p-doc-file" accept="application/pdf,.pdf"></div>
+          </div>
+        </div>
         ${
           isNew
-            ? `<label class="check"><input type="checkbox" id="p-nav" checked> Додати в меню</label>
+            ? `<label>Розділ сайту (куди додати вкладку)</label>
+               <select id="p-parent"><option value="">— окремий пункт меню —</option>${sections
+                 .map((s) => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.label)}</option>`)
+                 .join('')}</select>
+               <label class="check"><input type="checkbox" id="p-nav" checked> Додати в меню</label>
                <label>Сторона меню</label>
                <select id="p-side"><option value="left">Ліве</option><option value="right">Праве</option></select>`
             : `<label class="check"><input type="checkbox" id="p-cms" ${item?.cmsManaged || item?.body ? 'checked' : ''}> Керувати через CMS (підміна контенту)</label>`
@@ -646,6 +694,52 @@
           <button class="btn" id="p-save">Зберегти</button>
           <button class="btn secondary" id="p-cancel">Скасувати</button>
         </div>`;
+      function paintDocs() {
+        const box = $('#p-docs', ed);
+        box.innerHTML = docs.length
+          ? docs
+              .map(
+                (d, i) => `<div style="display:flex;gap:.5rem;align-items:center;margin:.25rem 0">
+              <span class="badge">PDF</span>
+              <input data-doc-title="${i}" value="${escapeHtml(d.title)}" style="flex:1">
+              <a class="btn ghost" href="${escapeHtml(mediaUrl(d.url))}" target="_blank">Відкрити</a>
+              <button type="button" class="btn danger" data-doc-del="${i}">×</button></div>`
+              )
+              .join('')
+          : '<p class="muted">Документів ще немає.</p>';
+        $('[data-doc-title]', box).forEach((inp) => {
+          inp.oninput = () => { docs[+inp.dataset.docTitle].title = inp.value; };
+        });
+        $('[data-doc-del]', box).forEach((b) => {
+          b.onclick = () => { docs.splice(+b.dataset.docDel, 1); paintDocs(); };
+        });
+      }
+      paintDocs();
+      $('#p-doc-pick', ed).onchange = (e) => {
+        const url = e.target.value;
+        if (!url) return;
+        const m = pdfMedia.find((x) => x.url === url);
+        docs.push({ title: (m?.title || 'Документ').replace(/\.pdf$/i, ''), url });
+        e.target.value = '';
+        paintDocs();
+      };
+      $('#p-doc-file', ed).onchange = async (e) => {
+        const f = e.target.files[0];
+        if (!f) return;
+        const fd = new FormData();
+        fd.append('file', f);
+        fd.append('title', f.name.replace(/\.pdf$/i, ''));
+        try {
+          const up = await api('/api/admin/media/upload', { method: 'POST', body: fd });
+          docs.push({ title: up.title, url: up.url });
+          pdfMedia.unshift(up);
+          toast('PDF завантажено');
+          paintDocs();
+        } catch (err) {
+          toast(err.message || 'Помилка завантаження');
+        }
+        e.target.value = '';
+      };
       $('#p-cancel', ed).onclick = () => ed.classList.add('hidden');
       $('#p-save', ed).onclick = async () => {
         if (isNew) {
@@ -657,6 +751,8 @@
               banner: $('#p-banner', ed).value.trim(),
               body: $('#p-body', ed).value,
               addToNav: $('#p-nav', ed).checked,
+              parent: $('#p-parent', ed).value,
+              documents: docs,
               navSide: $('#p-side', ed).value,
             },
           });
@@ -668,6 +764,7 @@
               banner: $('#p-banner', ed).value.trim(),
               body: $('#p-body', ed).value,
               cmsManaged: $('#p-cms', ed)?.checked ?? true,
+              documents: docs,
             },
           });
         }
@@ -675,6 +772,67 @@
         render();
       };
     }
+  }
+
+  /* ——— Педагоги ——— */
+  async function renderStaff(root) {
+    const { items } = await api('/api/admin/staff');
+    root.innerHTML = `
+      <div class="toolbar"><h2>Педагоги</h2><button class="btn" id="st-new">+ Додати педагога</button></div>
+      <p class="muted">Показуються на сторінці <a href="/p/pedahohy" target="_blank">/p/pedahohy</a>. Фото — URL з медіатеки.</p>
+      <div id="st-editor" class="editor panel hidden"></div>
+      <table class="table"><thead><tr><th>Фото</th><th>Ім’я</th><th>Посада</th><th>Кваліфікація</th><th>Порядок</th><th></th></tr></thead>
+      <tbody>${items.map((s) => `<tr>
+        <td>${s.photo ? `<img src="${escapeHtml(mediaUrl(s.photo))}" alt="" style="width:48px;height:48px;object-fit:cover;border-radius:6px">` : ''}</td>
+        <td>${escapeHtml(s.name)}${s.visible === false ? ' <span class="badge">приховано</span>' : ''}</td><td>${escapeHtml(s.role)}</td><td>${escapeHtml(s.qualification)}</td><td>${s.order || 0}</td>
+        <td><button class="btn secondary" data-edit="${s.id}">Редаг.</button> <button class="btn danger" data-del="${s.id}">×</button></td></tr>`).join('')}</tbody></table>`;
+    const open = (s) => {
+      const ed = $('#st-editor', root); ed.classList.remove('hidden');
+      ed.innerHTML = `<h3>${s ? 'Редагувати' : 'Новий педагог'}</h3>
+        <div class="row"><div><label>Ім’я та прізвище</label><input id="s-name" value="${escapeHtml(s?.name || '')}"></div>
+        <div><label>Посада / роль</label><input id="s-role" value="${escapeHtml(s?.role || '')}"></div></div>
+        <label>Кваліфікація</label><input id="s-qual" value="${escapeHtml(s?.qualification || '')}">
+        <div class="row"><div><label>Фото (URL)</label><input id="s-photo" value="${escapeHtml(s?.photo || '')}"></div>
+        <div><label>…або завантажити фото</label><input type="file" id="s-file" accept="image/*"></div></div>
+        <div class="row"><div><label>Порядок</label><input id="s-order" type="number" value="${s?.order || 0}"></div>
+        <div><label class="check"><input type="checkbox" id="s-vis" ${s?.visible === false ? '' : 'checked'}> Показувати на сайті</label></div></div>
+        <div style="display:flex;gap:.5rem;margin-top:.75rem"><button class="btn" id="s-save">Зберегти</button><button class="btn secondary" id="s-cancel">Скасувати</button></div>`;
+      $('#s-cancel', ed).onclick = () => ed.classList.add('hidden');
+      $('#s-file', ed).onchange = async (e) => {
+        const f = e.target.files[0]; if (!f) return;
+        const fd = new FormData(); fd.append('file', f); fd.append('title', f.name);
+        try { const up = await api('/api/admin/media/upload', { method: 'POST', body: fd }); $('#s-photo', ed).value = up.url; toast('Фото завантажено'); }
+        catch (err) { toast(err.message || 'Помилка'); }
+      };
+      $('#s-save', ed).onclick = async () => {
+        const body = { name: $('#s-name', ed).value.trim(), role: $('#s-role', ed).value.trim(), qualification: $('#s-qual', ed).value.trim(),
+          photo: $('#s-photo', ed).value.trim(), order: Number($('#s-order', ed).value) || 0, visible: $('#s-vis', ed).checked };
+        await api(s ? `/api/admin/staff/${s.id}` : '/api/admin/staff', { method: s ? 'PUT' : 'POST', body });
+        toast('Збережено'); render();
+      };
+    };
+    $('#st-new', root).onclick = () => open(null);
+    $$('[data-edit]', root).forEach((b) => { b.onclick = () => open(items.find((x) => x.id === b.dataset.edit)); });
+    $$('[data-del]', root).forEach((b) => { b.onclick = async () => { if (!confirm('Видалити?')) return; await api(`/api/admin/staff/${b.dataset.del}`, { method: 'DELETE' }); render(); }; });
+  }
+
+  /* ——— Заявки та звернення ——— */
+  async function renderInbox(root, kind) {
+    const { items } = await api(`/api/admin/${kind}`);
+    const title = kind === 'contact' ? 'Звернення з форми «Напишіть нам»' : 'Заявки на вступ';
+    const cols = kind === 'contact'
+      ? [['your-name', 'Ім’я'], ['your-tel', 'Телефон'], ['your-email', 'E-mail'], ['your-message', 'Повідомлення']]
+      : [['childName', 'Дитина'], ['childBirthDate', 'Дата народж.'], ['grade', 'Клас'], ['parentName', 'Батьки'], ['phone', 'Телефон'], ['email', 'E-mail'], ['message', 'Коментар']];
+    root.innerHTML = `<div class="toolbar"><h2>${title}</h2></div>
+      <p class="muted">Всього: ${items.length}. Дані зберігаються на сервері й не доступні публічно.</p>
+      <table class="table"><thead><tr><th>Дата</th>${cols.map((c) => `<th>${c[1]}</th>`).join('')}<th>Статус</th><th></th></tr></thead>
+      <tbody>${items.map((m) => `<tr>
+        <td>${escapeHtml(new Date(m.createdAt).toLocaleString('uk-UA'))}</td>
+        ${cols.map((c) => `<td>${escapeHtml(m[c[0]] || '')}</td>`).join('')}
+        <td><select data-status="${m.id}">${['new', 'in-progress', 'done'].map((s) => `<option value="${s}" ${m.status === s ? 'selected' : ''}>${{ new: 'Нова', 'in-progress': 'В роботі', done: 'Оброблено' }[s]}</option>`).join('')}</select></td>
+        <td><button class="btn danger" data-del="${m.id}">×</button></td></tr>`).join('') || `<tr><td colspan="${cols.length + 3}" class="muted">Поки порожньо</td></tr>`}</tbody></table>`;
+    $$('[data-status]', root).forEach((s) => { s.onchange = async () => { await api(`/api/admin/${kind}/${s.dataset.status}`, { method: 'PUT', body: { status: s.value } }); toast('Збережено'); }; });
+    $$('[data-del]', root).forEach((b) => { b.onclick = async () => { if (!confirm('Видалити запис?')) return; await api(`/api/admin/${kind}/${b.dataset.del}`, { method: 'DELETE' }); render(); }; });
   }
 
   /* ——— Навігація ——— */

@@ -21,3 +21,5 @@ data/users.json
 data/mail-log.json
 .env
 .env.*
+data/contact-messages.json
+data/applications.json

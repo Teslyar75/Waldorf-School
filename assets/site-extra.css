@@ -1,0 +1,494 @@
+/* =====================================================================
+   Ступені — спільні компоненти для нових сторінок (CMS /p/, документи,
+   календар, батьки, випускники, методичні матеріали, педагогіка).
+   Побудовано на стилі теми: шрифти Antropos / BaarLemuria, помаранчевий
+   #f08b3b, персиковий #f1bd98, рвані рамки border-levels-home.png.
+   ===================================================================== */
+:root {
+	--st-orange: #f08b3b;
+	--st-orange-dark: #e77632;
+	--st-peach: #f1bd98;
+	--st-sand: #e0d2a5;
+	--st-cream: #fff7ee;
+	--st-ink: #343537;
+	--st-muted: #5b5056;
+	--st-frame: url(/wp-content/themes/waldorf/images/border-levels-home.png);
+	--st-torn: url(/wp-content/themes/waldorf/images/mask-torn-photo.png);
+	--st-gap: 1.563vw;
+}
+
+/* Посилання в тексті — кольори школи замість синіх */
+main.page .content a:not(.btn),
+.cms-body a:not(.btn),
+.st-section a:not(.btn) {
+	color: var(--st-orange);
+	text-decoration: none;
+	border-bottom: 1px dashed currentColor;
+	transition: color .3s;
+}
+main.page .content a:not(.btn):hover,
+.cms-body a:not(.btn):hover { color: var(--st-orange-dark); }
+
+main.page .content h3,
+.cms-body h3 {
+	font-family: BaarLemuria;
+	color: var(--st-orange);
+	letter-spacing: 0.104vw;
+	font-size: 1.146vw;
+	line-height: 120%;
+	margin: 1.563vw 0 0.781vw;
+}
+main.page .content .btn { display: inline-block; }
+
+/* ---------- Органічна картка (рвана рамка як у «Структурі школи») */
+.st-card,
+.cms-doc,
+.cms-hub li,
+.info-pending,
+.staff-card {
+	position: relative;
+	background: var(--st-cream);
+	padding: 1.563vw 1.823vw;
+	border: 0 !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	isolation: isolate;
+}
+.st-card::after,
+.cms-doc::after,
+.cms-hub li::after,
+.info-pending::after,
+.staff-card::after {
+	content: "";
+	position: absolute;
+	top: -3%;
+	left: -2%;
+	width: 104%;
+	height: 106%;
+	background: var(--st-frame) center no-repeat;
+	background-size: 100% 100%;
+	pointer-events: none;
+	z-index: 2;
+}
+
+/* ---------- Сітка карток */
+.cms-docs-grid,
+.cms-hub,
+.staff-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(15.625vw, 1fr));
+	gap: 2.083vw;
+	list-style: none;
+	padding: 0;
+	margin: 1.563vw 0 2.604vw !important;
+}
+main.page .content .cms-hub li { margin: 0; font-size: 0.938vw; }
+.cms-hub a { font-family: BaarLemuria; letter-spacing: 0.052vw; }
+
+/* ---------- PDF / документ-картка */
+.cms-doc {
+	display: flex;
+	flex-direction: column;
+	gap: 0.781vw;
+	text-decoration: none !important;
+	color: var(--st-ink) !important;
+	transition: transform .3s;
+}
+.cms-doc:hover { transform: translateY(-0.26vw); }
+.cms-doc-icon {
+	align-self: flex-start;
+	background: var(--st-orange);
+	color: #fff;
+	font-family: BaarLemuria;
+	letter-spacing: 0.104vw;
+	padding: 0.781vw 1.042vw;
+	font-size: 0.833vw;
+	-webkit-mask-image: var(--st-torn);
+	mask-image: var(--st-torn);
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+}
+.cms-doc-title { font-size: 0.938vw; line-height: 130%; }
+.cms-doc-open { color: var(--st-orange); font-size: 0.833vw; margin-top: auto; }
+.cms-doc--img img {
+	width: 100%;
+	height: 10.417vw;
+	object-fit: cover;
+	-webkit-mask-image: var(--st-torn);
+	mask-image: var(--st-torn);
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+	max-height: none !important;
+	margin: 0 !important;
+}
+.cms-docs h2 { text-align: left; }
+
+/* ---------- «Інформація оновлюється» */
+.info-pending {
+	margin: 1.042vw 0 2.083vw;
+	font-size: 0.938vw;
+	line-height: 140%;
+	color: var(--st-muted);
+	background: #fbeee0;
+}
+.info-pending strong {
+	display: block;
+	font-family: BaarLemuria;
+	color: var(--st-orange);
+	letter-spacing: 0.104vw;
+	margin-bottom: 0.26vw;
+}
+
+/* ---------- Педагоги */
+.staff-card { text-align: center; }
+.staff-card img {
+	width: 10.417vw;
+	height: 10.417vw;
+	object-fit: cover;
+	margin: 0 auto 0.781vw !important;
+	-webkit-mask-image: var(--st-torn);
+	mask-image: var(--st-torn);
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+}
+.staff-card h3 { margin-top: 0 !important; }
+
+/* ---------- Форми (заявка, батьки, контакт) */
+.cms-form,
+.batky-form {
+	display: grid;
+	gap: 1.042vw;
+	max-width: 36.458vw;
+	margin: 1.563vw 0;
+}
+.cms-form label,
+.batky-form label { display: block; font-size: 0.938vw; color: var(--st-muted); }
+.cms-form input:not([type=checkbox]),
+.cms-form select,
+.cms-form textarea,
+.batky-form input:not([type=checkbox]) {
+	display: block;
+	width: 100%;
+	margin-top: 0.39vw;
+	padding: 0.938vw 1.302vw;
+	border: 2px solid var(--st-peach);
+	border-radius: 2.083vw;
+	background: #fff;
+	font-family: Antropos;
+	font-size: 0.938vw;
+	color: var(--st-ink);
+	box-sizing: border-box;
+	outline: none;
+	transition: border-color .3s;
+}
+.cms-form textarea { border-radius: 1.302vw; resize: vertical; }
+.cms-form input:focus, .cms-form select:focus, .cms-form textarea:focus,
+.batky-form input:focus { border-color: var(--st-orange); }
+.cms-form input[type=checkbox], .batky-form input[type=checkbox] { accent-color: var(--st-orange); width: auto; margin-right: 0.52vw; }
+.cms-form .btn, .batky-form .btn { justify-self: start; border: 0; cursor: pointer; font-family: Antropos; }
+.form-msg { font-family: BaarLemuria; letter-spacing: 0.052vw; }
+.form-consent { font-size: 0.781vw; opacity: .9; }
+.form-consent a { color: inherit !important; text-decoration: underline; }
+
+/* ---------- Списки посилань (випускники тощо) */
+.st-list { list-style: none; padding: 0; margin: 1.563vw 0 !important; display: grid; gap: 1.302vw; }
+.st-list li { margin: 0 !important; }
+.st-list .muted, .muted { color: var(--st-muted); opacity: .8; font-size: .9em; }
+.st-actions { display: flex; flex-wrap: wrap; gap: 1.042vw; margin: 1.563vw 0; }
+.st-actions .btn { display: inline-block; }
+
+/* ---------- Галерея: персикову прямокутну рамку прибрано */
+main .gallery .carousel-cell:not([class*="cms-frame--"])::after,
+main .gallery .cms-frame--gallery::after { display: none; }
+
+/* ---------- Мобільні */
+@media only screen and (max-width: 1024px) {
+	main.page .content h3, .cms-body h3 { font-size: 2.4vw; }
+	.cms-docs-grid, .cms-hub, .staff-grid { grid-template-columns: repeat(auto-fill, minmax(28vw, 1fr)); gap: 3vw; }
+	main.page .content .cms-hub li, .cms-doc-title, .info-pending, .cms-form label, .batky-form label { font-size: 2vw; }
+	.cms-form, .batky-form { max-width: 100%; gap: 2vw; }
+	.cms-form input:not([type=checkbox]), .cms-form select, .cms-form textarea, .batky-form input:not([type=checkbox]) { font-size: 2vw; padding: 1.8vw 2.4vw; border-radius: 4vw; }
+	.cms-doc-icon, .cms-doc-open, .form-consent { font-size: 1.8vw; }
+	.st-card, .cms-doc, .cms-hub li, .info-pending, .staff-card { padding: 3vw 3.4vw; }
+	.staff-card img { width: 24vw; height: 24vw; }
+	.cms-doc--img img { height: 24vw; }
+}
+@media only screen and (max-width: 600px) {
+	main.page .content h3, .cms-body h3 { font-size: 5vw; }
+	.cms-docs-grid, .cms-hub, .staff-grid { grid-template-columns: 1fr; gap: 6vw; }
+	main.page .content .cms-hub li, .cms-doc-title, .info-pending, .cms-form label, .batky-form label { font-size: 4vw; }
+	.cms-form input:not([type=checkbox]), .cms-form select, .cms-form textarea, .batky-form input:not([type=checkbox]) { font-size: 4vw; padding: 3vw 4vw; border-radius: 8vw; }
+	.cms-doc-icon, .cms-doc-open, .form-consent { font-size: 3.4vw; }
+	.st-card, .cms-doc, .cms-hub li, .info-pending, .staff-card { padding: 6vw 6vw; }
+	.staff-card img { width: 50vw; height: 50vw; }
+	.cms-doc--img img { height: 50vw; }
+	.st-actions { gap: 3vw; }
+}
+
+/* ---------- Fixes after visual review */
+/* Antropos has uppercase glyphs only: keep the site-wide uppercase everywhere (docs viewer, calendar) */
+main *:not(input):not(textarea):not(select):not(option) { text-transform: uppercase !important; }
+main .levels .level .info .btn { display: inline-block; margin: 0.26vw 0.52vw 0 0; }
+main.page .content:has(> .breadcrumbs:only-child) { min-height: 0; padding-bottom: 0; }
+.cms-body .btn { display: inline-block; }
+@media only screen and (max-width: 600px) {
+	main.page .content .cms-hub li, .cms-doc-title, .info-pending, .cms-form label, .batky-form label { font-size: 3.4vw; }
+	.info-pending strong { letter-spacing: 0; }
+	main .levels .level .info .btn { margin-top: 2vw; }
+}
+
+/* ===== Книги (методичні матеріали) ===== */
+.st-intro { width: 100%; max-width: 62vw; margin: 0 auto 3vw; text-align: center; }
+.st-intro a { color: var(--st-orange, #f08b3b); }
+.st-badge { display: inline-block; background: #f08b3b; color: #fff; border-radius: 999px; padding: .3em 1em; font-size: .85em; margin-bottom: .6em; }
+.levels .level-photo .st-cover { display: block; aspect-ratio: 2/3; width: 100%; max-width: 20vw; margin: 0 auto; }
+.levels .level-photo .st-cover img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; box-shadow: 0 .4vw 1.6vw rgba(52, 53, 55, .28), 0 .1vw .3vw rgba(52, 53, 55, .2); -webkit-mask: none; mask: none; }
+.st-book-placeholder { aspect-ratio: 2/3; max-width: 20vw; margin: 0 auto; display: grid; place-items: center; padding: 2vw; text-align: center; background: #e0d2a5; color: #343537; font-family: BaarLemuria, Georgia, serif; font-size: 1.4vw; border-radius: 3px; box-shadow: 0 .4vw 1.6vw rgba(52, 53, 55, .2); background-image: linear-gradient(90deg, rgba(0,0,0,.08) 0 4%, transparent 4%); }
+@media (max-width: 768px) {
+  .st-intro { max-width: 90vw; }
+  .levels .level-photo .st-cover, .st-book-placeholder { max-width: 52vw; }
+  .st-book-placeholder { font-size: 4.2vw; }
+}
+
+/* ===== Без прямих ліній: рвані (органічні) краї для всіх панелей ===== */
+:root { --st-torn-mask: url(/assets/torn-mask.png); }
+.levels, .st-card, .cms-doc, .cms-hub li, .info-pending, .staff-card, .cms-form, .batky-form, .st-intro,
+.school-docs, .school-docs__viewer, .school-docs__thumb, .school-docs__cards, .calendar-wrap, .cal-month, .calendar, .rhythm-calendar,
+.st-badge, .st-book-placeholder, .st-list li, main .content blockquote, main .content table,
+main input:not([type=checkbox]):not([type=radio]), main textarea, main select, main .btn, main button {
+  -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 26px round; mask-border: var(--st-torn-mask) 30 fill / 26px round;
+  border-radius: 0 !important; border-color: transparent !important; box-shadow: none !important;
+}
+/* великі підкладки: маска не повинна «з’їдати» вміст — додатковий відступ */
+.levels, .school-docs, .school-docs__cards, .cms-form, .batky-form, .st-intro { padding-left: max(3vw, 18px); padding-right: max(3vw, 18px); padding-top: max(2.5vw, 16px); padding-bottom: max(2.5vw, 16px); }
+.levels .level-photo .st-cover img { -webkit-mask-image: var(--st-torn-mask); mask-image: var(--st-torn-mask); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; box-shadow: none; filter: drop-shadow(0 .4vw .8vw rgba(52,53,55,.3)); }
+.levels .level-photo .st-cover { filter: drop-shadow(0 .4vw 1vw rgba(52,53,55,.28)); }
+main hr { border: 0; height: 12px; background: url(/wp-content/themes/waldorf/images/border-levels-home.png) center/100% 100% no-repeat; opacity: .5; }
+
+main .btn, main button, main input:not([type=checkbox]):not([type=radio]), main select, .st-badge, .school-docs__thumb, .st-list li { -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 9px round; mask-border: var(--st-torn-mask) 30 fill / 9px round; }
+
+
+/* Підкладка .levels: відступ від країв екрана + рвані краї з усіх боків; фото — рвані краї з усіх боків */
+main .levels { width: auto !important; margin-left: 3vw !important; margin-right: 3vw !important; box-sizing: border-box; }
+main .levels::before, main .levels::after { display: none !important; }
+main .levels .level-photo img, main .levels .level-photo .st-cover img {
+  -webkit-mask-image: none !important; mask-image: none !important;
+  -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 14px round; mask-border: var(--st-torn-mask) 30 fill / 14px round;
+}
+
+@media (max-width: 768px) { main .levels { margin-left: 2.5vw !important; margin-right: 2.5vw !important; } }
+
+.school-docs__viewer { padding-bottom: 34px !important; }
+
+
+/* ===== Вальдорфські школи світу ===== */
+.st-world-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5vw; margin: 2vw 0; }
+.st-world-stats .st-card { text-align: center; padding: 1.6vw 1vw; background: #f1bd98; }
+.st-world-stats b { display: block; font-family: BaarLemuria, Georgia, serif; font-size: 3vw; color: #f08b3b; font-weight: normal; line-height: 1.1; }
+.st-world-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2vw; margin: 1.5vw 0 3vw; }
+.st-world-card { display: flex; gap: 1.4vw; padding: 1.6vw; background: #fdf4ec; align-items: flex-start; }
+.st-world-media { flex: 0 0 7vw; }
+.st-world-media img { width: 7vw; height: 7vw; object-fit: cover; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 8px round; }
+.st-world-ph { width: 7vw; height: 7vw; display: grid; place-items: center; align-content: center; background: #e0d2a5; font-family: BaarLemuria, Georgia, serif; color: #343537; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 8px round; mask-border: var(--st-torn-mask) 30 fill / 8px round; }
+.st-world-ph span { font-size: 2vw; line-height: 1; }
+.st-world-ph b { font-size: 1.3vw; font-weight: normal; }
+.st-world-text h3 { margin: 0 0 .3em; color: #f08b3b; }
+.st-world-text p { margin: 0 0 .6em; }
+.st-sources { columns: 2; column-gap: 3vw; }
+.st-sources li { margin-bottom: .5em; break-inside: avoid; }
+@media (max-width: 768px) {
+  .st-world-stats { grid-template-columns: repeat(2, 1fr); gap: 3vw; }
+  .st-world-stats b { font-size: 8vw; }
+  .st-world-grid { grid-template-columns: 1fr; gap: 4vw; }
+  .st-world-card { gap: 3.5vw; padding: 4.5vw; }
+  .st-world-media { flex-basis: 16vw; }
+  .st-world-ph, .st-world-media img { width: 16vw; height: 16vw; }
+  .st-world-ph span { font-size: 6vw; } .st-world-ph b { font-size: 3.4vw; }
+  .st-sources { columns: 1; }
+}
+
+.st-world-grid > *, .st-world-stats > *, .st-world-text { min-width: 0; }
+.st-world-text h3, .st-world-text p, .st-world-stats span { overflow-wrap: anywhere; hyphens: auto; }
+.cms-body:has(.st-world-grid) { max-width: 100%; overflow-x: hidden; }
+@media (max-width: 768px) { .st-world-text h3 { font-size: 4.6vw; } .st-world-stats b { font-size: 7vw; } .st-world-intro p { font-size: 3.4vw; } }
+
+
+/* ===== Гуртки та майстер-класи ===== */
+.st-club-ph { aspect-ratio: 4/3; width: 100%; display: grid; place-items: center; align-content: center; gap: .6vw; padding: 2vw; text-align: center; background: #e0d2a5; color: #343537; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 18px round; mask-border: var(--st-torn-mask) 30 fill / 18px round; }
+.st-club-ph__icon { font-size: 3vw; color: #f08b3b; line-height: 1; }
+.st-club-ph b { font-family: BaarLemuria, Georgia, serif; font-weight: normal; font-size: 1.8vw; }
+.st-club-ph small { font-size: .9vw; opacity: .75; }
+.levels .st-club .level-photo img { aspect-ratio: 4/3; width: 100%; object-fit: cover; }
+.st-club-kind { color: #f08b3b; font-size: .85em; letter-spacing: .08em; margin: 0 0 .3em; }
+.st-club-facts { list-style: none; padding: 1vw 1.4vw; margin: 1vw 0; background: #fdf4ec; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 10px round; mask-border: var(--st-torn-mask) 30 fill / 10px round; }
+.st-club-facts li { margin: .25em 0; }
+.st-club-facts span { color: #f08b3b; }
+.info-pending-inline { font-style: normal; opacity: .75; }
+.st-club-page { max-width: 62vw; margin: 0 auto 3vw; }
+.st-club-hero { max-width: 40vw; margin: 0 auto 2vw; }
+.st-club-hero img { width: 100%; aspect-ratio: 4/3; object-fit: cover; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 18px round; mask-border: var(--st-torn-mask) 30 fill / 18px round; }
+.st-club-lead { font-size: 1.15em; }
+.st-club-page h3 { color: #f08b3b; margin-top: 1.6em; }
+@media (max-width: 768px) {
+  .st-club-ph { padding: 5vw; gap: 2vw; } .st-club-ph__icon { font-size: 9vw; } .st-club-ph b { font-size: 5.2vw; } .st-club-ph small { font-size: 3vw; }
+  .st-club-facts { padding: 3vw 4vw; }
+  .st-club-page { max-width: 92vw; } .st-club-hero { max-width: 92vw; }
+}
+
+main.page { overflow-x: clip; }
+
+
+/* Галерея гуртка + lightbox */
+.st-club-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2vw; margin: 1.5vw 0 2.5vw; }
+.st-club-gallery__item { display: block; aspect-ratio: 1; transition: transform .2s; }
+.st-club-gallery__item:hover { transform: scale(1.03) rotate(-.5deg); }
+.st-club-gallery__item img { width: 100%; height: 100%; object-fit: cover; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 12px round; mask-border: var(--st-torn-mask) 30 fill / 12px round; }
+.st-club-hero img, .levels .st-club .level-photo img { -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 18px round; mask-border: var(--st-torn-mask) 30 fill / 18px round; }
+.st-lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(52,53,55,.92); display: flex; align-items: center; justify-content: center; }
+.st-lightbox[hidden] { display: none; }
+.st-lightbox img { max-width: 88vw; max-height: 86vh; object-fit: contain; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 16px round; mask-border: var(--st-torn-mask) 30 fill / 16px round; }
+.st-lightbox button { position: absolute; background: #f08b3b; color: #fff; border: 0; width: 52px; height: 52px; font-size: 32px; line-height: 1; cursor: pointer; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 6px round; mask-border: var(--st-torn-mask) 30 fill / 6px round; }
+.st-lb-close { top: 3vh; right: 3vw; } .st-lb-prev { left: 2vw; } .st-lb-next { right: 2vw; }
+@media (max-width: 768px) { .st-club-gallery { grid-template-columns: repeat(2, 1fr); gap: 3vw; } .st-lightbox img { max-width: 96vw; } .st-lb-prev, .st-lb-next { top: auto; bottom: 4vh; } }
+
+.st-club-gallery__item, .st-club-gallery__item:hover { border: 0 !important; text-decoration: none !important; background: none !important; box-shadow: none !important; }
+.st-club-gallery__item::after, .st-club-gallery__item::before { display: none !important; }
+.st-lightbox img { width: min(88vw, 1400px) !important; height: 86vh !important; max-width: none !important; object-fit: contain; -webkit-mask-box-image: none; mask-border: none; filter: drop-shadow(0 0 2px #0008); }
+
+
+.st-lightbox { z-index: 2147483000 !important; }
+
+
+/* Меню «Про нас»: довгий список — у 2 колонки і з прокруткою, якщо не вміщується у висоту екрана */
+header .top-menu .sub-menu { max-height: calc(100vh - 7vw); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+header .top-menu .left .sub-menu:has(> li:nth-child(11)) { columns: 2; column-gap: 2vw; width: 38vw; max-width: 38vw; }
+header .top-menu .left .sub-menu:has(> li:nth-child(11)) li { break-inside: avoid; }
+
+/* Мобільне меню: клас small-header (після прокрутки) зменшував пункти до ~5px — фіксуємо читабельний розмір */
+header .top-menu ul.mob > li > a, header.small-header .top-menu ul.mob > li > a { font-size: 17px !important; line-height: 1.3 !important; white-space: normal !important; }
+header .top-menu ul.mob .sub-menu li a, header.small-header .top-menu ul.mob .sub-menu li a { font-size: 15px !important; line-height: 1.35 !important; }
+header .top-menu ul.mob .sub-menu { columns: auto !important; width: auto !important; max-width: none !important; max-height: none !important; overflow: visible !important; }
+
+/* ================= ЄДИНИЙ СТИЛЬ /p/-СТОРІНОК (як «Структура школи») ================= */
+main.page .content .cms-body:empty { display: none; }
+main .st-page { margin-bottom: 4vw; }
+main .st-page > h2 { width: 100%; }
+main .st-page .st-lead { width: 100%; max-width: 62em; margin: 0 auto 2vw; text-align: center; font-size: clamp(15px, 1.05vw, 20px); line-height: 1.55; color: var(--st-ink); }
+main .st-page .level .info .desc { font-size: clamp(15px, .95vw, 19px); line-height: 1.55; }
+main .st-page .level .info .desc ul { padding-left: 1.2em; margin: .6em 0; }
+main .st-page .level .info h3 { margin-bottom: .6em; }
+/* Читабельна колонка на кремовій рваній підкладці */
+main .st-page .st-textcard, main .st-page .st-formcard {
+  width: 100%; max-width: 980px; margin: 0 auto 2.2vw; box-sizing: border-box;
+  padding: clamp(22px, 3vw, 54px) clamp(20px, 3.6vw, 64px);
+  background: var(--st-cream); color: var(--st-ink);
+  font-size: clamp(15px, 1vw, 19px); line-height: 1.6;
+  -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 22px round; mask-border: var(--st-torn-mask) 30 fill / 22px round;
+}
+main .st-page .st-tsec + .st-tsec { margin-top: 1.6em; padding-top: 1.4em; background: url(/wp-content/themes/waldorf/images/border-levels-home.png) top center / 100% 10px no-repeat; }
+main .st-page .st-textcard h3, main .st-page .st-formcard h3 { font-family: Antropos, sans-serif; color: var(--st-orange); font-size: clamp(19px, 1.5vw, 28px); line-height: 1.2; margin: 0 0 .6em; text-transform: uppercase; }
+main .st-page .st-textcard p { margin: 0 0 .8em; }
+main .st-page .st-textcard ul { margin: .4em 0 .8em; padding-left: 1.3em; }
+main .st-page .st-textcard li { margin: .35em 0; }
+main .st-page .st-textcard a:not(.btn) { color: var(--st-orange-dark); text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+main .st-page .st-textcard .cms-docs h2 { font-size: clamp(19px, 1.5vw, 28px); color: var(--st-orange); text-align: left; margin: 0 0 .6em; }
+main .st-page .st-wide { width: 100%; }
+/* «Інформація уточнюється» — акуратна персикова плашка з рваними краями та іконкою */
+main .st-page .info-pending {
+  position: relative; display: block; margin: .6em 0 0; padding: 16px 20px 16px 58px !important;
+  background: #fbe2cf !important; color: var(--st-muted); font-size: clamp(14px, .9vw, 17px) !important; line-height: 1.5;
+  -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 14px round; mask-border: var(--st-torn-mask) 30 fill / 14px round;
+}
+main .st-page .info-pending::before { content: "\231B"; position: absolute; left: 20px; top: 14px; font-size: 22px; color: var(--st-orange); }
+main .st-page .info-pending::after { display: none !important; }
+main .st-page .info-pending strong { display: block; color: var(--st-orange-dark); font-family: Antropos, sans-serif; text-transform: uppercase; letter-spacing: .02em; margin-bottom: 2px; }
+main .st-page .level .info .desc .info-pending { margin-top: .2em; }
+/* Форма заявки: кремова рвана картка, поля в 2 колонки на десктопі */
+main .st-page .st-formcard .cms-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; max-width: none; margin: 0; padding: 0 !important; background: none; -webkit-mask-box-image: none; mask-border: none; }
+main .st-page .st-formcard .cms-form label { font-size: clamp(14px, .85vw, 16px) !important; color: var(--st-muted); display: flex; flex-direction: column; gap: 6px; }
+main .st-page .st-formcard .cms-form label:has(textarea), main .st-page .st-formcard .cms-form .form-consent, main .st-page .st-formcard .cms-form .btn { grid-column: 1 / -1; }
+main .st-page .st-formcard .cms-form .form-consent { flex-direction: row; align-items: flex-start; gap: 10px; line-height: 1.45; }
+main .st-page .st-formcard .cms-form .form-consent input { width: 20px; height: 20px; flex: none; margin: 2px 0 0; }
+main .st-page .st-formcard .cms-form input:not([type=checkbox]), main .st-page .st-formcard .cms-form select, main .st-page .st-formcard .cms-form textarea {
+  width: 100%; box-sizing: border-box; min-height: 46px; font-size: 16px !important; padding: 10px 16px !important; border: 0 !important; border-radius: 0 !important; background: #fff;
+  -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 9px round; mask-border: var(--st-torn-mask) 30 fill / 9px round;
+}
+main .st-page .st-formcard .cms-form textarea { min-height: 120px; }
+main .st-page .st-formcard .cms-form .btn { justify-self: center; min-height: 48px; padding: 12px 40px; font-size: clamp(15px, 1vw, 18px); }
+@media (max-width: 768px) {
+  main .st-page { margin-bottom: 8vw; }
+  main .st-page .level .info .desc, main .st-page .st-lead { font-size: 15px; }
+  main .st-page .st-formcard .cms-form { grid-template-columns: 1fr; }
+  main .st-page .st-textcard, main .st-page .st-formcard { margin-bottom: 18px; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 14px round; mask-border: var(--st-torn-mask) 30 fill / 14px round; }
+  main .st-page .st-textcard h3, main .st-page .st-formcard h3 { font-size: 20px; }
+  main .st-page .info-pending { padding: 14px 14px 14px 48px !important; font-size: 14px !important; }
+  main .st-page .info-pending::before { left: 14px; font-size: 20px; }
+}
+
+/* ================= «НАПИШІТЬ НАМ» — рвані краї замість заокруглень ================= */
+footer .contact-form .form-container { border-radius: 0 !important; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 22px round; mask-border: var(--st-torn-mask) 30 fill / 22px round; }
+footer .contact-form form input[type="text"], footer .contact-form form input[type="tel"], footer .contact-form form input[type="email"], footer .contact-form form textarea {
+  border-radius: 0 !important; border: 0 !important; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 9px round; mask-border: var(--st-torn-mask) 30 fill / 9px round;
+}
+footer .contact-form form input[type="submit"] { border-radius: 0 !important; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 9px round; mask-border: var(--st-torn-mask) 30 fill / 9px round; min-height: 46px; }
+
+/* Головна: хвиля під відео без прямої персикової смуги */
+main .video { background-image: url(/assets/sea-clean.jpg) !important; background-color: #e1e7f4; }
+/* Новини на головній — рвані краї замість заокруглень */
+main .news-list .new, .news .new, main .new { border-radius: 0 !important; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 20px round; mask-border: var(--st-torn-mask) 30 fill / 20px round; }
+main .new img { border-radius: 0 !important; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 12px round; mask-border: var(--st-torn-mask) 30 fill / 12px round; }
+/* /p/: прибрати порожній відступ між крихтами та підкладкою; згода у формі — рядком */
+main.page .content:has(> .cms-body:empty) { padding-bottom: 1.5vw !important; margin-bottom: 0 !important; min-height: 0 !important; }
+main.page .content:has(> .cms-body:empty) + .st-page { margin-top: 1vw !important; }
+main .st-page .st-formcard .cms-form .form-consent { display: block !important; padding-left: 32px; position: relative; }
+main .st-page .st-formcard .cms-form .form-consent input { position: absolute; left: 0; top: 0; }
+
+footer .contact-form form, footer .contact-form .wpcf7 { border-radius: 0 !important; }
+footer .contact-form .form-container, footer .contact-form form.wpcf7-form { -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 22px round; mask-border: var(--st-torn-mask) 30 fill / 22px round; }
+
+/* ================= МОБІЛЬНА АДАПТАЦІЯ (автоаудит 360/390/768) ================= */
+.content.cal-crumbs { box-sizing: border-box; max-width: 100%; }
+html, body { max-width: 100%; }
+@media (max-width: 1024px) {
+  main .btn, main a.btn, main .btn.orange { font-size: max(14px, 1em) !important; min-height: 42px; display: inline-flex; align-items: center; justify-content: center; }
+}
+@media (max-width: 768px) {
+  /* дрібні іконки соцмереж і стрілки слайдерів: зона натискання ≥ 40px без зміни макета */
+  header .top-menu a:has(> i), header .top-menu a[href*="tiktok"], header .top-menu a[href*="facebook"], header .top-menu a[href*="instagram"], header .top-menu a[href*="youtube"] { padding: 10px; margin: -10px; position: relative; }
+  .swiper-button-prev, .swiper-button-next, .slick-prev, .slick-next, button[aria-label="Previous"], button[aria-label="Next"], .st-lightbox button { min-width: 40px !important; min-height: 40px !important; }
+}
+@media (max-width: 600px) {
+  main .banner h1 { font-size: 24px !important; line-height: 1.15; }
+  main h2 { font-size: max(20px, 1em) !important; line-height: 1.2; }
+  main h3 { font-size: max(17px, 1em) !important; line-height: 1.25; }
+  main p, main li, main td, main th, main dd, main .desc, main .desc p, main .info p, main label, main .muted { font-size: 15px !important; line-height: 1.5 !important; }
+  main p span, main li span, main p a, main li a, main p strong, main li strong { font-size: inherit !important; }
+  .breadcrumbs, .breadcrumbs a, .breadcrumbs span { font-size: 13px !important; line-height: 1.5; }
+  main .new .date, main .date, main .etype { font-size: 13px !important; }
+  footer p, footer li, footer a, footer span, footer .form-consent { font-size: 14px !important; line-height: 1.5; }
+  footer h2, footer h3, footer h4 { font-size: max(18px, 1em) !important; }
+  footer .contact-form form input[type="text"], footer .contact-form form input[type="tel"], footer .contact-form form input[type="email"], footer .contact-form form textarea { font-size: 16px !important; min-height: 44px; }
+  footer .contact-form form input[type="submit"] { font-size: 16px !important; }
+}
+
+.cal-wrap, .cal-wrap * { box-sizing: border-box; max-width: 100%; }
+.cal-wrap { overflow-x: clip; }
+@media (max-width: 768px) {
+  header a[href*="facebook.com"], header a[href*="instagram.com"], header a[href*="youtube.com"], header a[href*="tiktok.com"] { display: inline-flex; align-items: center; justify-content: center; padding: 9px; margin: -9px; }
+  main .cal-wrap h4 { font-size: 16px !important; }
+  main small, main .title, main .info, main .cms-doc-title, main .cms-doc-open, main .cms-doc-icon, main b { font-size: max(13px, 1em) !important; }
+}
+
+@media (max-width: 820px) {
+  .cal-wrap { grid-template-columns: minmax(0, 1fr) !important; padding-left: 12px !important; padding-right: 12px !important; overflow-x: visible; }
+  .cal-wrap > * { grid-column: 1 / -1 !important; width: auto !important; min-width: 0 !important; }
+  .cal-wrap .cal-board, .cal-wrap .cal-side { width: 100% !important; }
+  .cal-wrap .cal-weekdays, .cal-wrap .cal-grid, .cal-wrap [class*="cal-days"] { grid-template-columns: repeat(7, minmax(0, 1fr)) !important; }
+}
+main .st-page .st-tsec + .st-tsec { background: none !important; padding-top: 0 !important; margin-top: 1.8em !important; }
+
+footer .contact-form form textarea { -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 6px round !important; mask-border: var(--st-torn-mask) 30 fill / 6px round !important; }
+main .st-page .level .info .desc .info-pending { text-align: left; }
+
+main .st-page .level.st-sec { align-items: center; }
+

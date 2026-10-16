@@ -21,6 +21,25 @@ function saveNav(data) {
   writeJson(NAV_FILE, data);
 }
 
+function cleanDocs(list) {
+  return (Array.isArray(list) ? list : [])
+    .map((d) => ({ title: String(d?.title || '').trim() || 'Документ', url: String(d?.url || '').trim() }))
+    .filter((d) => /^\/data\/uploads\/[\w.-]+\.pdf$/i.test(d.url) || /^https?:\/\//i.test(d.url));
+}
+
+function findNavItem(items, id) {
+  for (const it of items || []) {
+    if (it.id === id) return it;
+    const f = findNavItem(it.children, id);
+    if (f) return f;
+  }
+  return null;
+}
+
+function removeNavItem(items, id) {
+  return (items || []).filter((n) => n.id !== id).map((n) => (n.children ? { ...n, children: removeNavItem(n.children, id) } : n));
+}
+
 function publicBySlug(slug) {
   return load().items.find((p) => p.slug === slug && p.cmsManaged);
 }
@@ -30,6 +49,16 @@ function createAdminRouter() {
 
   router.get('/', (_req, res) => {
     res.json({ items: load().items });
+  });
+
+  // Розділи верхнього рівня меню — куди можна додати вкладку
+  router.get('/_sections', (_req, res) => {
+    const nav = loadNav();
+    const items = [];
+    for (const side of ['left', 'right']) {
+      for (const n of nav[side] || []) items.push({ id: n.id, label: n.label, side });
+    }
+    res.json({ items });
   });
 
   router.get('/:id', (req, res) => {
@@ -53,6 +82,8 @@ function createAdminRouter() {
       path: `/p/${slug}`,
       body: req.body.body || '',
       banner: req.body.banner || '',
+      documents: cleanDocs(req.body.documents),
+      parent: req.body.parent ? String(req.body.parent) : '',
       cmsManaged: true,
       addToNav: !!req.body.addToNav,
       navSide: req.body.navSide === 'right' ? 'right' : 'left',
@@ -63,15 +94,22 @@ function createAdminRouter() {
 
     if (item.addToNav) {
       const nav = loadNav();
-      const side = item.navSide;
-      nav[side] = nav[side] || [];
-      nav[side].push({
+      const entry = {
         id: `nav-${item.slug}`,
         label: item.title,
         href: `/p/${item.slug}`,
         visible: true,
         cms: true,
-      });
+      };
+      const parentItem = item.parent ? findNavItem([...(nav.left || []), ...(nav.right || [])], item.parent) : null;
+      if (parentItem) {
+        parentItem.children = parentItem.children || [];
+        parentItem.children.push(entry);
+      } else {
+        const side = item.navSide;
+        nav[side] = nav[side] || [];
+        nav[side].push(entry);
+      }
       saveNav(nav);
     }
 
@@ -88,6 +126,7 @@ function createAdminRouter() {
       title: req.body.title ?? prev.title,
       body: req.body.body ?? prev.body,
       banner: req.body.banner ?? prev.banner,
+      documents: req.body.documents !== undefined ? cleanDocs(req.body.documents) : prev.documents || [],
       cmsManaged: req.body.cmsManaged !== undefined ? !!req.body.cmsManaged : prev.cmsManaged || !!req.body.body,
       updatedAt: new Date().toISOString(),
     };
@@ -105,7 +144,7 @@ function createAdminRouter() {
     save({ items: data.items.filter((p) => p.id !== req.params.id) });
     const nav = loadNav();
     for (const side of ['left', 'right']) {
-      nav[side] = (nav[side] || []).filter((n) => n.id !== `nav-${item.slug}`);
+      nav[side] = removeNavItem(nav[side], `nav-${item.slug}`);
     }
     saveNav(nav);
     res.json({ ok: true });
