@@ -492,3 +492,58 @@ main .st-page .level .info .desc .info-pending { text-align: left; }
 
 main .st-page .level.st-sec { align-items: center; }
 
+
+/* ================= СТАРІ WP-СТОРІНКИ ТА ЗАПИСИ В ЄДИНОМУ СТИЛІ ================= */
+main .st-legacy .st-legacy-text img { display: block; max-width: 100%; height: auto; margin: 1.2em auto; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 14px round; mask-border: var(--st-torn-mask) 30 fill / 14px round; border-radius: 0 !important; }
+main .st-legacy .st-legacy-text iframe { display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; height: auto; margin: 1.2em auto; border: 0; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 14px round; mask-border: var(--st-torn-mask) 30 fill / 14px round; }
+main .st-legacy .st-legacy-text h2, main .st-legacy .st-legacy-text h3, main .st-legacy .st-legacy-text h4 { font-family: Antropos, sans-serif; color: var(--st-orange); text-transform: uppercase; line-height: 1.2; margin: 1.2em 0 .5em; font-size: clamp(18px, 1.4vw, 26px); text-align: left; }
+main .st-legacy .st-legacy-text > :first-child { margin-top: 0; }
+main .st-legacy .st-legacy-text ul, main .st-legacy .st-legacy-text ol { padding-left: 1.3em; }
+main .st-legacy .st-legacy-text blockquote { margin: 1em 0; padding: 14px 20px; background: #fbe2cf; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 12px round; mask-border: var(--st-torn-mask) 30 fill / 12px round; }
+main .st-legacy .st-legacy-text table { width: 100%; border-collapse: collapse; display: block; overflow-x: auto; }
+main .st-legacy .st-legacy-text .gallery, main .st-legacy .st-legacy-text .wp-block-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+main .st-legacy .st-legacy-text .gallery img, main .st-legacy .st-legacy-text .wp-block-gallery img { margin: 0; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+/* «Шахматка» для текстових сторінок з фото: на десктопі фото чергуються ліворуч/праворуч */
+@media (min-width: 900px) {
+  main .st-legacy .st-legacy-text p > img:only-child, main .st-legacy .st-legacy-text > img { width: 46%; margin: .3em 0 1em; }
+  main .st-legacy .st-legacy-text p:has(> img:only-child):nth-of-type(odd), main .st-legacy .st-legacy-text > img:nth-of-type(odd) { float: left; margin-right: 2.4em; width: 46%; }
+  main .st-legacy .st-legacy-text p:has(> img:only-child):nth-of-type(even), main .st-legacy .st-legacy-text > img:nth-of-type(even) { float: right; margin-left: 2.4em; width: 46%; }
+  main .st-legacy .st-legacy-text p:has(> img:only-child) img { width: 100%; margin: 0; }
+  main .st-legacy .st-legacy-text::after { content: ""; display: block; clear: both; }
+}
+/* Список новин у підкладці */
+main .st-legacy .st-news { width: 100%; }
+main .st-legacy .st-news .news-list { margin: 0; width: 100%; }
+main .st-legacy .st-news .new { background: var(--st-cream) !important; margin-bottom: 2vw; padding: clamp(14px, 1.6vw, 28px); box-sizing: border-box; }
+main .st-legacy .st-news .new .title { color: var(--st-orange); }
+@media (max-width: 768px) { main .st-legacy .st-news .new { flex-direction: column; margin-bottom: 18px; } main .st-legacy .st-news .new img { width: 100% !important; height: auto; } }
+
+/* «Напишіть нам»: щільніша підкладка — крізь проміжки між полями більше не просвічують вікна будівлі */
+footer .contact-form form.wpcf7-form { background: rgba(255, 255, 255, .9) !important; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+footer .contact-form form p { margin: 0 0 12px; }
+
+/* 768 px: підписи календаря та стрілки */
+@media (max-width: 1024px) {
+  .cal-wrap .cal-legend span, .cal-wrap .etype, .cal-wrap [class*="etype"], .cal-wrap .cal-weekdays span, .cal-wrap .num { font-size: max(13px, 1em) !important; }
+  .cal-wrap .cal-toolbar .btn, button[aria-label="Previous"], button[aria-label="Next"], .slick-arrow, .swiper-button-prev, .swiper-button-next { min-width: 40px !important; min-height: 40px !important; }
+  a[title="View full-screen"], [aria-label="View full-screen"] { min-width: 40px; min-height: 40px; }
+}
+
+main .st-legacy .st-legacy-text, main .st-legacy .st-legacy-text p, main .st-legacy .st-legacy-text li { font-size: clamp(15px, 1vw, 19px) !important; line-height: 1.6 !important; }
+main .st-legacy .st-news .new, main .st-legacy .st-news .new .info { color: var(--st-ink) !important; }
+main .st-legacy .st-news .new .info { font-size: clamp(14px, .9vw, 17px) !important; line-height: 1.5; }
+main .st-legacy .st-news .new .title { font-size: clamp(18px, 1.4vw, 26px) !important; }
+@media (max-width: 768px) {
+  main .st-legacy .st-news .new { display: block !important; }
+  main .st-legacy .st-news .new img { display: block; width: 100% !important; max-width: none !important; height: auto !important; aspect-ratio: 4/3; object-fit: cover; margin: 0 0 12px; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 12px round; mask-border: var(--st-torn-mask) 30 fill / 12px round; }
+  main .st-legacy .st-news .new .right { width: 100% !important; display: block !important; }
+}
+
+@media (max-width: 1024px) {
+  header .top-menu ul.right li a[href*="facebook.com"], header .top-menu ul.right li a[href*="instagram.com"], header .top-menu ul.right li a[href*="youtube.com"], header .top-menu ul.right li a[href*="tiktok.com"] { box-sizing: content-box; padding: 9px !important; margin: -9px !important; }
+  main h4 { font-size: max(15px, 1em) !important; }
+  .breadcrumbs, .breadcrumbs a, .breadcrumbs span { font-size: max(13px, 1em) !important; }
+}
+
+main .st-legacy .st-legacy-text :is(div, span, a, li, p, strong, b, address) { font-size: clamp(15px, 1vw, 19px); line-height: 1.6; }
+

@@ -36,6 +36,7 @@ function applyNav(html, urlPath) {
     const lbl = top.label.replace(/[.*+?^${}()|[\]\\]/g, '\\function currentBanner(');
     html = html.replace(new RegExp('(>' + lbl + '</a>\\s*<ul class="sub-menu">)[\\s\\S]*?(</ul>)', 'g'), (_m, a, b) => `${a}\n${lis}\n${b}`);
   }
+  html = applyUnified(html);
   return html.replace(/(<span class="st-copy-year">)\d{4}(<\/span>)/g, `$1${new Date().getFullYear()}$2`); // st-copy-year
 }
 function currentBanner(html) { const m = html.match(BANNER_RE); return m ? ((m[2].match(/url\(['"]?([^'")]+)/) || [])[1] || '') : ''; }
@@ -233,3 +234,30 @@ function createAdminRouter() {
 }
 
 module.exports = { applyNav, createMiddleware, createAdminRouter, listItems, applyOverrides, applyBanner, listPages };
+
+
+/* UNIFIED-LEGACY: старі WP-сторінки й записи → стиль «Структури школи».
+   Хлібні крихти лишаються в .content, решта вмісту переноситься в персикову рвану підкладку
+   (.levels.st-page) з читабельною кремовою карткою (.st-textcard) або широким блоком для списку новин. */
+function applyUnified(html) {
+  const mStart = html.search(/<main class="page[^"]*">/);
+  if (mStart < 0) return html;
+  const cIdx = html.indexOf('<div class="content">', mStart);
+  const mEnd = html.indexOf('</main>', mStart);
+  if (cIdx < 0 || mEnd < 0 || cIdx > mEnd) return html;
+  // кінець .content — балансування div
+  const re = /<\/?div\b[^>]*>/g; re.lastIndex = cIdx; let depth = 0, cEnd = -1, m;
+  while ((m = re.exec(html))) { depth += m[0][1] === '/' ? -1 : 1; if (depth === 0) { cEnd = m.index; break; } if (m.index > mEnd) break; }
+  if (cEnd < 0 || cEnd > mEnd) { cEnd = html.lastIndexOf('</div>', mEnd); if (cEnd <= cIdx) return html; } // незбалансовані div у дзеркалі
+  const inner = html.slice(cIdx + '<div class="content">'.length, cEnd);
+  const bc = inner.match(/^\s*<div class="breadcrumbs"[\s\S]*?<\/div>/);
+  const rest = bc ? inner.slice(bc[0].length) : inner;
+  if (!rest.replace(/<[^>]+>/g, '').trim() && !/<img|<iframe/.test(rest)) return html;
+  if (/class="(levels|cms-body|cal-|school-docs|cms-hub|contacts|st-)/.test(rest) || /class="levels/.test(html.slice(cEnd, mEnd))) return html;
+  const t = (html.slice(mStart, cIdx).match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [, ''])[1].trim();
+  const wide = /class="news-list/.test(rest);
+  const body = wide ? '<div class="st-wide st-news">' + rest + '</div>' : '<div class="st-textcard st-legacy-text">' + rest + '</div>';
+  const panel = '<div class="levels rel flex st-page st-page--text st-legacy" id="st-page">' + (t ? '<h2>' + t + '</h2>' : '') + body + '</div>';
+  return html.slice(0, cIdx) + '<div class="content">' + (bc ? bc[0] : '') + '</div>' + panel + html.slice(cEnd + 6);
+}
+module.exports.applyUnified = applyUnified;
