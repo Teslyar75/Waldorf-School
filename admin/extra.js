@@ -45,7 +45,7 @@ document.addEventListener('change', (ev) => { if (ev.target && ev.target.id === 
       $('.x-search', ov).oninput = (ev) => draw(ev.target.value.toLowerCase().trim());
       const done = (v) => { ov.remove(); resolve(v); };
       $('[data-x]', ov).onclick = () => done(null);
-      grid.onclick = (ev) => { const b = ev.target.closest('.x-media'); if (b) done(b.dataset.url); };
+      grid.onclick = (ev) => { const b = ev.target.closest('.x-media'); if (b) done(A().mediaUrl(b.dataset.url)); };
       const up = async (files) => { try { const it = await upload(files[0]); A().toast('Завантажено'); done(it.url); } catch (err) { A().toast(err.message); } };
       $('input[type=file]', ov).onchange = (ev) => ev.target.files[0] && up([...ev.target.files]);
       dropzone($('#x-drop', ov), up);

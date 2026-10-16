@@ -564,3 +564,6 @@ main .st-legacy .st-legacy-text :is(div, span, a, li, p, strong, b, address) { f
 .st-intro { box-sizing: border-box; max-width: min(100%, 62vw); }
 @media (max-width: 768px) { .st-intro { max-width: 100%; } }
 .st-world-country img.st-flag { display: inline-block !important; margin: 0 6px 0 0 !important; }
+
+/* staff grid: cards keep a readable width and are centered even when there are only 1-2 */
+@media (min-width: 1025px) { .staff-grid { grid-template-columns: repeat(auto-fit, minmax(230px, 280px)) !important; justify-content: center; } .staff-card img { width: 180px; height: 180px; } }

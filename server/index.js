@@ -67,6 +67,8 @@ app.use((req, res, next) => {
     if (!exists) return res.redirect(301, base + (req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : ''));
   }
   // Службові копії WordPress (/r/, /feed/, /comments/) — закрито
+  // старі WP-адреси «/r/» (копії випадкового запису в дзеркалі) → список новин
+  if (/^(\/[\w-]+)*\/r(\/r)*\/?$/.test(req.path)) return res.redirect(301, '/news/');
   if (/(^|\/)(r|feed|comments|wp-json|xmlrpc\.php)(\/|$)/.test(req.path) && !req.path.startsWith('/api/') && !req.path.startsWith('/admin')) {
     return sendNotFound(req, res);
   }

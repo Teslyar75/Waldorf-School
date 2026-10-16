@@ -707,10 +707,10 @@
               )
               .join('')
           : '<p class="muted">Документів ще немає.</p>';
-        $('[data-doc-title]', box).forEach((inp) => {
+        $$('[data-doc-title]', box).forEach((inp) => {
           inp.oninput = () => { docs[+inp.dataset.docTitle].title = inp.value; };
         });
-        $('[data-doc-del]', box).forEach((b) => {
+        $$('[data-doc-del]', box).forEach((b) => {
           b.onclick = () => { docs.splice(+b.dataset.docDel, 1); paintDocs(); };
         });
       }

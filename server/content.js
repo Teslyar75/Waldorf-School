@@ -28,6 +28,7 @@ function applyBanner(html, urlPath) {
 // Меню з ОДНОГО джерела (data/nav.json): підменю всіх пунктів з дітьми перебудовуються на сервері для кожної сторінки.
 function navHref(h) { h = String(h || '').trim(); if (/^(https?:|mailto:|tel:)/.test(h)) return h; h = h.replace(/^(\.\.\/|\.\/)+/, '/'); if (!h.startsWith('/')) h = '/' + h; return h.replace(/index\.html(?=$|#|\?)/, '').replace(/^\/p\/([^/#?]+)$/, '/p/$1/'); }
 function applyNav(html, urlPath) {
+  html = String(html).replace(/<link\b[^>]*href="[^"]*(?:\/feed\/|wp-json|xmlrpc\.php)[^"]*"[^>]*>\s*/gi, ''); // dead WP head links (feed, oEmbed, REST, RSD)
   let nav; try { nav = readJson('nav.json', { left: [], right: [] }); } catch { return html; }
   const cp = canonicalPath(urlPath || '/');
   for (const top of [...(nav.left || []), ...(nav.right || [])]) {
@@ -223,7 +224,7 @@ function createAdminRouter() {
     res.json({ items });
   });
   r.put('/banner', (q, res) => {
-    const p = canonicalPath(String(q.body.path || '')); const src = String(q.body.src || '');
+    const p = canonicalPath(String(q.body.path || '')); const src = String(q.body.src || '').trim().replace(/^(\.\.\/|\.\/)+/, '/');
     if (!p.startsWith('/') || !/^\/(data\/uploads|wp-content)\//.test(src)) return res.status(400).json({ error: 'Оберіть зображення з медіатеки' });
     const pos = String(q.body.pos || '50% 50%').replace(/[^0-9.% ]/g, '').slice(0, 20);
     const d = loadBn(); d.pages = d.pages || {}; d.pages[p] = { src, pos, updatedAt: new Date().toISOString(), by: q.user && q.user.username };
