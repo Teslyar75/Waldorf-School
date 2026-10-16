@@ -26,6 +26,17 @@ const fs = require('fs');
 const SITE_URL = (process.env.SITE_URL || 'https://www.waldorf-stupeni.school').replace(/\/$/, '');
 
 const ROOT = path.join(__dirname, '..');
+function sendNotFound(req, res) {
+  res.status(404);
+  if (req.path.startsWith('/api/') || !(req.accepts(['html', 'json']) === 'html')) return res.send('Not found');
+  let html = null;
+  try {
+    html = require('./site-shell').wrapInShell({ title: 'Сторінку не знайдено', urlPath: req.path, bodyHtml: '',
+      after: '<div class="levels rel flex st-page st-page--text" id="st-page"><h2>Сторінку не знайдено</h2><div class="st-textcard st-404"><p>На жаль, такої сторінки немає або її перенесли.</p><p><a class="btn orange" href="/">На головну</a> <a class="btn orange" href="/contacts/">Контакти</a></p></div></div>' });
+    if (html) html = html.replace('<head>', '<head>\n<meta name="robots" content="noindex">');
+  } catch { /* */ }
+  return res.type('html').send(html || 'Сторінку не знайдено');
+}
 const PORT = Number(process.env.PORT) || 5180;
 
 ensureDirs();
@@ -56,8 +67,8 @@ app.use((req, res, next) => {
     if (!exists) return res.redirect(301, base + (req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : ''));
   }
   // Службові копії WordPress (/r/, /feed/, /comments/) — закрито
-  if (/(^|\/)(r|feed|comments)(\/|$)/.test(req.path) && !req.path.startsWith('/api/') && !req.path.startsWith('/admin')) {
-    return res.status(404).send('Not found');
+  if (/(^|\/)(r|feed|comments|wp-json|xmlrpc\.php)(\/|$)/.test(req.path) && !req.path.startsWith('/api/') && !req.path.startsWith('/admin')) {
+    return sendNotFound(req, res);
   }
   next();
 });
@@ -301,12 +312,15 @@ app.get('/p/:slug', (req, res) => {
       })
     );
   }
-  return res.status(404).send('Сторінку не знайдено');
+  return sendNotFound(req, res);
 });
 
 // Static site (mirror) — after API routes
 app.use(contentLayer.createMiddleware({ books, documents }));
 app.use(express.static(ROOT, { extensions: ['html'] }));
+
+// NOT-FOUND-PAGE: оформлена сторінка 404 у стилі сайту
+app.use((req, res) => sendNotFound(req, res));
 
 function escapeHtml(s) {
   return String(s || '')

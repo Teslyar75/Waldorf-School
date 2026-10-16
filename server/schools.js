@@ -57,13 +57,27 @@ const SOURCES = [
 
 function initials(t) { return String(t).replace(/[«»"()—–-]/g, ' ').split(/\s+/).filter((w) => /^[A-ZА-ЯІЇЄҐ]/.test(w)).slice(0, 2).map((w) => w[0]).join('') || '★'; }
 
+/* Прапори: локальні SVG (flag-icons, MIT) у /assets/flags/4x3/<код>.svg; старі емодзі перетворюються на код */
+function flagCode(v) {
+  const t = String(v || '').trim();
+  if (/^[a-z]{2}(-[a-z]+)?$/i.test(t)) return t.toLowerCase();
+  if (t === 'world' || /\u{1F30D}|\u{1F30E}|\u{1F30F}/u.test(t)) return 'world';
+  const cps = [...t].map((c) => c.codePointAt(0)).filter((c) => c >= 0x1F1E6 && c <= 0x1F1FF);
+  return cps.length === 2 ? String.fromCharCode(...cps.map((c) => c - 0x1F1E6 + 97)) : '';
+}
+function flagImg(v, cls) {
+  const c = flagCode(v); if (!c) return '';
+  const src = c === 'world' ? '/assets/flags/world.svg' : '/assets/flags/4x3/' + c + '.svg';
+  return '<img class="' + (cls || 'st-flag') + '" src="' + src + '" alt="" width="28" height="21">';
+}
+
 function renderBody(items) {
   const card = (s) => {
     const ext = /^https?:/.test(s.url);
-    const media = s.image ? `<img src="${esc(s.image)}" alt="" loading="lazy">` : `<span class="st-world-ph" aria-hidden="true"><span>${esc(s.flag || '')}</span><b>${esc(initials(s.title))}</b></span>`;
+    const media = s.image ? `<img src="${esc(s.image)}" alt="" loading="lazy">` : `<span class="st-world-ph" aria-hidden="true">${flagImg(s.flag, 'st-flag st-flag--big')}<b>${esc(initials(s.title))}</b></span>`;
     return `<article class="st-card st-world-card">
 	<div class="st-world-media">${media}</div>
-	<div class="st-world-text"><h3>${esc(s.title)}</h3><p class="muted">${esc(s.country)}</p><p>${esc(s.description)}</p>
+	<div class="st-world-text"><h3>${esc(s.title)}</h3><p class="muted st-world-country">${flagImg(s.flag)}${esc(s.country)}</p><p>${esc(s.description)}</p>
 	${s.url ? `<a class="btn orange" href="${esc(s.url)}"${ext ? ' target="_blank" rel="noopener"' : ''}>${esc(s.linkLabel || 'Сайт')} →</a>` : ''}</div>
 </article>`;
   };
@@ -99,4 +113,4 @@ function mount(app, admin, requirePermission) {
     res.type('html').send(html);
   });
 }
-module.exports = { mount };
+module.exports = { flagCode, mount };

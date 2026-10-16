@@ -547,3 +547,20 @@ main .st-legacy .st-news .new .title { font-size: clamp(18px, 1.4vw, 26px) !impo
 
 main .st-legacy .st-legacy-text :is(div, span, a, li, p, strong, b, address) { font-size: clamp(15px, 1vw, 19px); line-height: 1.6; }
 
+
+/* Прапори (SVG, flag-icons MIT) — з рваними краями */
+.st-flag { display: inline-block; width: 28px; height: 21px; object-fit: cover; vertical-align: -4px; margin-right: 8px; -webkit-mask-box-image: var(--st-torn-mask) 30 fill / 3px round; mask-border: var(--st-torn-mask) 30 fill / 3px round; }
+.st-world-ph .st-flag--big { width: 56px; height: 42px; margin: 0 0 6px; }
+.st-world-country { display: flex; align-items: center; }
+
+@media (max-width: 1024px) { main .banner .info p, main .banner .info p span { font-size: max(13px, 1em) !important; } }
+
+
+.st-world-stats { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+.st-world-stats b { font-size: clamp(22px, 2.4vw, 44px) !important; overflow-wrap: anywhere; }
+@media (max-width: 768px) { .st-world-stats { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+.st-world-country { display: block !important; }
+.st-world-country .st-flag { vertical-align: -5px; }
+.st-intro { box-sizing: border-box; max-width: min(100%, 62vw); }
+@media (max-width: 768px) { .st-intro { max-width: 100%; } }
+.st-world-country img.st-flag { display: inline-block !important; margin: 0 6px 0 0 !important; }

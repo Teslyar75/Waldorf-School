@@ -9,7 +9,7 @@
       "linkLabel": "Сайт",
       "title": "Freunde der Erziehungskunst Rudolf Steiners",
       "country": "Німеччина, Берлін",
-      "flag": "🇩🇪",
+      "flag": "de",
       "description": "Друзі вальдорфської педагогіки ведуть світовий список вальдорфських шкіл і садків, підтримують нові школи в різних країнах і співпрацюють, зокрема, з ЮНЕСКО та ECSWE.",
       "url": "https://www.freunde-waldorf.de/en/"
     },
@@ -22,7 +22,7 @@
       "linkLabel": "Сайт",
       "title": "ECSWE — Європейська рада Штайнер-вальдорфської освіти",
       "country": "Бельгія, Брюссель",
-      "flag": "🇪🇺",
+      "flag": "eu",
       "description": "Об’єднує національні вальдорфські асоціації європейських країн і представляє вальдорфську освіту в діалозі з інституціями ЄС. Серед членів є і українська асоціація.",
       "url": "https://ecswe.eu/"
     },
@@ -35,7 +35,7 @@
       "linkLabel": "Сайт",
       "title": "Педагогічна секція Гетеанума",
       "country": "Швейцарія, Дорнах",
-      "flag": "🇨🇭",
+      "flag": "ch",
       "description": "Міжнародний центр вальдорфської педагогіки: дослідження, конференції для вчителів з усього світу, спільна редакція світового списку шкіл.",
       "url": "https://www.goetheanum-paedagogik.ch/"
     },
@@ -48,7 +48,7 @@
       "linkLabel": "Сайт",
       "title": "AWSNA — Асоціація вальдорфських шкіл Північної Америки",
       "country": "США та Канада",
-      "flag": "🇺🇸",
+      "flag": "us",
       "description": "Заснована 1968 року для підтримки вальдорфських шкіл і педагогічних інститутів у США та Канаді.",
       "url": "https://www.waldorfeducation.org/"
     },
@@ -61,7 +61,7 @@
       "linkLabel": "Сайт",
       "title": "Waldorf UK (раніше Steiner Waldorf Schools Fellowship)",
       "country": "Велика Британія",
-      "flag": "🇬🇧",
+      "flag": "gb",
       "description": "Об’єднання вальдорфських шкіл і садків Великої Британії, зареєстрована благодійна організація.",
       "url": "https://waldorfeducation.uk/"
     },
@@ -74,7 +74,7 @@
       "linkLabel": "Сайт",
       "title": "IASWECE — Міжнародна асоціація вальдорфської дошкільної освіти",
       "country": "Міжнародна",
-      "flag": "🌍",
+      "flag": "world",
       "description": "Об’єднує вальдорфські дитячі садки світу і разом з Freunde der Erziehungskunst веде світовий список садків.",
       "url": "https://iaswece.org/"
     },
@@ -87,7 +87,7 @@
       "linkLabel": "Сайт",
       "title": "Bund der Freien Waldorfschulen",
       "country": "Німеччина, Штутгарт",
-      "flag": "🇩🇪",
+      "flag": "de",
       "description": "Союз вільних вальдорфських шкіл Німеччини: 258 шкіл і близько 90 000 учнів (дані на січень 2026 року).",
       "url": "https://www.waldorfschule.de/"
     },
@@ -100,7 +100,7 @@
       "linkLabel": "Сайт",
       "title": "Freie Waldorfschule Uhlandshöhe",
       "country": "Німеччина, Штутгарт",
-      "flag": "🇩🇪",
+      "flag": "de",
       "description": "Перша вальдорфська школа у світі: її відкрили у вересні 1919 року для дітей працівників фабрики «Waldorf-Astoria».",
       "url": "https://www.uhlandshoehe.de/"
     },
@@ -113,7 +113,7 @@
       "linkLabel": "Сайт",
       "title": "Michael Hall",
       "country": "Велика Британія, Східний Сассекс",
-      "flag": "🇬🇧",
+      "flag": "gb",
       "description": "Найстаріша Штайнер-школа Британії, заснована 1925 року. Близько 400 учнів віком від 3 до 18 років.",
       "url": "https://www.michaelhall.co.uk/"
     },
@@ -126,7 +126,7 @@
       "linkLabel": "Сайт",
       "title": "Rudolf Steiner School",
       "country": "США, Нью-Йорк",
-      "flag": "🇺🇸",
+      "flag": "us",
       "description": "Вальдорфська школа в Нью-Йорку з дошкільною групою (Nursery).",
       "url": "https://www.steiner.edu/"
     },
@@ -139,7 +139,7 @@
       "linkLabel": "Сайт",
       "title": "Waldorf School of the Peninsula",
       "country": "США, Кремнієва долина",
-      "flag": "🇺🇸",
+      "flag": "us",
       "description": "Школа з двома кампусами — у Лос-Альтосі (дошкілля – 5 клас) та Маунтин-В’ю (6–12 класи), у самому серці Кремнієвої долини.",
       "url": "https://www.waldorfpeninsula.org/"
     },
@@ -152,7 +152,7 @@
       "linkLabel": "Сайт",
       "title": "Rudolf Steiner Schule Basel",
       "country": "Швейцарія, Базель",
-      "flag": "🇨🇭",
+      "flag": "ch",
       "description": "Школа від дитячого садка до матури (швейцарського атестата зрілості).",
       "url": "https://www.steinerschule-basel.ch/"
     },
@@ -165,7 +165,7 @@
       "linkLabel": "Сайт",
       "title": "Kristofferskolan",
       "country": "Швеція, Стокгольм (Бромма)",
-      "flag": "🇸🇪",
+      "flag": "se",
       "description": "Вальдорфська школа з 1 по 12 клас: ковальство, музика, театр, евритмія, палітурна справа поряд з математикою, фізикою й хімією.",
       "url": "https://kristofferskolan.se/"
     },
@@ -178,7 +178,7 @@
       "linkLabel": "Сайт",
       "title": "Rudolf Steinerskolen i Oslo",
       "country": "Норвегія, Осло",
-      "flag": "🇳🇴",
+      "flag": "no",
       "description": "Найстаріша Штайнер-школа Норвегії, заснована 1926 року, близько 470 учнів. Посилання — на сайт норвезьких Штайнер-шкіл.",
       "url": "https://www.steinerskolen.no/"
     },
@@ -191,7 +191,7 @@
       "linkLabel": "Сайт",
       "title": "Michael Park School",
       "country": "Нова Зеландія, Окленд",
-      "flag": "🇳🇿",
+      "flag": "nz",
       "description": "Вальдорфська школа, що працює з 1979 року; приймає дітей від 2 до 18 років — від ігрової групи до старших класів.",
       "url": "https://michaelpark.school.nz/"
     },
@@ -204,7 +204,7 @@
       "linkLabel": "Сайт",
       "title": "Асоціація вальдорфської освіти Ізраїлю",
       "country": "Ізраїль",
-      "flag": "🇮🇱",
+      "flag": "il",
       "description": "Громадська організація, що розвиває освіту, натхненну вальдорфською педагогікою, і об’єднує вальдорфські садки та школи країни.",
       "url": "https://www.waldorf.org.il/"
     },
@@ -217,7 +217,7 @@
       "linkLabel": "Сайт",
       "title": "Асоціація вальдорфських ініціатив в Україні",
       "country": "Україна",
-      "flag": "🇺🇦",
+      "flag": "ua",
       "description": "Всеукраїнська громадська організація. Представляє Україну в IAO, ECSWE, IASWECE та Гаазькому колі — міжнародній конференції вальдорфських шкіл.",
       "url": "http://www.waldorf.in.ua/"
     },
@@ -230,7 +230,7 @@
       "linkLabel": "Сайт",
       "title": "Вальдорфська школа «Софія»",
       "country": "Київ",
-      "flag": "🇺🇦",
+      "flag": "ua",
       "description": "Вальдорфська школа в Києві (бульвар Перова).",
       "url": "https://www.sofia.school/"
     },
@@ -243,7 +243,7 @@
       "linkLabel": "Сайт",
       "title": "Вальдорфський НВК",
       "country": "Дніпро",
-      "flag": "🇺🇦",
+      "flag": "ua",
       "description": "Комунальний заклад, створений 1995 року з ініціативи батьків і вчителів. Понад 330 учнів 1–11 класів і 50 дітей у садку.",
       "url": "http://www.waldorf-nvk.dp.sch.in.ua/"
     },
@@ -256,7 +256,7 @@
       "linkLabel": "Сайт",
       "title": "Харківська гімназія № 94 — вальдорфські класи",
       "country": "Харків",
-      "flag": "🇺🇦",
+      "flag": "ua",
       "description": "Вальдорфські класи працюють у комунальній гімназії з 2016 року.",
       "url": "http://school94.edu.kh.ua/valjdorfsjka_shkola"
     },
@@ -269,7 +269,7 @@
       "linkLabel": "Про нас",
       "title": "Вальдорфський ліцей «Ступені»",
       "country": "Одеса",
-      "flag": "🇺🇦",
+      "flag": "ua",
       "description": "Наш ліцей: дитячий садок, початкова школа, гімназія і ліцей.",
       "url": "/"
     },
@@ -282,7 +282,7 @@
       "linkLabel": "Вікіпедія",
       "title": "Єнс Столтенберг",
       "country": "Норвегія",
-      "flag": "🇳🇴",
+      "flag": "no",
       "description": "Генеральний секретар НАТО у 2014–2024 роках, колишній прем’єр-міністр Норвегії. Навчався в Rudolf Steinerskolen в Осло.",
       "url": "https://en.wikipedia.org/wiki/Jens_Stoltenberg"
     },
@@ -295,7 +295,7 @@
       "linkLabel": "Вікіпедія",
       "title": "Міхаель Енде",
       "country": "Німеччина",
-      "flag": "🇩🇪",
+      "flag": "de",
       "description": "Автор «Нескінченної історії» та «Момо». Закінчував навчання у вальдорфській школі в Штутгарті.",
       "url": "https://en.wikipedia.org/wiki/Michael_Ende"
     },
@@ -308,7 +308,7 @@
       "linkLabel": "Вікіпедія",
       "title": "Сандра Буллок",
       "country": "США / Німеччина",
-      "flag": "🇺🇸",
+      "flag": "us",
       "description": "Акторка, володарка «Оскара». Здобувала вальдорфську освіту в Нюрнберзі.",
       "url": "https://en.wikipedia.org/wiki/Sandra_Bullock"
     },
@@ -321,7 +321,7 @@
       "linkLabel": "Вікіпедія",
       "title": "Дженніфер Еністон",
       "country": "США",
-      "flag": "🇺🇸",
+      "flag": "us",
       "description": "Акторка. З шести років навчалася у вальдорфській школі, де в 11 років відкрила для себе акторство.",
       "url": "https://en.wikipedia.org/wiki/Jennifer_Aniston"
     }

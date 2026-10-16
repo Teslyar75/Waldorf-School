@@ -90,7 +90,7 @@
       "visible": true,
       "available": false,
       "price": "",
-      "cover": "",
+      "cover": "/wp-content/uploads/books/hq/ua-z-povahoiu-do-dytyny.jpg",
       "original": "",
       "language": "українська (Наірі)",
       "title": "Вальдорфська педагогіка в Україні. З повагою до дитини",
@@ -311,12 +311,12 @@
       "visible": true,
       "available": false,
       "price": "",
-      "cover": "/wp-content/uploads/books/hq/carlgren-erziehung-zur-freiheit.jpg",
+      "cover": "/wp-content/uploads/books/hq/carlgren-vospitanie-k-svobode-1993.jpg",
       "original": "Erziehung zur Freiheit",
       "language": "російська (1993); оригінал — німецька",
       "title": "Воспитание к свободе. Педагогика Рудольфа Штейнера",
       "author": "Франс Карлгрен",
-      "description": "Класичний ілюстрований огляд вальдорфських шкіл від садка до старших класів із роботами учнів. (Обкладинка німецького видання.)",
+      "description": "Класичний ілюстрований огляд вальдорфських шкіл від садка до старших класів із роботами учнів.",
       "links": [
         {
           "label": "Open Library",

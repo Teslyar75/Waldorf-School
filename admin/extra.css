@@ -85,3 +85,7 @@ input:focus, textarea:focus, select:focus { outline: 2px solid #f08b3b55; border
   .main [class*="row"], .main [class*="item"], .main [class*="card"] { flex-wrap: wrap; min-width: 0; }
   .main .btn, .main button { min-height: 40px; }
 }
+.x-flag-pick { display: flex; gap: 8px; align-items: center; }
+.x-flag-pick select { flex: 1; min-width: 0; }
+.x-flag-pick img { width: 32px; height: 24px; object-fit: cover; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.1); }
+.x-pdf img { width: 28px; height: 21px; object-fit: cover; }
