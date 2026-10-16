@@ -118,14 +118,14 @@ body.school-calendar-page footer .contact-form {
   grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem 1rem;
+  gap: 0.65rem 1.35rem;
   justify-content: center;
   align-items: center;
-  margin: 0 0 0.35rem;
-  padding: 0.35rem 0.5rem 0.5rem;
+  margin: 0 0 0.5rem;
+  padding: 0.5rem 0.65rem 0.65rem;
   font-family: Antropos, Georgia, serif;
-  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
-  line-height: 1.3;
+  font-size: clamp(0.95rem, 1.35vw, 1.1rem);
+  line-height: 1.35;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #343537;
@@ -137,23 +137,25 @@ body.school-calendar-page footer .contact-form {
 .cal-legend span {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.55rem;
   white-space: nowrap;
 }
 
 .cal-legend .dot {
   display: inline-block;
   flex-shrink: 0;
-  width: 0.65rem;
-  height: 0.65rem;
+  width: 1.15rem;
+  height: 1.15rem;
   border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
 }
 
-.dot.holiday { background: #f08b3b; }
-.dot.vacation { background: #4a7c59; }
-.dot.epoch { background: #7a6bb0; }
-.dot.open-day { background: #2f6f9f; }
-.dot.market { background: #b8860b; }
+/* Кольорові позначки типів подій */
+.dot.holiday { background: #e86a1a; }
+.dot.vacation { background: #2f8f55; }
+.dot.epoch { background: #6b4fb8; }
+.dot.open-day { background: #1f7ab8; }
+.dot.market { background: #d4a017; }
 
 .cal-board,
 .cal-side,
@@ -235,10 +237,10 @@ body.school-calendar-page footer .contact-form {
 }
 
 .cal-day {
-  min-height: 3.5rem;
+  min-height: 4rem;
   border: 1px solid transparent;
   border-radius: 0.3rem;
-  padding: 0.25rem;
+  padding: 0.3rem;
   background: rgba(255, 255, 255, 0.55);
   cursor: default;
   position: relative;
@@ -281,15 +283,19 @@ body.school-calendar-page footer .contact-form {
 .cal-marks {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.15rem;
-  margin-top: 0.15rem;
+  gap: 0.28rem;
+  margin-top: 0.3rem;
+  align-items: center;
 }
 
-.cal-marks i {
-  width: 0.45rem;
-  height: 0.45rem;
+.cal-marks i,
+.cal-marks .dot {
+  width: 0.85rem;
+  height: 0.85rem;
   border-radius: 50%;
   display: block;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.85);
 }
 
 /* ——— Картки свят: рвана рамка як у фото (.level-photo::after) ——— */
@@ -333,11 +339,11 @@ body.school-calendar-page footer .contact-form {
   color: #fff;
 }
 
-.etype.holiday { background: #f08b3b; }
-.etype.vacation { background: #4a7c59; }
-.etype.epoch { background: #7a6bb0; }
-.etype.open-day { background: #2f6f9f; }
-.etype.market { background: #b8860b; }
+.etype.holiday { background: #e86a1a; }
+.etype.vacation { background: #2f8f55; }
+.etype.epoch { background: #6b4fb8; }
+.etype.open-day { background: #1f7ab8; }
+.etype.market { background: #d4a017; }
 
 .event-card h4 {
   position: relative;
@@ -426,14 +432,14 @@ body.school-calendar-page footer .contact-form {
   }
 
   .cal-legend {
-    gap: 0.4rem 0.75rem;
-    padding: 0.35rem 0.35rem 0.5rem;
-    font-size: clamp(0.7rem, 2vw, 0.85rem);
+    gap: 0.55rem 1rem;
+    padding: 0.45rem 0.4rem 0.6rem;
+    font-size: clamp(0.8rem, 2.1vw, 0.95rem);
   }
 
   .cal-legend .dot {
-    width: 0.6rem;
-    height: 0.6rem;
+    width: 1rem;
+    height: 1rem;
   }
 
   .cal-toolbar h2,
@@ -464,9 +470,10 @@ body.school-calendar-page footer .contact-form {
     font-size: 0.85rem;
   }
 
-  .cal-marks i {
-    width: 0.4rem;
-    height: 0.4rem;
+  .cal-marks i,
+  .cal-marks .dot {
+    width: 0.75rem;
+    height: 0.75rem;
   }
 
   .event-card .etype {
@@ -539,9 +546,9 @@ body.school-calendar-page footer .contact-form {
 
   .cal-legend {
     justify-content: flex-start;
-    gap: 0.5rem 0.75rem;
-    padding: 0.5rem 0.25rem 0.75rem;
-    font-size: 0.72rem;
+    gap: 0.55rem 0.9rem;
+    padding: 0.55rem 0.25rem 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 0.02em;
   }
 
@@ -550,8 +557,8 @@ body.school-calendar-page footer .contact-form {
   }
 
   .cal-legend .dot {
-    width: 0.65rem;
-    height: 0.65rem;
+    width: 1rem;
+    height: 1rem;
   }
 
   .cal-board,
@@ -609,13 +616,14 @@ body.school-calendar-page footer .contact-form {
   }
 
   .cal-marks {
-    gap: 0.12rem;
-    margin-top: 0.15rem;
+    gap: 0.22rem;
+    margin-top: 0.25rem;
   }
 
-  .cal-marks i {
-    width: 0.4rem;
-    height: 0.4rem;
+  .cal-marks i,
+  .cal-marks .dot {
+    width: 0.7rem;
+    height: 0.7rem;
   }
 
   .cal-selected-list .event-card,
