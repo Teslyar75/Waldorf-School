@@ -6,7 +6,11 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
-    "seed": "node server/seed-from-catalog.js"
+    "seed": "node server/seed-from-catalog.js",
+    "alumni:seed": "node server/alumni/seed-sample.js",
+    "alumni:weekly": "node server/jobs/weekly-alumni.js",
+    "alumni:weekly:dry": "node server/jobs/weekly-alumni.js --dry-run",
+    "alumni:import-dry": "node server/alumni/import-thewaldorfs.js"
   },
   "engines": {
     "node": ">=18"

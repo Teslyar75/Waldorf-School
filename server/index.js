@@ -17,6 +17,8 @@ const pagesRoutes = require('./routes/pages');
 const navRoutes = require('./routes/nav');
 const settingsRoutes = require('./routes/settings');
 const usersRoutes = require('./routes/users');
+const parentsRoutes = require('./routes/parents');
+const alumniRoutes = require('./routes/alumni');
 
 const ROOT = path.join(__dirname, '..');
 const PORT = Number(process.env.PORT) || 5180;
@@ -66,6 +68,10 @@ app.get('/api/public/pages/:slug', (req, res) => {
   res.json(page);
 });
 
+// Батьки + випускники (публічні)
+app.use('/api/public/parents', parentsRoutes.createPublicRouter());
+app.use('/api/public/alumni', alumniRoutes.createPublicRouter());
+
 // Admin API (JWT)
 const admin = express.Router();
 admin.use(authMiddleware);
@@ -76,6 +82,8 @@ admin.use('/media', requirePermission('media'), mediaRoutes.createAdminRouter())
 admin.use('/pages', requirePermission('pages'), pagesRoutes.createAdminRouter());
 admin.use('/nav', requirePermission('nav'), navRoutes.createAdminRouter());
 admin.use('/settings', requirePermission('settings'), settingsRoutes.createAdminRouter());
+admin.use('/parents', requirePermission('settings'), parentsRoutes.createAdminRouter());
+admin.use('/alumni', requirePermission('news'), alumniRoutes.createAdminRouter());
 // Зміна власного пароля — усі ролі
 admin.post('/me/password', (req, res) => {
   if (!hasPermission(req.user.role, 'password:self') && req.user.role !== 'superadmin') {

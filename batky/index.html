@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Для батьків — реєстрація — Ступені</title>
+  <link rel="stylesheet" href="/wp-content/themes/waldorf/style.css">
+  <style>
+    .batky-page {
+      max-width: 520px;
+      margin: 2rem auto 4rem;
+      padding: 1rem 1.5rem;
+    }
+    .batky-page h1 { margin-bottom: 0.5rem; }
+    .batky-page .lead { color: #555; margin-bottom: 1.5rem; }
+    .batky-form label { display: block; margin: 0.75rem 0 0.25rem; font-weight: 600; }
+    .batky-form input[type="text"],
+    .batky-form input[type="email"] {
+      width: 100%;
+      padding: 0.55rem 0.65rem;
+      border: 1px solid #c9b8a8;
+      border-radius: 4px;
+      font: inherit;
+      box-sizing: border-box;
+    }
+    .batky-form .check { margin-top: 0.85rem; font-weight: normal; display: flex; gap: 0.5rem; align-items: flex-start; }
+    .batky-form .check input { margin-top: 0.2rem; }
+    .batky-form button { margin-top: 1.25rem; }
+    .batky-msg { margin-top: 1rem; padding: 0.75rem; border-radius: 4px; display: none; }
+    .batky-msg.ok { display: block; background: #e8f5e9; }
+    .batky-msg.err { display: block; background: #fce8e6; }
+    .batky-nav { margin: 1rem 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <nav class="batky-nav">
+    <a class="btn orange" href="/">← На головну</a>
+    <a class="btn" href="/vypusknyky/">Випускники тижня</a>
+  </nav>
+
+  <main class="batky-page">
+    <h1>Реєстрація для батьків</h1>
+    <p class="lead">
+      Підпишіться на листи про події школи та щотижневу коротку згадку про випускників вальдорфських шкіл світу.
+    </p>
+
+    <form class="batky-form" id="batky-form">
+      <label for="name">Ваше ім’я</label>
+      <input id="name" name="name" type="text" autocomplete="name" placeholder="Олена">
+
+      <label for="email">Email *</label>
+      <input id="email" name="email" type="email" required autocomplete="email" placeholder="parent@example.com">
+
+      <label for="childClass">Клас / група дитини</label>
+      <input id="childClass" name="childClass" type="text" placeholder="напр. 3 клас або садочок">
+
+      <label class="check">
+        <input type="checkbox" name="consentPersonalData" required>
+        <span>Погоджуюсь на обробку персональних даних для розсилки школи *</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" name="consentNewsletter" checked>
+        <span>Отримувати «Випускника тижня»</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" name="consentEvents" checked>
+        <span>Отримувати сповіщення про події школи</span>
+      </label>
+
+      <button type="submit" class="btn orange">Зареєструватися</button>
+    </form>
+
+    <div class="batky-msg" id="batky-msg" role="status"></div>
+
+    <p style="margin-top:2rem;font-size:0.9rem;color:#666">
+      Локально листи не йдуть на пошту — дивіться <code>data/mail-log.json</code>
+      і посилання підтвердження там. Документація: <code>docs/alumni-parents-pipeline.md</code>.
+    </p>
+  </main>
+
+  <script>
+    const form = document.getElementById('batky-form');
+    const msg = document.getElementById('batky-msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.className = 'batky-msg';
+      msg.textContent = '';
+
+      const fd = new FormData(form);
+      const body = {
+        name: fd.get('name'),
+        email: fd.get('email'),
+        childClass: fd.get('childClass'),
+        consentPersonalData: fd.get('consentPersonalData') === 'on',
+        consentNewsletter: fd.get('consentNewsletter') === 'on',
+        consentEvents: fd.get('consentEvents') === 'on',
+      };
+
+      try {
+        const res = await fetch('/api/public/parents/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          msg.className = 'batky-msg err';
+          msg.textContent = data.error || 'Помилка реєстрації';
+          return;
+        }
+        msg.className = 'batky-msg ok';
+        msg.textContent = data.message || 'Готово. Перевірте пошту.';
+        form.reset();
+        form.querySelector('[name=consentNewsletter]').checked = true;
+        form.querySelector('[name=consentEvents]').checked = true;
+      } catch (err) {
+        msg.className = 'batky-msg err';
+        msg.textContent = 'Не вдалося зв’язатися з сервером. Чи запущено npm start?';
+      }
+    });
+  </script>
+</body>
+</html>
