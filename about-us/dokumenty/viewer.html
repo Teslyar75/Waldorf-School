@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Перегляд PDF | Ступені</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Georgia, serif;
+      background: #f4eee6;
+      color: #343537;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: #fff;
+      border-bottom: 1px solid rgba(91, 80, 86, 0.15);
+    }
+    .bar h1 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .bar .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .bar a, .bar button {
+      appearance: none;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.55rem 1rem;
+      font: inherit;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      background: #f08b3b;
+    }
+    .bar a.secondary, .bar button.secondary {
+      background: #fff;
+      color: #343537;
+      box-shadow: inset 0 0 0 1px rgba(91, 80, 86, 0.25);
+    }
+    .pager { display: flex; align-items: center; gap: 0.6rem; }
+    .stage {
+      flex: 1;
+      overflow: auto;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    #status {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 1.1rem;
+    }
+    #status.is-error { color: #a33; }
+    canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      background: #fff;
+      box-shadow: 0 6px 24px rgba(91, 80, 86, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <h1 id="doc-title">Документ</h1>
+    <div class="actions">
+      <div class="pager">
+        <button type="button" class="secondary" id="prev" aria-label="Попередня сторінка">‹</button>
+        <span id="page-label">—</span>
+        <button type="button" class="secondary" id="next" aria-label="Наступна сторінка">›</button>
+      </div>
+      <a id="download" class="secondary" href="#" download>Завантажити</a>
+      <a id="back" href="./index.html">Назад до документів</a>
+    </div>
+  </div>
+  <p id="status">Завантаження PDF…</p>
+  <div class="stage"><canvas id="canvas"></canvas></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+  (function () {
+    var titles = {
+      'statut.pdf': 'Статут ліцею',
+      'licenziya.pdf': 'Ліцензія на освітню діяльність',
+      'osvitnya-programa.pdf': 'Освітня програма',
+      'richnyy-plan-roboty-2026-2027.pdf': 'Річний план роботи 2026/2027',
+      'richnyy-plan-vyhovnoyi-roboty.pdf': 'Річний план виховної роботи',
+      'protydiya-nasylstvu.pdf': 'Про запобігання і протидію насильству'
+    };
+    var params = new URLSearchParams(location.search);
+    var file = params.get('file') || 'statut.pdf';
+    file = file.replace(/[^a-z0-9._-]/gi, '');
+    var src = '../../wp-content/uploads/dokumenty/' + file;
+    var titleEl = document.getElementById('doc-title');
+    var statusEl = document.getElementById('status');
+    var pageLabel = document.getElementById('page-label');
+    var canvas = document.getElementById('canvas');
+    var download = document.getElementById('download');
+    var pdfDoc = null;
+    var pageNum = 1;
+    var renderTask = null;
+
+    titleEl.textContent = titles[file] || file;
+    document.title = titleEl.textContent + ' | Ступені';
+    download.href = src;
+
+    if (!window.pdfjsLib) {
+      statusEl.textContent = 'Не вдалося завантажити переглядівник. Спробуйте завантажити PDF.';
+      statusEl.className = 'is-error';
+      return;
+    }
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    function setStatus(text, isError) {
+      statusEl.textContent = text || '';
+      statusEl.hidden = !text;
+      statusEl.classList.toggle('is-error', !!isError);
+    }
+
+    function renderPage(num) {
+      pageNum = num;
+      pageLabel.textContent = pageNum + ' / ' + pdfDoc.numPages;
+      return pdfDoc.getPage(num).then(function (page) {
+        var base = page.getViewport({ scale: 1 });
+        var width = Math.min(window.innerWidth - 48, 980);
+        var scale = width / base.width;
+        var viewport = page.getViewport({ scale: scale });
+        var dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.floor(viewport.width * dpr);
+        canvas.height = Math.floor(viewport.height * dpr);
+        canvas.style.width = Math.floor(viewport.width) + 'px';
+        canvas.style.height = Math.floor(viewport.height) + 'px';
+        var ctx = canvas.getContext('2d');
+        var transform = dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null;
+        if (renderTask) { try { renderTask.cancel(); } catch (e) {} }
+        renderTask = page.render({ canvasContext: ctx, viewport: viewport, transform: transform });
+        return renderTask.promise.then(function () {
+          renderTask = null;
+          setStatus('');
+        });
+      }).catch(function (err) {
+        if (err && err.name === 'RenderingCancelledException') return;
+        setStatus('Не вдалося показати сторінку.', true);
+      });
+    }
+
+    pdfjsLib.getDocument(src).promise.then(function (pdf) {
+      pdfDoc = pdf;
+      return renderPage(1);
+    }).catch(function () {
+      setStatus('Не вдалося відкрити файл. Завантажте PDF або поверніться назад.', true);
+    });
+
+    document.getElementById('prev').addEventListener('click', function () {
+      if (pdfDoc && pageNum > 1) renderPage(pageNum - 1);
+    });
+    document.getElementById('next').addEventListener('click', function () {
+      if (pdfDoc && pageNum < pdfDoc.numPages) renderPage(pageNum + 1);
+    });
+    window.addEventListener('resize', function () {
+      if (pdfDoc) renderPage(pageNum);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft' && pdfDoc && pageNum > 1) renderPage(pageNum - 1);
+      if (e.key === 'ArrowRight' && pdfDoc && pageNum < pdfDoc.numPages) renderPage(pageNum + 1);
+    });
+  })();
+  </script>
+</body>
+</html>

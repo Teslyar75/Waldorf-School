@@ -1,0 +1,671 @@
+/* Календар як «Структура школи»: банер → білі крихти → персик з рваними краями */
+
+main.page.school-calendar {
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Банер: рваний низ як на інших сторінках (theme torn-edge-top) */
+main.page.school-calendar .banner {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 0;
+}
+
+/* Біла смуга з крихтами — як .structure .content */
+main.page.school-calendar .cal-crumbs {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 1vw 1.5rem 0.9vw;
+  min-height: 0;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+main.page.school-calendar .cal-crumbs .breadcrumbs {
+  width: 62.5vw;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 0.4vw;
+  margin-bottom: 0;
+  font-size: clamp(12px, 0.95vw, 16px);
+}
+
+/* Персиковий блок як .levels — рвані краї зверху і знизу */
+main.page.school-calendar .cal-wrap {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 3.5vw max(1rem, calc((100% - 1100px) / 2)) 4.5vw;
+  display: grid;
+  grid-template-columns: 1.35fr 0.95fr;
+  gap: 1rem 1.25rem;
+  position: relative;
+  z-index: 1;
+  background: #f1bd98;
+  color: #343537;
+  font-family: Antropos, Georgia, serif;
+  text-transform: none;
+}
+
+main.page.school-calendar .cal-wrap a {
+  color: #343537;
+}
+
+/* Рваний верх персика (білий край на персик) — як main.structure .levels::before */
+main.page.school-calendar .cal-wrap::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2.396vw;
+  min-height: 18px;
+  background: url(../wp-content/themes/waldorf/images/torn-edge-bottom.png) center no-repeat;
+  background-size: 100% 100%;
+  z-index: 90;
+  pointer-events: none;
+}
+
+/* Рваний низ персика — як main.structure .levels::after */
+main.page.school-calendar .cal-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2.396vw;
+  min-height: 18px;
+  background: url(../wp-content/themes/waldorf/images/torn-edge-top.png) center no-repeat;
+  background-size: 100% 100%;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.cal-section-title {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 0.5rem 0 0.75rem;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Antropos, Georgia, serif;
+  font-weight: 400;
+  color: #343537;
+  position: relative;
+  z-index: 2;
+}
+
+body.school-calendar-page footer {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+}
+
+body.school-calendar-page footer .contact-form {
+  position: relative;
+  z-index: 2;
+}
+
+.cal-legend {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0.35rem;
+  padding: 0.35rem 0.5rem 0.5rem;
+  font-family: Antropos, Georgia, serif;
+  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #343537;
+  position: relative;
+  z-index: 2;
+  clear: both;
+}
+
+.cal-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+.cal-legend .dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+}
+
+.dot.holiday { background: #f08b3b; }
+.dot.vacation { background: #4a7c59; }
+.dot.epoch { background: #7a6bb0; }
+.dot.open-day { background: #2f6f9f; }
+.dot.market { background: #b8860b; }
+
+.cal-board,
+.cal-side,
+.cal-list-section {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0.15rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cal-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.cal-toolbar h2,
+.cal-side h3,
+.cal-list-section h2 {
+  margin: 0;
+  font-family: Antropos, Georgia, serif;
+  font-size: clamp(1.35rem, 2.3vw, 1.85rem);
+  line-height: 1.15;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  color: #f08b3b;
+  flex: 1;
+}
+
+.cal-side h3 {
+  text-align: left;
+  margin-bottom: 0.55rem;
+}
+
+.cal-toolbar .btn {
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  border-radius: 2rem;
+  border: none;
+  background: #f08b3b;
+  color: #fff;
+  cursor: pointer;
+  font-family: Antropos, Georgia, serif;
+  font-size: 1.55rem;
+  line-height: 1;
+  padding: 0.2rem 0.55rem;
+  text-transform: none;
+}
+
+.cal-toolbar .btn:hover {
+  background: #e07a2a;
+  color: #fff;
+}
+
+.cal-weekdays,
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+
+.cal-weekdays > span {
+  text-align: center;
+  font-family: Antropos, Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #343537;
+  padding: 0.2rem 0;
+}
+
+.cal-weekdays .wd-short {
+  display: none;
+}
+
+.cal-day {
+  min-height: 3.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  padding: 0.25rem;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: default;
+  position: relative;
+  font-family: Antropos, Georgia, serif;
+}
+
+.cal-day.other {
+  opacity: 0.35;
+}
+
+.cal-day.has-event {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(240, 139, 59, 0.45);
+}
+
+.cal-day.has-event:hover,
+.cal-day.selected {
+  border-color: #f08b3b;
+  background: #fff;
+}
+
+.cal-day.today .num {
+  background: #f08b3b;
+  color: #fff;
+}
+
+.cal-day .num {
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.cal-marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  margin-top: 0.15rem;
+}
+
+.cal-marks i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  display: block;
+}
+
+/* ——— Картки свят: рвана рамка як у фото (.level-photo::after) ——— */
+.cal-selected-list .event-card,
+.cal-full-list .event-card {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  border-radius: 0;
+  padding: 1rem 0.9rem 1.1rem;
+  margin-bottom: 0.75rem;
+  background: #fff;
+  isolation: isolate;
+}
+
+.cal-selected-list .event-card::after,
+.cal-full-list .event-card::after {
+  content: "";
+  position: absolute;
+  top: -2%;
+  left: -2%;
+  width: 104%;
+  height: 104%;
+  background: url(../wp-content/themes/waldorf/images/border-levels-home.png) center no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.event-card .etype {
+  display: inline-block;
+  position: relative;
+  z-index: 3;
+  font-family: Antropos, Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 2rem;
+  margin-bottom: 0.35rem;
+  color: #fff;
+}
+
+.etype.holiday { background: #f08b3b; }
+.etype.vacation { background: #4a7c59; }
+.etype.epoch { background: #7a6bb0; }
+.etype.open-day { background: #2f6f9f; }
+.etype.market { background: #b8860b; }
+
+.event-card h4 {
+  position: relative;
+  z-index: 3;
+  margin: 0 0 0.3rem;
+  font-family: BaarLemuria, Georgia, serif;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  color: #f08b3b;
+}
+
+.event-card p {
+  position: relative;
+  z-index: 3;
+  margin: 0.2rem 0;
+  font-family: Antropos, Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  text-transform: none;
+  color: #343537;
+}
+
+.muted {
+  color: #343537;
+  font-family: Antropos, Georgia, serif;
+  font-size: 1.05rem;
+  text-transform: none;
+  opacity: 0.85;
+}
+
+.cal-list-section {
+  grid-column: 1 / -1;
+  padding-top: 1.25rem;
+}
+
+.cal-list-section h2 {
+  margin: 0 0 0.85rem;
+  text-align: center;
+}
+
+.cal-full-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem 1.25rem;
+}
+
+.cal-full-list .event-card {
+  margin-bottom: 0;
+  min-height: 12rem;
+}
+
+/* ——— Планшет ——— */
+@media (max-width: 1024px) {
+  .cal-wrap {
+    max-width: 100%;
+    padding: 1rem 1rem 5rem;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .cal-back {
+    margin: 1rem 1rem 0;
+    font-size: clamp(1rem, 3.5vw, 1.35rem);
+    padding: 0.65rem 1.1rem;
+  }
+
+  .cal-hero {
+    padding: 2.4rem 1.25rem 2.6rem;
+    margin: 0.35rem 0 0.5rem;
+  }
+
+  .cal-eyebrow {
+    font-size: clamp(0.95rem, 2.8vw, 1.25rem);
+  }
+
+  .cal-hero h1 {
+    font-size: clamp(1.35rem, 4vw, 1.85rem);
+  }
+
+  .cal-lead {
+    font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+    max-width: 100%;
+  }
+
+  .cal-legend {
+    gap: 0.4rem 0.75rem;
+    padding: 0.35rem 0.35rem 0.5rem;
+    font-size: clamp(0.7rem, 2vw, 0.85rem);
+  }
+
+  .cal-legend .dot {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+
+  .cal-toolbar h2,
+  .cal-side h3,
+  .cal-list-section h2 {
+    font-size: clamp(1.05rem, 3.2vw, 1.4rem);
+  }
+
+  .cal-toolbar .btn {
+    min-width: 2.1rem;
+    min-height: 2.1rem;
+    font-size: 1.25rem;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .cal-weekdays > span {
+    font-size: clamp(0.7rem, 2vw, 0.85rem);
+  }
+
+  .cal-day {
+    min-height: 2.8rem;
+    padding: 0.15rem;
+  }
+
+  .cal-day .num {
+    width: 1.4rem;
+    height: 1.4rem;
+    font-size: 0.85rem;
+  }
+
+  .cal-marks i {
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+
+  .event-card .etype {
+    font-size: 0.7rem;
+  }
+
+  .event-card h4 {
+    font-size: clamp(1.05rem, 3vw, 1.25rem);
+  }
+
+  .event-card p,
+  .muted {
+    font-size: clamp(0.8rem, 2.4vw, 0.95rem);
+  }
+
+  .cal-selected-list .event-card,
+  .cal-full-list .event-card {
+    padding: 0.85rem 0.75rem 1rem;
+  }
+
+  .cal-full-list {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .cal-full-list .event-card {
+    min-height: 0;
+  }
+
+  .cal-side h3 {
+    text-align: center;
+  }
+}
+
+/* ——— Мобільний ——— */
+@media (max-width: 640px) {
+  main.page.school-calendar .cal-wrap {
+    margin: 0;
+    padding: 2.5rem 0.65rem 3.5rem;
+    gap: 1rem;
+  }
+  main.page.school-calendar .cal-wrap::before,
+  main.page.school-calendar .cal-wrap::after {
+    height: 20px;
+  }
+
+  .cal-back {
+    margin: 0.75rem 0.65rem 0;
+    font-size: 0.95rem;
+  }
+
+  .cal-hero {
+    padding: 1.75rem 0.85rem 2rem;
+  }
+
+  .cal-eyebrow {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cal-hero h1 {
+    font-size: clamp(1.7rem, 8.5vw, 2.4rem);
+    margin-bottom: 0.65rem;
+  }
+
+  .cal-lead {
+    font-size: clamp(0.95rem, 4vw, 1.15rem);
+    line-height: 1.35;
+  }
+
+  .cal-legend {
+    justify-content: flex-start;
+    gap: 0.5rem 0.75rem;
+    padding: 0.5rem 0.25rem 0.75rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cal-legend span {
+    white-space: normal;
+  }
+
+  .cal-legend .dot {
+    width: 0.65rem;
+    height: 0.65rem;
+  }
+
+  .cal-board,
+  .cal-side,
+  .cal-list-section {
+    padding: 0.25rem;
+  }
+
+  .cal-toolbar {
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .cal-toolbar h2,
+  .cal-side h3,
+  .cal-list-section h2 {
+    font-size: clamp(1.15rem, 5vw, 1.5rem);
+  }
+
+  .cal-toolbar .btn {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    font-size: 1.5rem;
+    touch-action: manipulation;
+  }
+
+  .cal-weekdays,
+  .cal-grid {
+    gap: 0.2rem;
+  }
+
+  .cal-weekdays > span {
+    font-size: 0.7rem;
+    padding: 0.2rem 0;
+  }
+
+  .cal-weekdays .wd-full {
+    display: none;
+  }
+
+  .cal-weekdays .wd-short {
+    display: inline;
+  }
+
+  .cal-day {
+    min-height: 2.75rem;
+    padding: 0.15rem;
+    border-radius: 0.25rem;
+  }
+
+  .cal-day .num {
+    width: 1.45rem;
+    height: 1.45rem;
+    font-size: 0.85rem;
+  }
+
+  .cal-marks {
+    gap: 0.12rem;
+    margin-top: 0.15rem;
+  }
+
+  .cal-marks i {
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+
+  .cal-selected-list .event-card,
+  .cal-full-list .event-card {
+    padding: 1rem 0.85rem 1.15rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .event-card .etype {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.55rem;
+  }
+
+  .event-card h4 {
+    font-size: 1.2rem;
+  }
+
+  .event-card p,
+  .muted {
+    font-size: 0.9rem;
+  }
+
+  .cal-list-section {
+    padding-top: 1.25rem;
+  }
+}
+
+/* Дуже вузькі екрани */
+@media (max-width: 380px) {
+  .cal-weekdays span:nth-child(1)::after,
+  .cal-weekdays span:nth-child(2)::after,
+  .cal-weekdays span:nth-child(3)::after,
+  .cal-weekdays span:nth-child(4)::after,
+  .cal-weekdays span:nth-child(5)::after,
+  .cal-weekdays span:nth-child(6)::after,
+  .cal-weekdays span:nth-child(7)::after {
+    content: none;
+  }
+
+  .cal-day {
+    min-height: 2.4rem;
+  }
+
+  .cal-day .num {
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.75rem;
+  }
+
+  .cal-legend {
+    font-size: 0.65rem;
+  }
+}

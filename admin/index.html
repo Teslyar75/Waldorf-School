@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Адмінка — Ступені</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div id="login-view" class="login-wrap">
+    <form class="login-card" id="login-form">
+      <h1>Адмінка «Ступені»</h1>
+      <p>Керування контентом сайту школи</p>
+      <label for="username">Логін</label>
+      <input id="username" name="username" autocomplete="username" value="admin" required />
+      <label for="password">Пароль</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required />
+      <div style="margin-top:1.25rem">
+        <button class="btn" type="submit" style="width:100%">Увійти</button>
+      </div>
+      <div class="error" id="login-error" hidden></div>
+    </form>
+  </div>
+
+  <div id="app-view" class="layout hidden">
+    <aside class="sidebar" style="display:flex;flex-direction:column">
+      <div class="brand">Ступені CMS</div>
+      <div class="who" id="who"></div>
+      <nav id="nav-tabs"></nav>
+      <div class="foot">
+        <a class="btn ghost" href="/" target="_blank" rel="noopener" style="width:100%;margin-bottom:0.5rem;color:#f7efe3;border-color:rgba(255,255,255,.2)">Відкрити сайт</a>
+        <button class="btn secondary" id="logout-btn" style="width:100%">Вийти</button>
+      </div>
+    </aside>
+    <main class="main">
+      <div id="content"></div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+{
+  "left": [
+    {
+      "id": "nav-home",
+      "label": "Головна",
+      "href": "./index.html",
+      "visible": true
+    },
+    {
+      "id": "nav-about",
+      "label": "Про нас",
+      "href": "./about-us/index.html",
+      "visible": true,
+      "children": [
+        {
+          "id": "nav-ped",
+          "label": "Вальдорфська педагогіка",
+          "href": "./about-us/waldorf-pedagogy/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-hist",
+          "label": "Історія школи",
+          "href": "./about-us/history/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-media",
+          "label": "Медіа в освітньому процесі",
+          "href": "./about-us/media/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-gallery",
+          "label": "Наша школа (фото)",
+          "href": "./index.html#gallery",
+          "visible": true
+        },
+        {
+          "id": "nav-rules",
+          "label": "Правила школи",
+          "href": "./about-us/rules/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-teachers",
+          "label": "Наші вчителі та вихователі",
+          "href": "./index.html#teachers",
+          "visible": true
+        },
+        {
+          "id": "nav-method",
+          "label": "Методичні матеріали",
+          "href": "./about-us/methodical-materials/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-docs",
+          "label": "Документи",
+          "href": "./about-us/dokumenty/index.html",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "nav-structure",
+      "label": "Структура",
+      "href": "./school-structure/index.html",
+      "visible": true,
+      "children": [
+        {
+          "id": "nav-kg",
+          "label": "Дитячий садочок “Ступені”",
+          "href": "./school-structure/kindergarten/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-el",
+          "label": "Початкова школа",
+          "href": "./school-structure/elementary-school/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-sec",
+          "label": "Середня школа",
+          "href": "./school-structure/secondary-school/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-hi",
+          "label": "Старша школа",
+          "href": "./school-structure/high-school/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-corr",
+          "label": "Корекційно-лікувальний блок",
+          "href": "./school-structure/correctional-treatment-block/index.html",
+          "visible": true
+        },
+        {
+          "id": "nav-sem",
+          "label": "Семінар",
+          "href": "./school-structure/seminar/index.html",
+          "visible": true
+        }
+      ]
+    },
+    {
+      "id": "nav-news",
+      "label": "Новини",
+      "href": "./news/index.html",
+      "visible": true
+    },
+    {
+      "id": "nav-calendar",
+      "label": "Календар",
+      "href": "./nash-kalendar/index.html",
+      "visible": true
+    }
+  ],
+  "right": [
+    {
+      "id": "nav-contacts",
+      "label": "Контакти",
+      "href": "./contacts/index.html",
+      "visible": true
+    },
+    {
+      "id": "nav-help",
+      "label": "Підтримайте нас",
+      "href": "./help-us/index.html",
+      "visible": true
+    }
+  ]
+}

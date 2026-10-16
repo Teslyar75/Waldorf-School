@@ -14,3 +14,7 @@ Desktop.ini
 # Local tooling
 node_modules/
 .netlify/
+
+# CMS runtime data
+data/uploads/
+data/users.json
